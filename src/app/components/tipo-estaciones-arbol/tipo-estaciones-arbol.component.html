@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+<div class="contenedor-tipoControl">
+  <div class="back-link">
+    <a routerLink="/logueado">
+      <i class="fas fa-arrow-left" style="color: black;"></i>
+    </a>
+  </div>
+  <div class="lunaLogo">
+    <img src="/assets/img/logo.png" alt="" class="logo">
+    <div class="media-luna-top"></div>
+  </div>
+  <form class="form-tipoControl">
+    <div class="tipoControl">
+      <div class="informacion1">
+        <span class="campo-informativo" style="color: white;">ESTACIONES</span>
+      </div>
+      <div class="opciones">
+        <div class="informacion2">
+          <button class="btn btn-primary" style="width: 100px; height: 40px;">
+            <i class="fas fa-arrow-up"></i>
+          <span class="campo-informativo" routerLink="/lotes" style="color: rgb(255, 255, 255); font-size: 15px;" id="tipoControl"> NORTE</span>
+          </button>
+        </div>
+        <div class="informacion2">
+          <button class="btn btn-danger "style="width: 100px; height: 40px;">
+            <i class="fas fa-arrow-down"></i><span class="campo-informativo" style="color: rgb(255, 255, 255);font-size: 15px;" id="tipoControl">     SUR</span>
+          </button>
+        </div>
+        <div class="informacion2">
+          <button class="btn btn-dark" style="width: 100px; height: 40px;">
+            <i class="fas fa-arrow-right"></i><span class="campo-informativo" style="color: rgb(255, 255, 255);" id="tipoControl"> ESTE</span>
+          </button>
+          
+        </div>
+        <div class="informacion2">
+          <button class="btn btn-success" style="width: 100px; height: 40px;">
+            <i class="fas fa-arrow-left"></i>
+            <span class="campo-informativo" style="color: rgb(255, 255, 255);" id="tipoControl"> OESTE</span>
+          </button>
+          
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

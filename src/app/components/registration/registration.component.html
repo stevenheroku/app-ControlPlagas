@@ -1,0 +1,103 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+<div class="contenedor-login">
+    <br>
+    <br>
+    <div class="back-link">
+        <a routerLink="/ruta-de-regreso">
+            <i class="fas fa-arrow-left" style="color: black;"></i> <!-- Icono de flecha hacia atrás -->
+        </a>
+    </div>
+    <div class="lunaLogo">
+        <img src="/assets/img/logo.png" alt="" class="logo">
+        <div class="media-luna-top"></div>
+    </div>
+    
+    <div class="recoverPass">
+        <form class="container">
+            <div class="encabezado-recoverPass ">
+                <p for="" class="title">¡Bienvenido!</p>
+                <h1 for="" class="descripcion">Ingresa tus Datos para registrarte</h1>
+            </div>
+
+            <div class="form-group">
+                <label for="email" style="color: rgb(0, 0, 0); margin-top: 10px;">
+                    Ingrese sus Nombres
+                </label>
+                <input type="text" style="background-color: white; " class="form-control" id="nombres" >
+            </div>
+            <div class="form-group">
+                <label for="email" style="color: rgb(0, 0, 0); margin-top: 10px;">
+                    Ingrese sus Apellidos
+                </label>
+                <input type="text" style="background-color: white; " class="form-control" id="apellidos" >
+            </div>
+            <div class="form-group">
+                <label for="email" style="color: rgb(0, 0, 0); margin-top: 10px;">
+                    Ingrese su Fecha de Nacimiento
+                </label>
+                <input type="date" style="background-color: white; " class="form-control" id="fecha_N" >
+            </div>
+            <div class="form-group">
+                <label for="sexo" style="color: rgb(0, 0, 0); margin-top: 10px;">Sexo</label>
+                <div class="select-with-arrow">
+                    <select class="form-control" id="sexo">
+                        <option value="M">Masculino</option>
+                        <option value="F">Femenino</option>
+                    </select>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email" style="color: rgb(0, 0, 0); margin-top: 10px;">
+                    Ingrese su Correo
+                </label>
+                <input type="email" style="background-color: white; " class="form-control" id="correo" #correo aria-describedby="emailHelp" placeholder="steven@gmail.com">
+            </div>
+            <div class="form-group">
+                <label for="password" style="color: rgb(0, 0, 0); margin-top: 10px;">
+                    <i class="fas fa-lock"></i> <!-- Icono de candado -->
+                    Ingrese su Contraseña
+                </label>
+                <div class="input-group">
+                    <input [type]="showPassword ? 'text' : 'password'" style="background-color: white; " class="form-control" id="contrasena" #contrasena placeholder="********">
+                    <div class="input-group-append">
+                        <span class="input-group-text toggle-password" (click)="togglePasswordVisibility()">
+                            <i [class]="showPassword ? 'far fa-eye-slash' : 'far fa-eye'"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" style="color: rgb(0, 0, 0); margin-top: 10px;">
+                    <i class="fas fa-lock"></i> <!-- Icono de candado -->
+                    Repita su Contraseña
+                </label>
+                <div class="input-group">
+                    <input [type]="showPassword ? 'text' : 'password'" style="background-color: white; " class="form-control" id="contrasena" #contrasena placeholder="********">
+                    <div class="input-group-append">
+                        <span class="input-group-text toggle-password" (click)="togglePasswordVisibility()">
+                            <i [class]="showPassword ? 'far fa-eye-slash' : 'far fa-eye'"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email" style="color: rgb(0, 0, 0); margin-top: 10px;">
+                    Ingrese su Número Telefónico
+                </label>
+                <input type="number" style="background-color: white; " class="form-control" id="numero_Cel" placeholder="78987755">
+            </div>
+            <div class="form-group">
+                <label for="email" style="color: rgb(0, 0, 0); margin-top: 10px;">
+                    Ingrese el Nombre de Finca
+                </label>
+                <input type="text" style="background-color: white; " class="form-control" id="nameFinca" >
+            </div>
+            <div class="row">
+                <button style="background: green; font:oblique; color: white;  border-radius: 20px;" class="col btn-1 btn">Registrar</button>
+            </div>
+           <br>
+        </form>
+    </div>
+</div>

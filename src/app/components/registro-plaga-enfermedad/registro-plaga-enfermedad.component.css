@@ -1,0 +1,369 @@
+.contenedor-tipoControl {
+  background-color: rgb(24, 155, 24); /* Color de fondo verde */
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Usar el 100% de la altura de la vista */
+  display: flex; /* Usar flexbox para centrar los elementos verticalmente */
+  flex-direction: column; /* Alinear los elementos de arriba a abajo */
+  justify-content: center; /* Centrar verticalmente los elementos */
+  align-items: center; /* Centrar horizontalmente los elementos */
+  border-top: 20px;
+  border-top-left-radius: 20%;
+  border-top-right-radius: 20%;
+}
+
+.navbar {
+  background-color: #623100;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center; /* Cambia "flex-end" a "center" para centrar horizontalmente */
+  align-items: center;
+  padding: 10px;
+}
+
+h1 {
+  color: white;
+  font-weight: bold;
+  margin: 0;
+}
+.imgLote {
+  width: 81px;
+  height: 84px;
+  margin: 40px auto; /* Ajusta el margen para mayor separación y centrado horizontal */
+  display: block;
+  z-index: 3;
+}
+.circle-container {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.circle-container img {
+  width: 150px; /* Ajusta el tamaño de la imagen */
+  height: 150px; /* Ajusta el tamaño de la imagen */
+  border-radius: 50%; /* Convierte en un círculo */
+  box-shadow:  0 0 10px rgba(0, 0, 0, 0.5); /* Agrega una sombra */
+}
+/* Estilos generales de la tabla */
+table {
+  max-height: 400px; /* Ajusta la altura máxima deseada */
+  overflow-y: auto; 
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+label{
+  font: bold;
+}
+/* Estilos para el título */
+h2 {
+  margin-bottom: 10px;
+}
+
+/* Agregar un poco de espacio entre cada fila */
+tr {
+  transition: background-color 0.2s;
+}
+
+tr:hover {
+  background-color: #e0dfdf;
+}
+
+.viewLote {
+  position: absolute;
+  width: 100%;
+  top: 10%; /* Ajusta el valor para cambiar la distancia desde arriba */
+  bottom: 0;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+}
+
+.logo {
+  margin-left: 10px;
+}
+.logo-circle {
+  width: 50px; /* Ajusta el tamaño del círculo */
+  height: 50px; /* Ajusta el tamaño del círculo */
+  background-color: white;
+  border-radius: 50%; /* Convierte en un círculo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px; /* Ajusta el margen izquierdo según tus necesidades */
+}
+
+.logo-img {
+width: 100%;
+  height: auto; /* Mantiene la proporción de la imagen */
+}
+.btn-icon {
+  width: 20px; /* Ajusta el tamaño de la imagen según tus necesidades */
+  height: 20px; /* Ajusta el tamaño de la imagen según tus necesidades */
+  margin-right: 5px; /* Espacio entre la imagen y el texto */
+}
+.back-link {
+  top: 20px;
+  left: 20px;
+  font-size: 30px;
+  cursor: pointer;
+  color: white;
+  font-size: 24px;
+  z-index: 8; /* Asegura que el enlace esté por encima de la media luna */
+}
+
+.descripcion {
+  color: #ffffff;
+  font-weight: bold;
+  font-family: value;
+  padding-top: 20px 30px; /* Ajusta el padding superior para separar más del elemento anterior */
+  font-size: 24px;
+  text-align: center;
+  top: 10%;
+}
+.row {
+  margin: 40px auto; 
+  align-items: center;
+  padding-left: 20%;
+  padding-right: 20%;
+  margin-right: 10px;
+}
+.table-container {
+  max-height: 300px; 
+  max-width: 100%;
+  overflow-y: auto; 
+  margin-top: 30px;
+  padding-top: 20px; /* Ajusta el valor según la cantidad de espacio que deseas */
+
+}
+
+.app-footer {
+  flex-shrink: 0;
+  margin-top: auto;
+}
+
+@media screen and (max-width: 320px) {
+/* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+img {
+    width: 70%;
+}
+.title {
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    font-family: value;
+    margin: 0%;
+    font-size: 24px;
+}
+.descripcion {
+    color: #ffffff;
+    font-weight: bold;
+    font-family: value;
+    padding-top: 3px;
+    font-size: 24px;
+}
+.tipoControl {
+    top: 45%;
+    border-top-left-radius: 60%;
+    border-top-right-radius: 60%;
+}
+label {
+  color: rgb(255, 255, 255);
+  margin-bottom: 2%;
+  margin-top: 2%;
+  font: italic;
+}
+}
+
+@media screen and (max-width:480px) and (min-width:320px) {
+/* smartphones, Android phones, landscape iPhone */
+img {
+    width: 80%;
+}
+.title {
+    color: rgb(14, 13, 13);
+    font-family: value;
+    margin: 0%;
+    font-size: 18px;
+    padding-top: 20px;
+}
+.descripcion {
+    color: #ffffff;
+    font-weight: bold;
+    font-family: value;
+    padding-top: 30px;
+    font-size: 24px;
+}
+.row {
+    margin-top: 90px;
+}
+label {
+    color: rgb(255, 255, 255);
+    margin-bottom: 2%;
+    margin-top: 2%;
+    font: italic;
+}
+}
+
+@media screen and (max-width:600px) and (min-width:480px) {
+/* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+img {
+    width: 60%;
+}
+.title {
+    color: rgb(245, 245, 245);
+    
+    font-family: value;
+    margin: 0%;
+    font-size: 18px;
+}
+.descripcion {
+    color: #ffffff;
+    font-weight: bold;
+    font-family: value;
+    padding-top: 3px;
+    font-size: 24px;
+}
+.row {
+    margin-top: 80px;
+}
+label {
+    color: rgb(255, 255, 255);
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+}
+
+@media screen and (max-width:801px) and (min-width:600px) {
+/* tablet, landscape iPad, lo-res laptops ands desktops */
+img {
+    width: 35%;
+}
+.title {
+    color: rgb(245, 245, 245);
+    font-family: value;
+    margin: 0%;
+    font-size: 18px;
+}
+.descripcion {
+  color: #ffffff;
+    font-family: value;
+    font-weight: bold;
+    font-family: value;
+    padding-top: 3px;
+    font-size: 24px;
+}
+.row {
+    margin-top: 1px;
+}
+label {
+    color: rgb(255, 255, 255);
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+}
+
+@media screen and (max-width:1200px) and (min-width:801px) {
+/* big landscape tablets, laptops, and desktops */
+img {
+    width: 30%;
+}
+.title {
+    color: rgb(245, 245, 245);
+    font-family: value;
+    margin: 0%;
+    font-size: 18px;
+}
+.descripcion {
+    color: #ffffff;
+    font-weight: bold;
+    font-family: value;
+    padding-top: 3px;
+    font-size: 24px;
+}
+.row {
+    margin-top: 10px;
+}
+label {
+    color: rgb(255, 255, 255);
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+}
+
+.arbol-container {
+  display: inline-flex;
+  align-items: center;
+}
+
+.arbol-imagen {
+  width: 30px; /* Ajusta el tamaño de la imagen */
+  height: 30px;
+  margin-right: 5px; /* Ajusta el margen entre la imagen y el número */
+}
+
+.numero-arbol {
+  font-size: 16px; /* Ajusta el tamaño de la fuente */
+  vertical-align: middle; /* Centrar verticalmente con respecto a la imagen */
+}
+
+.encabezado-login {
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px
+}
+
+.descripcion {
+  margin-right: 10px; /* Espacio entre el título y la imagen */
+}
+
+.arbol {
+  display: flex;
+  align-items: center;
+}
+
+
+.arbol-imagen {
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px; 
+  background-color: white; /* Fondo blanco */
+  border-radius: 50%; /* Forma circular */
+  width: 70px; /* Ajustar el tamaño de la imagen */
+  height: 70px;
+  margin-right: 5px; /* Espacio entre la imagen y el número */
+}
+
+.info {
+  font-size: 16px; /* Ajustar el tamaño del número */
+  color: #080808;
+  font-weight: bold;
+  font-family: value;
+  padding-top: 30px;
+  padding-right: 30px;
+  text-align: center;
+  margin-top: -30px; 
+}
+
+.data{
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  padding-left: 5px;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 10px;
+}

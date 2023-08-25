@@ -1,0 +1,323 @@
+.navbar {
+    background-color: #623100;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center; /* Cambia "flex-end" a "center" para centrar horizontalmente */
+    align-items: center;
+    padding: 10px;
+}
+
+h1 {
+    color: white;
+    font-weight: bold;
+    margin: 0;
+}
+
+  
+.container {
+    width: 80%;
+    height: auto;
+    top: -30%;
+}
+.viewLote {
+    position: absolute;
+    width: 100%;
+    top: 10%; /* Ajusta el valor para cambiar la distancia desde arriba */
+    bottom: 0;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+}
+
+  .logo {
+    margin-left: 10px;
+  }
+  .logo-circle {
+    width: 50px; /* Ajusta el tamaño del círculo */
+    height: 50px; /* Ajusta el tamaño del círculo */
+    background-color: white;
+    border-radius: 50%; /* Convierte en un círculo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px; /* Ajusta el margen izquierdo según tus necesidades */
+}
+
+.logo-img {
+  width: 100%;
+    height: auto; /* Mantiene la proporción de la imagen */
+}
+.btn {
+    width: 30px;
+    height: 30px;
+    margin: 5px; /* Ajusta el margen entre los botones */
+    align-items: flex-end;
+    justify-content: center;
+    padding: 0;
+  }
+
+  
+.back-link {
+    top: 20px;
+    left: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+    z-index: 8; /* Asegura que el enlace esté por encima de la media luna */
+}
+
+  .descripcion {
+    color: #000000;
+    font-weight: bold;
+    font-family: value;
+    padding-top: 20px 30px; /* Ajusta el padding superior para separar más del elemento anterior */
+    font-size: 20px;
+    text-align: center;
+    top: 10%;
+  }
+.row {
+    margin: 50px auto; 
+    align-items: center;
+    padding-left: 10%; /* Ajusta el valor según tus necesidades */
+    padding-right: 10%; 
+}
+
+
+.app-footer {
+    flex-shrink: 0;
+    margin-top: auto;
+}
+
+@media screen and (max-width: 320px) {
+  /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+  img {
+      width: 70%;
+  }
+  .title {
+      font-weight: bold;
+      color: rgb(245, 245, 245);
+      font-family: value;
+      margin: 0%;
+      font-size: 20px;
+  }
+  .descripcion {
+      color: #000000;
+      font-weight: bold;
+      font-family: value;
+      padding-top: 5px;
+      font-size: 20px;
+  }
+  .tipoControl {
+      top: 45%;
+      border-top-left-radius: 60%;
+      border-top-right-radius: 60%;
+  }
+}
+
+@media screen and (max-width:480px) and (min-width:320px) {
+  /* smartphones, Android phones, landscape iPhone */
+  img {
+      width: 80%;
+  }
+  .title {
+      color: rgb(245, 245, 245);
+      font-family: value;
+      margin: 0%;
+      font-size: 18px;
+  }
+  .descripcion {
+      color: #000000;
+      font-weight: bold;
+      font-family: value;
+      padding-top: 3px;
+      font-size: 20px;
+      top:20%;
+  }
+  .row {
+      margin-top: 90px;
+  }
+  label {
+      color: rgb(90, 90, 90)EA;
+      margin-bottom: 2%;
+      margin-top: 2%;
+  }
+}
+
+@media screen and (max-width:600px) and (min-width:480px) {
+  /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+  img {
+      width: 60%;
+  }
+  .title {
+      color: rgb(245, 245, 245);
+      
+      font-family: value;
+      margin: 0%;
+      font-size: 18px;
+  }
+  .descripcion {
+      color: #000000;
+      font-weight: bold;
+      font-family: value;
+      padding-top: 3px;
+      font-size: 20px;
+  }
+  .row {
+      margin-top: 80px;
+  }
+  label {
+      color: rgb(90, 90, 90)EA;
+      margin-bottom: 2%;
+      margin-top: 2%;
+  }
+}
+
+@media screen and (max-width:801px) and (min-width:600px) {
+  /* tablet, landscape iPad, lo-res laptops ands desktops */
+  img {
+      width: 35%;
+  }
+  .title {
+      color: rgb(245, 245, 245);
+      font-family: value;
+      margin: 0%;
+      font-size: 18px;
+  }
+  .descripcion {
+      font-family: value;
+      font-weight: bold;
+      font-family: value;
+      padding-top: 3px;
+      font-size: 20px;
+  }
+  .row {
+      margin-top: 1px;
+  }
+  label {
+      color: rgb(90, 90, 90)EA;
+      margin-bottom: 2%;
+      margin-top: 2%;
+  }
+}
+
+@media screen and (max-width:1200px) and (min-width:801px) {
+  /* big landscape tablets, laptops, and desktops */
+  img {
+      width: 30%;
+  }
+  .title {
+      color: rgb(245, 245, 245);
+      font-family: value;
+      margin: 0%;
+      font-size: 18px;
+  }
+  .descripcion {
+      color: #000000;
+      font-weight: bold;
+      font-family: value;
+      padding-top: 3px;
+      font-size: 20px;
+  }
+  .row {
+      margin-top: 10px;
+  }
+  label {
+      color: rgb(90, 90, 90)EA;
+      margin-bottom: 2%;
+      margin-top: 2%;
+  }
+}
+
+.viewArboles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.lote-card {
+    margin-bottom: 20px;
+    box-shadow:  0 0 10px rgba(19, 0, 0, 1); /* Agrega una sombra */
+    border: 1px solid #621a1a;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center; /* Centra el contenido horizontalmente */
+    box-sizing: border-box;
+}
+
+.lote-card img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    font: caption;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;	
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+  }
+  
+  .icon-circle {
+    width: 40px;
+    height: 40px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+
+  
+  .button:hover {
+    background-color: #3e8e41;
+  }
+  
+  .button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+  
+
+.stylish-input-group {
+    width: 100%;
+    margin: auto;
+  }
+  
+  .stylish-input-group .input-group-addon {
+    background: white !important; 
+    border: 1px solid #ccc;
+    border-left: none;
+    padding: 10px 12px;
+    height: 100%;
+  }
+  
+  .stylish-input-group button {
+    border: none;
+    background: transparent;
+  }
+  
+  .stylish-input-group button:hover {
+    background: #f5f5f5;
+  }
+  
+  .form-control:focus {
+    box-shadow: none;
+    border-color: #ccc;
+  }
+  

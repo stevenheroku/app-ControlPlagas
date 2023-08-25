@@ -1,0 +1,290 @@
+
+
+.container {
+    width: 80%;
+    height: auto;
+}
+.viewLote {
+    position: absolute;
+    width: 100%;
+    top: 30%;
+    bottom: 0;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+}
+.lunaLogo {
+    text-align: center;
+  }
+
+  .media-luna-top,
+  .media-luna-bottom {
+    width: 100%;
+    height: 400px;
+    background-color: rgba(39, 137, 61, 0.33);
+    border-radius: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+  }
+
+  .media-luna-top {
+    top: -200px;
+    z-index: 1;
+  }
+
+  .media-luna-bottom {
+    bottom: -200px;
+    z-index: 2;
+  }
+
+  .logo {
+    width: 250px;
+    height: 120px;
+    position: relative;
+    margin-top: -30px; /* Ajusta este valor para controlar el espacio entre la media luna y el logo */
+    z-index: 3;
+  }
+  .imgLote {
+    width: 325px;
+    height: 200px;
+    margin: 40px auto; /* Ajusta el margen para mayor separación y centrado horizontal */
+    display: block;
+    z-index: 3;
+  }
+  .back-link {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #000000; /* Cambia el color según tu diseño */
+    font-size: 24px;
+    z-index: 8; /* Asegura que el enlace esté por encima de la media luna */
+}
+
+  .descripcion {
+    color: #000000;
+    font-weight: bold;
+    font-family: value;
+    padding-top: 20px; /* Ajusta el padding superior para separar más del elemento anterior */
+    font-size: 24px;
+    text-align: center;
+  }
+.row {
+    margin: 40px auto; 
+    margin-bottom: 15px; 
+    align-items: center;
+    width: 100%;
+    padding-left: 20%;
+    padding-right: 20%;
+    margin-right: 10px;
+}
+.select-with-arrow {
+    position: relative;
+}
+
+.select-with-arrow select {
+    padding-right: 30px; /* Para dejar espacio para la flecha */
+}
+
+.select-with-arrow i {
+    position: absolute;
+    top: calc(50% - 10px); /* Ajusta la posición vertical según el tamaño del icono */
+    right: 10px;
+    color: #000; /* Cambia el color según tu diseño */
+}
+/*PASSWORD*/
+.toggle-password {
+    cursor: pointer;
+  }
+  
+@media screen and (max-width: 320px) {
+    /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+    img {
+        width: 70%;
+    }
+    .title {
+        font-weight: bold;
+        color: rgb(245, 245, 245);
+        font-family: value;
+        margin-top: 5%;
+        font-size: 24px;
+    }
+    .descripcion {
+        color: #000000;
+        font-weight: bold;
+        font-family: value;
+        padding-top: 3px;
+        font-size: 24px;
+    }
+    .media-luna {
+        width: 200px;
+        height: 100px;
+        background-color: green;
+        border-radius: 50% 50% 0 0;
+        position: relative;
+        margin: 0 auto;
+    }
+    
+    .telefono-img {
+        width: 80%;
+        max-width: 300px;
+        display: block;
+        margin: -50px auto 20px auto;
+        position: relative;
+        z-index: 1;
+    }
+    
+}
+
+@media screen and (max-width:480px) and (min-width:320px) {
+    /* smartphones, Android phones, landscape iPhone */
+    img {
+        width: 80%;
+    }
+    .title {
+        color: rgb(245, 245, 245);
+        font-family: value;
+        margin: 0%;
+        font-size: 18px;
+    }
+    .descripcion {
+        color: #000000;
+        font-weight: bold;
+        font-family: value;
+        padding-top: 3px;
+        font-size: 24px;
+    }
+    .media-luna {
+        width: 200px;
+        height: 100px;
+        background-color: green;
+        border-radius: 50% 50% 0 0;
+        position: relative;
+        margin: 0 auto;
+    }
+    
+    .telefono-img {
+        width: 80%;
+        max-width: 300px;
+        display: block;
+        margin: -50px auto 20px auto;
+        position: relative;
+        z-index: 1;
+    }
+    
+}
+
+@media screen and (max-width:600px) and (min-width:480px) {
+    /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+    img {
+        width: 40%;
+    }
+    .title {
+        color: rgb(245, 245, 245);
+        
+        font-family: value;
+        margin: 0%;
+        font-size: 18px;
+    }
+    .descripcion {
+        color: #000000;
+        font-weight: bold;
+        font-family: value;
+        padding-top: 3px;
+        font-size: 24px;
+    }
+    .media-luna {
+        width: 200px;
+        height: 100px;
+        background-color: green;
+        border-radius: 50% 50% 0 0;
+        position: relative;
+        margin: 0 auto;
+    }
+    
+    .telefono-img {
+        width: 80%;
+        max-width: 300px;
+        display: block;
+        margin: -50px auto 20px auto;
+        position: relative;
+        z-index: 1;
+    }
+    
+}
+
+@media screen and (max-width:801px) and (min-width:600px) {
+    /* tablet, landscape iPad, lo-res laptops ands desktops */
+    img {
+        width: 35%;
+    }
+    .title {
+        color: rgb(245, 245, 245);
+        font-family: value;
+        margin: 0%;
+        font-size: 18px;
+    }
+    .descripcion {
+        font-family: value;
+        font-weight: bold;
+        font-family: value;
+        padding-top: 3px;
+        font-size: 24px;
+    }
+    .media-luna {
+        width: 200px;
+        height: 100px;
+        background-color: green;
+        border-radius: 50% 50% 0 0;
+        position: relative;
+        margin: 0 auto;
+    }
+    
+    .telefono-img {
+        width: 80%;
+        max-width: 300px;
+        display: block;
+        margin: -50px auto 20px auto;
+        position: relative;
+        z-index: 1;
+    }
+    
+}
+
+@media screen and (max-width:1200px) and (min-width:801px) {
+    /* big landscape tablets, laptops, and desktops */
+    img {
+        width: 30%;
+    }
+    .title {
+        color: rgb(245, 245, 245);
+        font-family: value;
+        margin: 0%;
+        font-size: 18px;
+    }
+    .descripcion {
+        color: #000000;
+        font-weight: bold;
+        font-family: value;
+        padding-top: 3px;
+        font-size: 24px;
+    }
+    .media-luna {
+        width: 200px;
+        height: 100px;
+        background-color: green;
+        border-radius: 50% 50% 0 0;
+        position: relative;
+        margin: 0 auto;
+    }
+    
+    .telefono-img {
+        width: 80%;
+        max-width: 300px;
+        display: block;
+        margin: -50px auto 20px auto;
+        position: relative;
+        z-index: 1;
+    }
+    
+}
+
