@@ -10,4 +10,5 @@ export class RegistrationComponent {
   togglePasswordVisibility(): void {
     this.showPassword = !this.showPassword;
   }
+  
 }

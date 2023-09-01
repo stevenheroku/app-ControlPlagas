@@ -4,7 +4,14 @@
     width: 80%;
     height: auto;
 }
-
+.viewLote {
+    position: absolute;
+    width: 100%;
+    top: 30%;
+    bottom: 0;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+}
 .lunaLogo {
     text-align: center;
   }
@@ -31,10 +38,17 @@
   }
 
   .logo {
-    width: 265px;
-    height: 150px;
+    width: 250px;
+    height: 120px;
     position: relative;
-    margin-top: -50px; /* Ajusta este valor para controlar el espacio entre la media luna y el logo */
+    margin-top: -30px; /* Ajusta este valor para controlar el espacio entre la media luna y el logo */
+    z-index: 3;
+  }
+  .imgLote {
+    width: 190px;
+    height: 180px;
+    margin: 70px auto; 
+    display: block;
     z-index: 3;
   }
   .back-link {
@@ -46,18 +60,16 @@
     z-index: 8; /* Asegura que el enlace esté por encima de la media luna */
 }
 
-
   .descripcion {
     color: #000000;
     font-weight: bold;
     font-family: value;
-    padding-top: 3px;
+    padding-top: 20px; /* Ajusta el padding superior para separar más del elemento anterior */
     font-size: 24px;
     text-align: center;
   }
-
 .row {
-    margin-top: 20px;
+    margin: 40px auto; 
     margin-bottom: 15px; 
     align-items: center;
     width: 100%;
@@ -91,9 +103,9 @@
     }
     .title {
         font-weight: bold;
-        font-family: fantasy;
-        margin: 0%;
-        padding-top: 37px;
+        color: rgb(245, 245, 245);
+        font-family: value;
+        margin-top: 5%;
         font-size: 24px;
     }
     .descripcion {
@@ -120,14 +132,6 @@
         position: relative;
         z-index: 1;
     }
-    .recoverPass {
-        position: absolute;
-        width: 100%;
-        top: 25%;
-        bottom: 0;
-        border-top-left-radius: 50%;
-        border-top-right-radius: 50%;
-    }
     
 }
 
@@ -137,17 +141,17 @@
         width: 80%;
     }
     .title {
-        font-weight: bold;
-        font-family: fantasy;
+        color: rgb(245, 245, 245);
+        font-family: value;
         margin: 0%;
-        padding-top: 37px;
-        font-size: 24px;
-        text-align: center;
+        font-size: 18px;
     }
     .descripcion {
-        color: #2d7b05;
-        font-size: 20px;
-        font-weight: lighter;
+        color: #000000;
+        font-weight: bold;
+        font-family: value;
+        padding-top: 3px;
+        font-size: 24px;
     }
     .media-luna {
         width: 200px;
@@ -165,14 +169,6 @@
         margin: -50px auto 20px auto;
         position: relative;
         z-index: 1;
-    }
-    .recoverPass {
-        position: absolute;
-        width: 100%;
-        top: 35%;
-        bottom: 0;
-        border-top-left-radius: 50%;
-        border-top-right-radius: 50%;
     }
     
 }
@@ -292,6 +288,3 @@
     
 }
 
-.select-fixed-width {
-    width: auto;
-}

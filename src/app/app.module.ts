@@ -3,6 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms'; // Asegúrate de importar FormsModule
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+
+//graficas
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -23,6 +26,10 @@ import { TipoControlComponent } from './components/tipo-control/tipo-control.com
 import { LogueadoComponent } from './components/logueado/logueado.component';
 import { TipoEstacionesArbolComponent } from './components/tipo-estaciones-arbol/tipo-estaciones-arbol.component';
 import { RegistroPlagaEnfermedadComponent } from './components/registro-plaga-enfermedad/registro-plaga-enfermedad.component';
+import { AddRolComponent } from './components/add-rol/add-rol.component';
+import { ReportControlComponent } from './components/report-control/report-control.component';
+import { ViewArbolComponent } from './components/view-arbol/view-arbol.component';
+import { ArbolesSiguienteComponent } from './components/arboles-siguiente/arboles-siguiente.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +51,10 @@ import { RegistroPlagaEnfermedadComponent } from './components/registro-plaga-en
     LogueadoComponent,
     TipoEstacionesArbolComponent,
     RegistroPlagaEnfermedadComponent,
+    AddRolComponent,
+    ReportControlComponent,
+    ViewArbolComponent,
+    ArbolesSiguienteComponent
   ],
   imports: [
     MatButtonModule,

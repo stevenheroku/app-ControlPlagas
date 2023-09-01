@@ -24,24 +24,25 @@
                 <label for="email" style="color: rgb(0, 0, 0); margin-top: 10px;">
                     Ingrese sus Nombres
                 </label>
-                <input type="text" style="background-color: white; " class="form-control" id="nombres" >
+                <input type="text" style="background-color: white; " class="form-control" id="nombres" required>
             </div>
             <div class="form-group">
                 <label for="email" style="color: rgb(0, 0, 0); margin-top: 10px;">
                     Ingrese sus Apellidos
                 </label>
-                <input type="text" style="background-color: white; " class="form-control" id="apellidos" >
+                <input type="text" style="background-color: white; " class="form-control" id="apellidos" required>
             </div>
             <div class="form-group">
                 <label for="email" style="color: rgb(0, 0, 0); margin-top: 10px;">
                     Ingrese su Fecha de Nacimiento
                 </label>
-                <input type="date" style="background-color: white; " class="form-control" id="fecha_N" >
+                <input type="date" style="background-color: white; " class="form-control" id="fecha_N" required>
             </div>
             <div class="form-group">
                 <label for="sexo" style="color: rgb(0, 0, 0); margin-top: 10px;">Sexo</label>
                 <div class="select-with-arrow">
-                    <select class="form-control" id="sexo">
+                    <select class="form-control" id="sexo"required>
+                        <option value="N">--Seleccione el Sexo--</option>
                         <option value="M">Masculino</option>
                         <option value="F">Femenino</option>
                     </select>
@@ -52,7 +53,7 @@
                 <label for="email" style="color: rgb(0, 0, 0); margin-top: 10px;">
                     Ingrese su Correo
                 </label>
-                <input type="email" style="background-color: white; " class="form-control" id="correo" #correo aria-describedby="emailHelp" placeholder="steven@gmail.com">
+                <input type="email" style="background-color: white; " class="form-control" id="correo" #correo aria-describedby="emailHelp" placeholder="steven@gmail.com" required> 
             </div>
             <div class="form-group">
                 <label for="password" style="color: rgb(0, 0, 0); margin-top: 10px;">
@@ -60,7 +61,7 @@
                     Ingrese su Contraseña
                 </label>
                 <div class="input-group">
-                    <input [type]="showPassword ? 'text' : 'password'" style="background-color: white; " class="form-control" id="contrasena" #contrasena placeholder="********">
+                    <input [type]="showPassword ? 'text' : 'password'" style="background-color: white; " class="form-control" id="contrasena1" #contrasena placeholder="********" required>
                     <div class="input-group-append">
                         <span class="input-group-text toggle-password" (click)="togglePasswordVisibility()">
                             <i [class]="showPassword ? 'far fa-eye-slash' : 'far fa-eye'"></i>
@@ -74,7 +75,7 @@
                     Repita su Contraseña
                 </label>
                 <div class="input-group">
-                    <input [type]="showPassword ? 'text' : 'password'" style="background-color: white; " class="form-control" id="contrasena" #contrasena placeholder="********">
+                    <input [type]="showPassword ? 'text' : 'password'" style="background-color: white; " class="form-control" id="contrasena2" #contrasena placeholder="********" required>
                     <div class="input-group-append">
                         <span class="input-group-text toggle-password" (click)="togglePasswordVisibility()">
                             <i [class]="showPassword ? 'far fa-eye-slash' : 'far fa-eye'"></i>
@@ -86,13 +87,24 @@
                 <label for="email" style="color: rgb(0, 0, 0); margin-top: 10px;">
                     Ingrese su Número Telefónico
                 </label>
-                <input type="number" style="background-color: white; " class="form-control" id="numero_Cel" placeholder="78987755">
+                <input type="number" style="background-color: white; " class="form-control" id="numero_Cel" placeholder="78987755" required>
             </div>
             <div class="form-group">
                 <label for="email" style="color: rgb(0, 0, 0); margin-top: 10px;">
                     Ingrese el Nombre de Finca
                 </label>
-                <input type="text" style="background-color: white; " class="form-control" id="nameFinca" >
+                <input type="text" style="background-color: white; " class="form-control" id="nameFinca" required>
+            </div>
+            <div class="form-group">
+                <label for="sexo" style="color: rgb(0, 0, 0); margin-top: 10px;">Rol</label>
+                <div class="select-with-arrow">
+                    <select class="form-control" id="sexo" required>
+                        <option value="N">--Seleccione un Rol--</option>
+                        <option value="M">Administrador</option>
+                        <option value="F">Operador</option>
+                    </select>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
             </div>
             <div class="row">
                 <button style="background: green; font:oblique; color: white;  border-radius: 20px;" class="col btn-1 btn">Registrar</button>

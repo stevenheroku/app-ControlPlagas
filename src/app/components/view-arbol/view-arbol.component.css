@@ -15,11 +15,14 @@ h1 {
     margin: 0;
 }
 
+
+/* Estilos generales de la tabla */
+
   
+
 .container {
     width: 80%;
     height: auto;
-    top: -30%;
 }
 .viewLote {
     position: absolute;
@@ -48,23 +51,18 @@ h1 {
   width: 100%;
     height: auto; /* Mantiene la proporción de la imagen */
 }
-.btn {
-    width: 30px;
-    height: 30px;
-    margin: 5px; /* Ajusta el margen entre los botones */
-    align-items: flex-end;
-    justify-content: center;
-    padding: 0;
-  }
-
-  
+.btn-icon {
+    width: 20px; /* Ajusta el tamaño de la imagen según tus necesidades */
+    height: 20px; /* Ajusta el tamaño de la imagen según tus necesidades */
+    margin-right: 5px; /* Espacio entre la imagen y el texto */
+}
 .back-link {
     top: 20px;
     left: 20px;
     font-size: 30px;
     cursor: pointer;
     color: white;
-    font-size: 20px;
+    font-size: 24px;
     z-index: 8; /* Asegura que el enlace esté por encima de la media luna */
 }
 
@@ -73,17 +71,25 @@ h1 {
     font-weight: bold;
     font-family: value;
     padding-top: 20px 30px; /* Ajusta el padding superior para separar más del elemento anterior */
-    font-size: 20px;
+    font-size: 24px;
     text-align: center;
-    top: 10%;
+    margin-top: 50px;
   }
+
 .row {
-    margin: 50px auto; 
-    align-items: center;
-    padding-left: 10%; /* Ajusta el valor según tus necesidades */
-    padding-right: 10%; 
+  margin: 50px auto; 
+  align-items: center;
+  padding-left: 10%; /* Ajusta el valor según tus necesidades */
+  padding-right: 10%; 
 }
 
+.table-container {
+    max-height: 400px; 
+    max-width: 100%;
+    margin-top: 30px;
+    padding-top: 20px; /* Ajusta el valor según la cantidad de espacio que deseas */
+
+}
 
 .app-footer {
     flex-shrink: 0;
@@ -100,14 +106,14 @@ h1 {
       color: rgb(245, 245, 245);
       font-family: value;
       margin: 0%;
-      font-size: 20px;
+      font-size: 24px;
   }
   .descripcion {
       color: #000000;
       font-weight: bold;
       font-family: value;
-      padding-top: 5px;
-      font-size: 20px;
+      padding-top: 3px;
+      font-size: 24px;
   }
   .tipoControl {
       top: 45%;
@@ -132,8 +138,7 @@ h1 {
       font-weight: bold;
       font-family: value;
       padding-top: 3px;
-      font-size: 20px;
-      top:20%;
+      font-size: 24px;
   }
   .row {
       margin-top: 90px;
@@ -152,7 +157,6 @@ h1 {
   }
   .title {
       color: rgb(245, 245, 245);
-      
       font-family: value;
       margin: 0%;
       font-size: 18px;
@@ -162,7 +166,7 @@ h1 {
       font-weight: bold;
       font-family: value;
       padding-top: 3px;
-      font-size: 20px;
+      font-size: 24px;
   }
   .row {
       margin-top: 80px;
@@ -190,7 +194,7 @@ h1 {
       font-weight: bold;
       font-family: value;
       padding-top: 3px;
-      font-size: 20px;
+      font-size: 24px;
   }
   .row {
       margin-top: 1px;
@@ -218,7 +222,7 @@ h1 {
       font-weight: bold;
       font-family: value;
       padding-top: 3px;
-      font-size: 20px;
+      font-size: 24px;
   }
   .row {
       margin-top: 10px;
@@ -230,118 +234,31 @@ h1 {
   }
 }
 
-.viewArboles {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.lote-card {
-    margin-bottom: 20px;
-    box-shadow:  0 0 10px rgba(19, 0, 0, 1); /* Agrega una sombra */
-    border: 1px solid #621a1a;
-    border-radius: 10px;
-    padding: 10px;
-    text-align: center; /* Centra el contenido horizontalmente */
-    box-sizing: border-box;
-}
-
-.lote-card img {
-    width: 110px;
-    height: 90px;
-}
-
-
-.button {
-    display: inline-flex;
-    align-items: center;
-    padding: 10px 20px;
-    font: caption;
-    font-size: 15px;
-    cursor: pointer;
-    text-align: center;	
-    text-decoration: none;
-    outline: none;
-    color: #fff;
-    background-color: #4CAF50;
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 9px #999;
-  }
-  
-  .icon-circle {
-    width: 40px;
-    height: 40px;
-    background-color: #ffffff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  }
-  
-
-  
-  .button:hover {
-    background-color: #3e8e41;
-  }
-  
-  .button:active {
-    background-color: #3e8e41;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-  }
-  
-
-.stylish-input-group {
-    width: 100%;
-    margin: auto;
-  }
-  
-  .stylish-input-group .input-group-addon {
-    background: white !important; 
-    border: 1px solid #ccc;
-    border-left: none;
-    padding: 10px 12px;
-    height: 100%;
-  }
-  
-  .stylish-input-group button {
-    border: none;
-    background: transparent;
-  }
-  
-  .stylish-input-group button:hover {
-    background: #f5f5f5;
-  }
-  
-  .form-control:focus {
-    box-shadow: none;
-    border-color: #ccc;
-  }
-  
-  .identificador {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.identificador {
+  display: flex;
+  align-items: center;
+  padding-top: -50%;
 }
 
 .color-circle {
-    width: 25px;
-    height: 25px;
-    margin-right: 8px;
-    border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  margin-right: 8px;
+  border-radius: 50%;
 }
 
 .color-circle.amarillo {
-    background-color: yellow;
+  background-color: yellow;
 }
 
 .color-circle.verde {
-    background-color: green;
+  background-color: green;
 }
 
 .color-circle.rojo {
-    background-color: red;
+  background-color: red;
+}
+
+.cardImg{
+  align-items: center;
 }

@@ -39,13 +39,12 @@ h1 {
   .circle-container {
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 100px;
+
   }
   
-  .circle-container img {
+  .imgLote {
     background-color: aliceblue;
-    width: 150px; /* Ajusta el tamaño de la imagen */
-    height: 150px; /* Ajusta el tamaño de la imagen */
     border-radius: 50%; /* Convierte en un círculo */
     box-shadow:  0 0 10px rgba(0, 0, 0, 0.5); /* Agrega una sombra */
      border-top-left-radius: 250px;

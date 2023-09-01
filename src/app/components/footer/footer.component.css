@@ -31,7 +31,10 @@
     text-align: center;
     margin-right: 5%;
 }
-
+img{
+    height: 20px;
+    width: 20px;
+}
 .inicio img {
     position: relative;
 }

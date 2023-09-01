@@ -12,6 +12,10 @@ import { ArbolListComponent } from './components/arbol-list/arbol-list.component
 import { NewArbolComponent } from './components/new-arbol/new-arbol.component';
 import { TipoEstacionesArbolComponent } from './components/tipo-estaciones-arbol/tipo-estaciones-arbol.component';
 import { RegistroPlagaEnfermedadComponent } from './components/registro-plaga-enfermedad/registro-plaga-enfermedad.component';
+import { RolesComponent } from './components/roles/roles.component';
+import { ReportControlComponent } from './components/report-control/report-control.component';
+import { ViewArbolComponent } from './components/view-arbol/view-arbol.component';
+import { ArbolesSiguienteComponent } from './components/arboles-siguiente/arboles-siguiente.component'; 
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
@@ -26,7 +30,10 @@ const routes: Routes = [
   {path:'newArbol',component:NewArbolComponent},
   {path:'tipoEstaciones',component:TipoEstacionesArbolComponent},
   {path:'controlArbol',component:RegistroPlagaEnfermedadComponent},
-
+  {path:'rolesEpl',component:RolesComponent},
+  {path:'reporteControl',component:ReportControlComponent},
+  {path:'statusArbol',component:ViewArbolComponent},
+  {path:'arbolesPag',component:ArbolesSiguienteComponent},
   {path:'**',pathMatch:'full',redirectTo:'login'}
 ];
 

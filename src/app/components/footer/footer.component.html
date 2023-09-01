@@ -1,15 +1,15 @@
 <nav class="navbar">
     <div class="container-fluid">
-        <div  class="inicio">
-            <a><img src="/assets/img/inicio.png" alt=""></a>
-            <label for="">Árboles</label>
+        <div (click)="lotes()" class="inicio">
+            <i class="fas fa-clone"></i>
+            <label for="">Lotes</label>
         </div>
-        <div  class="cow">
-            <a><img src="/assets/img/cow.png" alt=""></a>
+        <div (click)="reporte()" class="cow">
+            <i class="fas fa-home"></i>
             <label for="">Finca</label>
         </div>
-        <div  class="produccion">
-            <a><img src="/assets/img/produccion.png" alt=""></a>
+        <div (click)="reporte()" class="produccion">
+            <i class="fas fa-book"></i>
             <label for="">Control</label>
         </div>
     </div>

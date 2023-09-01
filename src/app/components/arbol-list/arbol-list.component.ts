@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MainService } from '../../shared/services/main.service';
+import { RestsService } from '../../shared/services/rests.service';
 
 @Component({
   selector: 'app-arbol-list',
@@ -13,10 +13,10 @@ export class ArbolListComponent {
   searchTerm: string = '';
   filteredLotes: any[] = [];
 
-  constructor(private router: Router, private loteService: MainService) {}
+  constructor(private router: Router, private loteService: RestsService) {}
 
   ngOnInit() {
-    this.lotes = this.loteService.getLotes();
+    this.lotes = this.loteService.getArboles();
     this.filteredLotes = this.lotes; // Inicializa los lotes filtrados al inicio
   }
 
