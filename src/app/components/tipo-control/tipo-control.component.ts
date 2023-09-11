@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-tipo-control',
@@ -7,4 +8,14 @@ import { Component } from '@angular/core';
 })
 export class TipoControlComponent {
 
+  tipoControl()
+  {
+    Swal.fire({
+      title: '¡Fitosanitario!',
+      text: "Control de Plagas y Enfermedades!" ,
+      icon: 'success',
+      confirmButtonText: 'Aceptar'
+     }
+    )
+  }
 }

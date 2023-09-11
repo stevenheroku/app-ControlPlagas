@@ -103,7 +103,7 @@ label {
         font-size: 24px;
     }
     .descripcion {
-        color: #000000;
+        color: #d7d5d5;
         font-weight: bold;
         font-family: value;
         padding-top: 3px;
@@ -128,7 +128,7 @@ label {
         font-size: 18px;
     }
     .descripcion {
-        color: #000000;
+       color: #d7d5d5;
         font-weight: bold;
         font-family: value;
         padding-top: 3px;
@@ -157,7 +157,7 @@ label {
         font-size: 18px;
     }
     .descripcion {
-        color: #000000;
+        color: #d7d5d5;
         font-weight: bold;
         font-family: value;
         padding-top: 3px;

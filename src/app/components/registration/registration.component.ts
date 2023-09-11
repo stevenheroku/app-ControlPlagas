@@ -7,8 +7,11 @@ import { Component } from '@angular/core';
 })
 export class RegistrationComponent {
   showPassword: boolean = false;
+  showPassword2: boolean = false;
   togglePasswordVisibility(): void {
     this.showPassword = !this.showPassword;
   }
-  
+  togglePasswordVisibility2(): void {
+    this.showPassword2 = !this.showPassword2;
+  }
 }

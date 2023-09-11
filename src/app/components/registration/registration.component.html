@@ -15,7 +15,7 @@
     
     <div class="recoverPass">
         <form class="container">
-            <div class="encabezado-recoverPass ">
+            <div class="encabezado-recoverPass">
                 <p for="" class="title">¡Bienvenido!</p>
                 <h1 for="" class="descripcion">Ingresa tus Datos para registrarte</h1>
             </div>
@@ -31,6 +31,12 @@
                     Ingrese sus Apellidos
                 </label>
                 <input type="text" style="background-color: white; " class="form-control" id="apellidos" required>
+            </div>
+            <div class="form-group">
+                <label for="email" style="color: rgb(0, 0, 0); margin-top: 10px;">
+                    Ingrese sus DPI
+                </label>
+                <input type="text" style="background-color: white; " class="form-control" id="dpi" required>
             </div>
             <div class="form-group">
                 <label for="email" style="color: rgb(0, 0, 0); margin-top: 10px;">
@@ -75,10 +81,10 @@
                     Repita su Contraseña
                 </label>
                 <div class="input-group">
-                    <input [type]="showPassword ? 'text' : 'password'" style="background-color: white; " class="form-control" id="contrasena2" #contrasena placeholder="********" required>
+                    <input [type]="showPassword2 ? 'text' : 'password'" style="background-color: white; " class="form-control" id="contrasena2" #contrasena placeholder="********" required>
                     <div class="input-group-append">
-                        <span class="input-group-text toggle-password" (click)="togglePasswordVisibility()">
-                            <i [class]="showPassword ? 'far fa-eye-slash' : 'far fa-eye'"></i>
+                        <span class="input-group-text toggle-password" (click)="togglePasswordVisibility2()">
+                            <i [class]="showPassword2 ? 'far fa-eye-slash' : 'far fa-eye'"></i>
                         </span>
                     </div>
                 </div>

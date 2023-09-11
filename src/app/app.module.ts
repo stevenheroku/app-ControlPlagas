@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms'; // Asegúrate de importar FormsModule
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import {HttpClientModule} from '@angular/common/http'
 
 //graficas
 
@@ -60,6 +61,7 @@ import { ArbolesSiguienteComponent } from './components/arboles-siguiente/arbole
     MatButtonModule,
     MatIconModule,
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     FormsModule, // Agrega FormsModule aquí,
     ServiceWorkerModule.register('ngsw-worker.js', {

@@ -19,7 +19,7 @@
     <div class="container">
         <div class="row">
             <div class="col text-center">
-                <button class="button" routerLink="/newArbol">
+                <button class="button" routerLink="/newLote">
                     <div class="icon-circle"><mat-icon style="color: green;" >add</mat-icon></div>
                     Agregar Lote
                   </button>
@@ -40,23 +40,23 @@
             <div *ngFor="let lote of filteredLotes" class="col-md-4 col-sm-6">
                 <div class="lote-card">
                     
-                    <img [src]="lote.fotoArbol" alt="Foto del Árbol" width="30px" height="30px6">
-                    <p>Número de Lote: {{ lote.numeroArbol }}</p>
-                    <p>Árboles en Control: {{ lote.numeroArbol }}</p>
-                    <p>Empleado: {{ lote.nombreEmpleado }}</p>
+                    <img [src]="lote.ImagenLote" alt="Foto del Árbol" width="30px" height="30px6">
+                    <p>Número de Lote: {{ lote.IdLote }}</p>
+                    <p>Árboles en Control: {{ lote.ArbolesControl }}</p>
+                    <p>Empleado: {{ lote.Empleado }}</p>
                    
                     <button class="btn btn-primary" ><i class="fas fa-edit"></i></button>
                     <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                    <button class="btn btn-dark" routerLink="/statusArbol" ><i class="fas fa-eye"></i></button>
                     <button class="btn btn-success" routerLink="/arbolesPag" ><i class="fas fa-tree"></i></button>
                 </div>
             </div>
             <div class="col-md-4 col-sm-6">
                 <ng-container *ngIf="filteredLotes.length === 0">
-                    <p style="text-align: center;">No Existe Ningún Árbol.</p>
+                    <p style="text-align: center;">No Existe Ningún Lote.</p>
                 </ng-container>
             </div>
         </div>
+        
     </div>
 </div>
 <!--<div class="viewLote">

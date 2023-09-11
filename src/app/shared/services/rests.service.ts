@@ -1,19 +1,29 @@
 import { Injectable } from '@angular/core';
+import { RespuestaLote } from '../models/Respuestas';
+import { environment } from 'src/environments/enviroments.dev';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 import { LoteModel } from '../models/LoteModel';
-
 @Injectable({
   providedIn: 'root'
 })
 export class RestsService {
+  URL = environment.apiUrl;
+  constructor(private http:HttpClient) { }
 
-  obtenerLotes(): LoteModel[] {
-    return [
-      new LoteModel(1, 'Lote A', 'Ubicación A'),
-      new LoteModel(2, 'Lote B', 'Ubicación B'),
-      new LoteModel(3, 'Lote C', 'Ubicación C'),
-      new LoteModel(4, 'Lote D', 'Ubicación D'),
-    ];
+ 
+  //Lotes
+  getLotes2(idFinca: number): Observable<RespuestaLote> {
+    // Realiza una solicitud HTTP GET al API y mapea la respuesta a un array de LoteModel
+    return this.http.get<RespuestaLote>(`${this.URL}lotes/lote/${idFinca}`);
   }
+
+//FINCA
+getFinca(idFinca: number): Observable<RespuestaLote> {
+  // Realiza una solicitud HTTP GET al API y mapea la respuesta a un array de LoteModel
+  return this.http.get<RespuestaLote>(`${this.URL}lotes/lote/${idFinca}`);
+}
   getArboles() {
     return [
       { fotoArbol: '/assets/img/arboles.png', numeroArbol: 1 ,nombreEmpleado:"Jefferson Rueda",color:"amarillo"},
@@ -26,12 +36,10 @@ export class RestsService {
   }
   getLotes() {
     return [
-      { fotoArbol: '/assets/img/lote.png', numeroArbol: 1 ,nombreEmpleado:"Jefferson Rueda"},
-      { fotoArbol: '/assets/img/lote.png', numeroArbol: 2 ,nombreEmpleado:"Luis Gonzales"},
-      { fotoArbol: '/assets/img/lote.png', numeroArbol: 3 ,nombreEmpleado:"Pedro Rosales"},
-      { fotoArbol: '/assets/img/lote.png', numeroArbol: 4 ,nombreEmpleado:"Fernando Recinos"},
-      { fotoArbol: '/assets/img/lote.png', numeroArbol: 4 ,nombreEmpleado:"Luis Medina"},
-      { fotoArbol: '/assets/img/lote.png', numeroArbol: 4 ,nombreEmpleado:"Jose Rueda"}
+      { ImagenLote: '/assets/img/lote.png', IdLote: 1 ,Empleado:"Jefferson Rueda"},
+      { ImagenLote: '/assets/img/lote.png', IdLote: 2 ,Empleado:"Jefferson Rueda"},
+      { ImagenLote: '/assets/img/lote.png', IdLote: 3 ,Empleado:"Jefferson Rueda"}
+      
       // ...otros lotes
     ];
   }

@@ -8,12 +8,16 @@ import { RestsService } from '../../shared/services/rests.service'
   templateUrl: './lotes-view.component.html',
   styleUrls: ['./lotes-view.component.css']
 })
-export class LotesViewComponent implements OnInit{
-  lotes: LoteModel[] = [];
+export class LotesViewComponent {
+  NombreFinca:string="";
 
-  constructor(private loteService: RestsService) {}
+  ngOnInit(): void {
+  const fincaNombre = localStorage.getItem('Finca'); // 
+  if(fincaNombre!=null)
+  {
+    this.NombreFinca=fincaNombre.replace(/"/g,'');
+  }
+  
 
-  ngOnInit() {
-    this.lotes = this.loteService.obtenerLotes();
   }
 }

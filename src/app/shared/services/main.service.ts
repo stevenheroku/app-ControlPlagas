@@ -5,15 +5,11 @@ import { Injectable } from '@angular/core';
 })
 export class MainService {
 
-  getLotes() {
-    return [
-      { fotoArbol: '/assets/img/logo.png', numeroArbol: 1 ,nombreEmpleado:"Jefferson Rueda",color:"amarillo"},
-      { fotoArbol: '/assets/img/fenologica.png', numeroArbol: 2 ,nombreEmpleado:"Luis Gonzales",color:"verde"},
-      { fotoArbol: '/assets/img/logo.png', numeroArbol: 3 ,nombreEmpleado:"Pedro Rosales",color:"verde"},
-      { fotoArbol: '/assets/img/logo.png', numeroArbol: 4 ,nombreEmpleado:"Fernando Recinos",color:"rojo"},
-      { fotoArbol: '/assets/img/logo.png', numeroArbol: 4 ,nombreEmpleado:"Luis Medina",color:"verde"},
-      { fotoArbol: '/assets/img/logo.png', numeroArbol: 4 ,nombreEmpleado:"Jose Rueda",color:"rojo"}
-      // ...otros lotes
-    ];
-  }
+  public IdEmpleado: number =0;
+  public IdLote: number =0;
+  public IdArbol: number =0;
+  public IdFinca: number =0;
+  public Finca: string="";
+  public Rol: string="";
+  public NameApellido: string="";
 }
