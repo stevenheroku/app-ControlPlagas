@@ -8,6 +8,11 @@ import { Component } from '@angular/core';
 export class NewArbolComponent {
   imagenSeleccionada: string | ArrayBuffer | null = null;
 
+  crearLote()
+  {
+
+  }
+
   onFileChange(event: any): void {
     const file = event.target.files[0];
     if (file) {

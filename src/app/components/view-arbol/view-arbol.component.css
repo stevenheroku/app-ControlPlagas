@@ -88,7 +88,7 @@ h1 {
     max-width: 100%;
     margin-top: 30px;
     padding-top: 20px; /* Ajusta el valor según la cantidad de espacio que deseas */
-
+    overflow: auto;
 }
 
 .app-footer {

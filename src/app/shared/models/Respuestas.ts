@@ -8,7 +8,14 @@ export class RespuestaLote{
         public message:string,
       ) {}
   }
-
+  export class RespuestaArbol{
+    
+    constructor(
+        public state:number,
+        public data:LoteModel[],
+        public message:string,
+      ) {}
+  }
   export class RespuestaFinca{
     
     constructor(

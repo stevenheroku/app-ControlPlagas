@@ -3,12 +3,12 @@
     <div class="container-fluid">
 
         <div class="back-link">
-            <a routerLink="/ruta-de-regreso">
+            <a routerLink="/lotes">
                 <i class="fas fa-arrow-left" style="color: rgb(255, 255, 255);" ></i>
                 <!-- Icono de flecha hacia atrás -->
             </a>
         </div>
-        <h1 class="mx-auto" style="font-size: 15px;">FINCA LA BENDICIÓN JUTIAPA</h1>
+        <h1 class="mx-auto" style="font-size: 15px;">{{NombreFinca}}</h1>
         <div class="logo-circle">
             <img src="/assets/img/logo.png" alt="logo" class="logo-img">
         </div>
@@ -41,13 +41,13 @@
                 <div class="lote-card">
                     
                     <img [src]="lote.ImagenLote" alt="Foto del Árbol" width="30px" height="30px6">
-                    <p>Número de Lote: {{ lote.IdLote }}</p>
+                    <p>Identificador Lote: {{ lote.IdIdentificadorLote }}</p>
                     <p>Árboles en Control: {{ lote.ArbolesControl }}</p>
                     <p>Empleado: {{ lote.Empleado }}</p>
                    
                     <button class="btn btn-primary" ><i class="fas fa-edit"></i></button>
                     <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-                    <button class="btn btn-success" routerLink="/arbolesPag" ><i class="fas fa-tree"></i></button>
+                    <button class="btn btn-success" (click)="filtrarArbolesPorLote(lote.IdLote,lote.IdIdentificadorLote)" ><i class="fas fa-tree"></i></button>
                 </div>
             </div>
             <div class="col-md-4 col-sm-6">

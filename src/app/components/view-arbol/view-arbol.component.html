@@ -16,7 +16,7 @@
 </nav>
 <div class="viewLote">
         <div >
-            <h1  class="descripcion">DETALLE ÁRBOL</h1>
+            <h1  style="background-color: rgb(112, 113, 113);"class="descripcion">DETALLE ÁRBOL</h1>
         </div>
         <div class="table-container">
             <div class="container">
@@ -34,10 +34,64 @@
                     <li class="list-group-item">Cantidad Enfermedades Detectadas: 5</li>
                     <li class="list-group-item">Latitud: 5.8551</li>
                     <li class="list-group-item">Longitud: -9.15545</li>
-
+                  </ul>
+                </div>
+              </div>
+        </div>
+        <div >
+            <h1  style="background-color: rgb(39, 128, 5);"class="descripcion">PLAGAS</h1>
+        </div>
+        <div class="table-container">
+            <div class="container">
+                <div *ngFor="let lote of lotes" class="card mx-auto" >
+                  <img class="img-fluid mx-auto my-3" style="max-width: 200px;" src="/assets/img/logo.png" alt="">
+                  <div class="card-body">
+                    <h5 class="card-title" style="text-align: center;">ÁRBOL: 38943</h5>
+                    <p class="identificador">
+                        <span class="color-circle"  [ngClass]="lote.identificador"></span>
+                    </p>
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Fecha de Creación: 31/08/2023</li>
+                    <li class="list-group-item">Cantidad Plagas Detectadas: 5</li>
+                    <li class="list-group-item">Cantidad Enfermedades Detectadas: 5</li>
+                    <li class="list-group-item">Latitud: 5.8551</li>
+                    <li class="list-group-item">Longitud: -9.15545</li>
+                    <li class="list-group-item">Fecha de Creación: 31/08/2023</li>
+                    <li class="list-group-item">Cantidad Plagas Detectadas: 5</li>
+                    <li class="list-group-item">Cantidad Enfermedades Detectadas: 5</li>
+                    <li class="list-group-item">Latitud: 5.8551</li>
+                    <li class="list-group-item">Longitud: -9.15545</li>
+                  </ul>
+                </div>
+              </div>
+        </div>
+        <div >
+            <h1 style="background-color: rgb(39, 128, 5);" class="descripcion">ENFERMEDADES</h1>
+        </div>
+        <div class="table-container">
+            <div class="container">
+                <div *ngFor="let lote of lotes" class="card mx-auto" >
+                  <img class="img-fluid mx-auto my-3" style="max-width: 200px;" src="/assets/img/logo.png" alt="">
+                  <div class="card-body">
+                    <h5 class="card-title" style="text-align: center;">ÁRBOL: 38943</h5>
+                    <p class="identificador">
+                        <span class="color-circle"  [ngClass]="lote.identificador"></span>
+                    </p>
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Fecha de Creación: 31/08/2023</li>
+                    <li class="list-group-item">Cantidad Plagas Detectadas: 5</li>
+                    <li class="list-group-item">Cantidad Enfermedades Detectadas: 5</li>
+                    <li class="list-group-item">Latitud: 5.8551</li>
+                    <li class="list-group-item">Longitud: -9.15545</li>
+                    <li class="list-group-item">Fecha de Creación: 31/08/2023</li>
+                    <li class="list-group-item">Cantidad Plagas Detectadas: 5</li>
+                    <li class="list-group-item">Cantidad Enfermedades Detectadas: 5</li>
+                    <li class="list-group-item">Latitud: 5.8551</li>
+                    <li class="list-group-item">Longitud: -9.15545</li>
                   </ul>
                 </div>
               </div>
         </div>
 </div>
-<app-footer class="app-footer"></app-footer>

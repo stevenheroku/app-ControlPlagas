@@ -36,7 +36,7 @@ export class LoginComponent {
         localStorage.setItem('Finca', JSON.stringify(res.data.Finca));
         localStorage.setItem('Rol', JSON.stringify(res.data.NombreRol));
         localStorage.setItem('NameApellido', JSON.stringify(res.data.NombreApellido));
-
+        localStorage.setItem('IdFinca', JSON.stringify(res.data.IdFinca));
           Swal.fire({
            title: 'Bienvenido!',
            text: res.data.Nombres ,

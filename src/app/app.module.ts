@@ -31,6 +31,9 @@ import { AddRolComponent } from './components/add-rol/add-rol.component';
 import { ReportControlComponent } from './components/report-control/report-control.component';
 import { ViewArbolComponent } from './components/view-arbol/view-arbol.component';
 import { ArbolesSiguienteComponent } from './components/arboles-siguiente/arboles-siguiente.component';
+import { InventarioGeneralComponent } from './components/inventario-general/inventario-general.component';
+import { GraficoCanvasComponent } from './components/grafico-canvas/grafico-canvas.component';
+import { QuimicosRecomendadosComponent } from './components/quimicos-recomendados/quimicos-recomendados.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +58,10 @@ import { ArbolesSiguienteComponent } from './components/arboles-siguiente/arbole
     AddRolComponent,
     ReportControlComponent,
     ViewArbolComponent,
-    ArbolesSiguienteComponent
+    ArbolesSiguienteComponent,
+    InventarioGeneralComponent,
+    GraficoCanvasComponent,
+    QuimicosRecomendadosComponent
   ],
   imports: [
     MatButtonModule,

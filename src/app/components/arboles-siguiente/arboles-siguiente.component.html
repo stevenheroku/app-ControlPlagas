@@ -4,7 +4,7 @@
     <br>
     <br>
     <div class="back-link">
-        <a routerLink="/ruta-de-regreso">
+        <a routerLink="/lotesLista">
             <i class="fas fa-arrow-left" style="color: black;"></i> <!-- Icono de flecha hacia atrás -->
         </a>
     </div>
@@ -16,11 +16,11 @@
     <div class="viewLote">
         <form class="container">
             <div class="encabezado-recoverPass ">
-                <h1 for="" class="descripcion">ÁRBOLES DEL LOTE: 23892</h1>
+                <h1 for="" class="descripcion">ÁRBOLES DEL LOTE: {{identificador}}</h1>
             </div>
             <img src="/assets/img/arboles.png" alt="" class="imgLote">
             <div class="row">
-                <button style="background: green; font:oblique; color: white;  border-radius: 20px;" class="col btn-1 btn" routerLink="/listArboles">Siguiente</button>
+                <button (click)="listaArboles()" style="background: green; font:oblique; color: white;  border-radius: 20px;" class="col btn-1 btn" >Siguiente</button>
             </div>
         </form>
     </div>

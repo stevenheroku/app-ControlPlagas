@@ -1,0 +1,165 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+  }
+  .navbar {
+      background-color: #623100;
+    }
+    
+    .navbar {
+      display: flex;
+      justify-content: center; /* Cambia "flex-end" a "center" para centrar horizontalmente */
+      align-items: center;
+      padding: 10px;
+    }
+    
+    h1 {
+      color: white;
+      font-weight: bold;
+      margin: 0;
+    }
+    .imgLote {
+      width: 81px;
+      height: 84px;
+      margin: 40px auto; /* Ajusta el margen para mayor separación y centrado horizontal */
+      display: block;
+      z-index: 3;
+    }
+    .logo {
+      margin-left: 10px;
+    }
+    .logo-circle {
+      width: 50px; /* Ajusta el tamaño del círculo */
+      height: 50px; /* Ajusta el tamaño del círculo */
+      background-color: white;
+      border-radius: 50%; /* Convierte en un círculo */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 10px; /* Ajusta el margen izquierdo según tus necesidades */
+    }
+    
+    .logo-img {
+    width: 100%;
+      height: auto; /* Mantiene la proporción de la imagen */
+    }
+    .back-link {
+      top: 20px;
+      left: 20px;
+      font-size: 30px;
+      cursor: pointer;
+      color: white;
+      font-size: 24px;
+      z-index: 8; /* Asegura que el enlace esté por encima de la media luna */
+    }
+    
+    .circle-container {
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+    
+    .circle-container img {
+      width: 150px; /* Ajusta el tamaño de la imagen */
+      height: 150px; /* Ajusta el tamaño de la imagen */
+      border-radius: 50%; /* Convierte en un círculo */
+      box-shadow:  0 0 10px rgba(0, 0, 0, 0.5); /* Agrega una sombra */
+    }
+  .report-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+  }
+  
+  .report-content {
+      border: 1px solid #ccc;
+      padding: 20px;
+  }
+  
+  .download-button {
+      background-color: green;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+  }
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+  }
+  
+  .navbar {
+    background-color: #623100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    color: white;
+  }
+  
+  .logo-img {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .back-link {
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .report-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 20px;
+  }
+  
+  .report-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .report-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .report-item {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #333; /* Cambia el color del texto para mejor legibilidad */
+  }
+  
+  .download-button {
+    background-color: #087902;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    margin-top: 20px; /* Agrega espacio entre el contenido y el botón */
+  }
+  
+  .download-button:hover {
+    background-color: #086b02;
+  }
+  
+  .footer {
+    background-color: #623100;
+    color: white;
+    text-align: center;
+    padding: 10px;
+  }

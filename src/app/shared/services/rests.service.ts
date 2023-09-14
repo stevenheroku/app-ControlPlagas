@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { RespuestaLote } from '../models/Respuestas';
+import { RespuestaArbol, RespuestaLote } from '../models/Respuestas';
 import { environment } from 'src/environments/enviroments.dev';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -18,12 +18,28 @@ export class RestsService {
     // Realiza una solicitud HTTP GET al API y mapea la respuesta a un array de LoteModel
     return this.http.get<RespuestaLote>(`${this.URL}lotes/lote/${idFinca}`);
   }
-
+  newLote(objetoLote: LoteModel): Observable<RespuestaLote> {
+    // Realiza una solicitud HTTP GET al API y mapea la respuesta a un array de LoteModel
+    return this.http.post<RespuestaLote>(`${this.URL}lotes/newLote`,objetoLote);
+  }
 //FINCA
 getFinca(idFinca: number): Observable<RespuestaLote> {
   // Realiza una solicitud HTTP GET al API y mapea la respuesta a un array de LoteModel
   return this.http.get<RespuestaLote>(`${this.URL}lotes/lote/${idFinca}`);
 }
+
+//ARBOLES
+
+getArboles2(idLote: number): Observable<RespuestaArbol> {
+  // Realiza una solicitud HTTP GET al API y mapea la respuesta a un array de LoteModel
+  return this.http.get<RespuestaArbol>(`${this.URL}arboles/arbol/${idLote}`);
+}
+
+
+
+
+
+//--FIN ARBOLES
   getArboles() {
     return [
       { fotoArbol: '/assets/img/arboles.png', numeroArbol: 1 ,nombreEmpleado:"Jefferson Rueda",color:"amarillo"},

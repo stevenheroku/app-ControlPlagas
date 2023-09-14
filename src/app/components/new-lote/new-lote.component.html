@@ -28,27 +28,33 @@
                 </div>
                 <div class="form-group">
                     <label for="email" style="color: rgb(255, 255, 255); margin-top: 10px; font-weight: bold;">
-                        Ingrese el Nombre del Propietario
+                      Identificador del Lote
                     </label>
-                    <input type="text" style="background-color: white; " class="form-control" id="namePropietario" >
+                    <input type="number" style="background-color: white; " class="form-control" id="identificadorAr" #identificadorAr>
                 </div>
                 <div class="form-group">
                     <label for="hectareas" style="color: rgb(255, 255, 255); margin-top: 10px; font-weight: bold;">
                         Ingrese las hectáreas del lote
                     </label>
-                    <input type="number" style="background-color: white; " class="form-control" id="hectareas" >
+                    <input type="number" style="background-color: white; " class="form-control" id="hectareas" #hectareas>
+                </div>
+                <div class="form-group">
+                    <label for="hectareas" style="color: rgb(255, 255, 255); margin-top: 10px; font-weight: bold;">
+                        Cantidad Árboles a Controlar
+                    </label>
+                    <input type="number" style="background-color: white; " class="form-control" id="hectareas" #arbolesControl>
                 </div>
                 <div class="form-group">
                     <label for="longitud" style="color: rgb(255, 255, 255); margin-top: 10px; font-weight: bold;">
                         Longitud
                     </label>
-                    <input type="number" style="background-color: white; " class="form-control" id="longitud" >
+                    <input type="number" style="background-color: white; " class="form-control" id="longitud" #Longitud>
                 </div>
                 <div class="form-group">
                     <label for="email" style="color: rgb(255, 255, 255); margin-top: 10px; font-weight: bold;">
                         Latitud
                     </label>
-                    <input type="number" style="background-color: white; " class="form-control" id="correo" >
+                    <input type="number" style="background-color: white; " class="form-control" id="latitud" #latitud>
                 </div>
                 <div class="form-group">
                     <label for="imagen" style="color: rgb(255, 255, 255); margin-top: 10px; font-weight: bold;">
@@ -64,7 +70,7 @@
                     </div>
                   </div>
                 <div class="row">
-                    <button style="background: rgb(212, 0, 0); font:oblique; color: white;  border-radius: 20px;" class="col btn-1 btn">Registrar</button>
+                    <button (click)="crearEditarLote(identificadorAr.value,hectareas.value,arbolesControl.value,Longitud.value,latitud.value)" style="background: rgb(212, 0, 0); font:oblique; color: white;  border-radius: 20px;" class="col btn-1 btn">Registrar</button>
                 </div>
     
             </form>

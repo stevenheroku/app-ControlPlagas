@@ -16,7 +16,8 @@ import { RolesComponent } from './components/roles/roles.component';
 import { ReportControlComponent } from './components/report-control/report-control.component';
 import { ViewArbolComponent } from './components/view-arbol/view-arbol.component';
 import { ArbolesSiguienteComponent } from './components/arboles-siguiente/arboles-siguiente.component'; 
-
+import { GraficoCanvasComponent } from './components/grafico-canvas/grafico-canvas.component';
+import { InventarioGeneralComponent } from './components/inventario-general/inventario-general.component';
 const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'logueado',component:LogueadoComponent},
@@ -26,14 +27,17 @@ const routes: Routes = [
   {path:'lotes',component:LotesViewComponent},
   {path:'lotesLista',component:LotesListComponent},
   {path:'newLote',component:NewLoteComponent},
-  {path:'listArboles',component:ArbolListComponent},
+  {path:'listArboles/:idLote',component:ArbolListComponent},
   {path:'newArbol',component:NewArbolComponent},
   {path:'tipoEstaciones',component:TipoEstacionesArbolComponent},
   {path:'controlArbol',component:RegistroPlagaEnfermedadComponent},
   {path:'rolesEpl',component:RolesComponent},
   {path:'reporteControl',component:ReportControlComponent},
+  {path:'finca',component:InventarioGeneralComponent},
   {path:'statusArbol',component:ViewArbolComponent},
-  {path:'arbolesPag',component:ArbolesSiguienteComponent},
+  {path:'arbolesPag/:idLote/:identificador',component:ArbolesSiguienteComponent},
+  {path:'graficas',component:GraficoCanvasComponent},
+
   {path:'**',pathMatch:'full',redirectTo:'login'}
 ];
 

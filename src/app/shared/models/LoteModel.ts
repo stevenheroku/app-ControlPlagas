@@ -2,10 +2,11 @@ export class LoteModel{
     constructor(
         public IdLote: number,
         public ArbolesControl: number,
-        public Empleado: string,
-        public HectareasLote: string,
-        public Longitud: string,
-        public Latitud: string,
+        public Empleado: number,
+        public Identificador: number,
+        public HectareasLote: number,
+        public Longitud: number,
+        public Latitud: number,
         public ImagenLote: string,
         public IdFinca:number
       ) {}
