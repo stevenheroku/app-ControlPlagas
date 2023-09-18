@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { RespuestaArbol, RespuestaLote } from '../models/Respuestas';
+import { RespuestaArbol, RespuestaFinca, RespuestaLogin, RespuestaLote } from '../models/Respuestas';
 import { environment } from 'src/environments/enviroments.dev';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -15,29 +15,33 @@ export class RestsService {
  
   //Lotes
   getLotes2(idFinca: number): Observable<RespuestaLote> {
-    // Realiza una solicitud HTTP GET al API y mapea la respuesta a un array de LoteModel
     return this.http.get<RespuestaLote>(`${this.URL}lotes/lote/${idFinca}`);
   }
   newLote(objetoLote: LoteModel): Observable<RespuestaLote> {
-    // Realiza una solicitud HTTP GET al API y mapea la respuesta a un array de LoteModel
     return this.http.post<RespuestaLote>(`${this.URL}lotes/newLote`,objetoLote);
   }
 //FINCA
-getFinca(idFinca: number): Observable<RespuestaLote> {
-  // Realiza una solicitud HTTP GET al API y mapea la respuesta a un array de LoteModel
-  return this.http.get<RespuestaLote>(`${this.URL}lotes/lote/${idFinca}`);
+getFinca(): Observable<RespuestaFinca> {
+  return this.http.get<RespuestaFinca>(`${this.URL}fincas/finca`);
 }
 
 //ARBOLES
 
 getArboles2(idLote: number): Observable<RespuestaArbol> {
-  // Realiza una solicitud HTTP GET al API y mapea la respuesta a un array de LoteModel
   return this.http.get<RespuestaArbol>(`${this.URL}arboles/arbol/${idLote}`);
 }
 
+getArbolDetalle(idArbol: number): Observable<RespuestaArbol> {
+  return this.http.get<RespuestaArbol>(`${this.URL}arboles/arbolDetalle/${idArbol}`);
+}
 
-
-
+//USUARIOS
+newUsuario(objetoUsuario: any): Observable<RespuestaLogin> {
+  return this.http.post<RespuestaLogin>(`${this.URL}login/newUserEpl`,objetoUsuario);
+}
+updatePassUsuario(objetoUsuario: any): Observable<RespuestaLogin> {
+  return this.http.put<RespuestaLogin>(`${this.URL}login/userUpdatePass`,objetoUsuario);
+}
 
 //--FIN ARBOLES
   getArboles() {

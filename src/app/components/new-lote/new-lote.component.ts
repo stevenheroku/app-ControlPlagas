@@ -54,7 +54,7 @@ export class NewLoteComponent implements OnInit{
       }else{
         Swal.fire({
           title:'Registro Lote',
-          text: 'El Lote no se pudo registrar intente de nuevo',
+          text: String(result.data),
           icon:'error',
           confirmButtonText: 'Aceptar'
         })

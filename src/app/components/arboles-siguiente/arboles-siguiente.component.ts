@@ -26,6 +26,6 @@ export class ArbolesSiguienteComponent {
   }
   listaArboles(){
 
-    this.router.navigate([`listArboles/${this.loteId}`])
+    this.router.navigate([`listArboles/${this.loteId}/${this.identificador}`])
   }
 }

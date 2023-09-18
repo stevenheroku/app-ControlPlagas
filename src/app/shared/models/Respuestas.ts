@@ -20,7 +20,7 @@ export class RespuestaLote{
     
     constructor(
         public state:number,
-        public data:LoteModel[],
+        public data:any[],
         public message:string,
       ) {}
   }

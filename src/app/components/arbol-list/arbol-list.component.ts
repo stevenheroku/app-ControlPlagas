@@ -17,18 +17,20 @@ export class ArbolListComponent {
   searchTerm: string = '';
   filteredLotes: any[] = [];
   isLoadingResults = true;
-  ArbolId:Number=0;
-
+  LoteId:Number=0;
+  LoteIdentificadorId:Number=0;
   constructor(private router: Router, private http: RestsService,private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       const idLote = params['idLote'];
+      const identificadorLote = params['identificador'];
       console.log("IDLOTE2_:"+idLote)
       // Ahora puedes usar el valor de "idLote" en esta vista para filtrar los árboles
-     this.ArbolId=idLote;
+     this.LoteId=idLote;
+     this.LoteIdentificadorId= identificadorLote;
     });
-    this.http.getArboles2(Number(this.ArbolId)).subscribe(data => {
+    this.http.getArboles2(Number(this.LoteId)).subscribe(data => {
       if (data.state === 200) {
         const lote = data.data[0] as any;
         console.log(this.http.getLotes())
@@ -50,9 +52,16 @@ export class ArbolListComponent {
     );
   }
 
-  navigateToOtherView() {
+  navigateListaArboles() {
     // Aquí reemplaza 'nombre-de-la-vista' con el nombre de la ruta a la que deseas redirigir
-    this.router.navigate(['listArboles']);
+    this.router.navigate([`listArboles/${this.LoteId}/${this.LoteIdentificadorId}`])
+  }
+
+  viewStatusArbol(idArbol:number)
+  {
+    console.log("IDARBOL_:"+idArbol)
+    this.router.navigate([`statusArbol/${this.LoteId}/${this.LoteIdentificadorId}/${idArbol}`])
+
   }
   
 }

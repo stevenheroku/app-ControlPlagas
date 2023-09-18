@@ -3,12 +3,12 @@
     <div class="container-fluid">
 
         <div class="back-link">
-            <a routerLink="/listArboles">
+            <a (click)="navigateToOtherView()">
                 <i class="fas fa-arrow-left" style="color: rgb(255, 255, 255);" ></i>
                 <!-- Icono de flecha hacia atrás -->
             </a>
         </div>
-        <h1 class="mx-auto" style="font-size: 15px;">FINCA LA BENDICIÓN JUTIAPA</h1>
+        <h1 class="mx-auto" style="font-size: 15px;">{{NombreFinca}}</h1>
         <div class="logo-circle">
             <img src="/assets/img/logo.png" alt="logo" class="logo-img">
         </div>
@@ -16,80 +16,25 @@
 </nav>
 <div class="viewLote">
         <div >
-            <h1  style="background-color: rgb(112, 113, 113);"class="descripcion">DETALLE ÁRBOL</h1>
+            <h1  style="background-color: rgb(190, 190, 190);"class="descripcion">DETALLE ÁRBOL</h1>
         </div>
         <div class="table-container">
             <div class="container">
-                <div *ngFor="let lote of lotes" class="card mx-auto" >
-                  <img class="img-fluid mx-auto my-3" style="max-width: 200px;" src="/assets/img/logo.png" alt="">
+                <div *ngFor="let lote of filteredArbol" class="card mx-auto" >
+                  <img class="img-fluid mx-auto my-3" [src]="lote.ImagenArbol" style="max-width: 200px; border-radius: 20px;">
                   <div class="card-body">
-                    <h5 class="card-title" style="text-align: center;">ÁRBOL: 38943</h5>
+                    <h5 class="card-title" style="text-align: center; ">ÁRBOL: {{lote.IdentificadorArbol}}</h5>
                     <p class="identificador">
-                        <span class="color-circle"  [ngClass]="lote.identificador"></span>
+                      <span class="color-text">Estado:</span>
+                     <span class="color-circle"  [ngClass]="lote.color"></span>
                     </p>
                   </div>
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Fecha de Creación: 31/08/2023</li>
-                    <li class="list-group-item">Cantidad Plagas Detectadas: 5</li>
-                    <li class="list-group-item">Cantidad Enfermedades Detectadas: 5</li>
-                    <li class="list-group-item">Latitud: 5.8551</li>
-                    <li class="list-group-item">Longitud: -9.15545</li>
-                  </ul>
-                </div>
-              </div>
-        </div>
-        <div >
-            <h1  style="background-color: rgb(39, 128, 5);"class="descripcion">PLAGAS</h1>
-        </div>
-        <div class="table-container">
-            <div class="container">
-                <div *ngFor="let lote of lotes" class="card mx-auto" >
-                  <img class="img-fluid mx-auto my-3" style="max-width: 200px;" src="/assets/img/logo.png" alt="">
-                  <div class="card-body">
-                    <h5 class="card-title" style="text-align: center;">ÁRBOL: 38943</h5>
-                    <p class="identificador">
-                        <span class="color-circle"  [ngClass]="lote.identificador"></span>
-                    </p>
-                  </div>
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Fecha de Creación: 31/08/2023</li>
-                    <li class="list-group-item">Cantidad Plagas Detectadas: 5</li>
-                    <li class="list-group-item">Cantidad Enfermedades Detectadas: 5</li>
-                    <li class="list-group-item">Latitud: 5.8551</li>
-                    <li class="list-group-item">Longitud: -9.15545</li>
-                    <li class="list-group-item">Fecha de Creación: 31/08/2023</li>
-                    <li class="list-group-item">Cantidad Plagas Detectadas: 5</li>
-                    <li class="list-group-item">Cantidad Enfermedades Detectadas: 5</li>
-                    <li class="list-group-item">Latitud: 5.8551</li>
-                    <li class="list-group-item">Longitud: -9.15545</li>
-                  </ul>
-                </div>
-              </div>
-        </div>
-        <div >
-            <h1 style="background-color: rgb(39, 128, 5);" class="descripcion">ENFERMEDADES</h1>
-        </div>
-        <div class="table-container">
-            <div class="container">
-                <div *ngFor="let lote of lotes" class="card mx-auto" >
-                  <img class="img-fluid mx-auto my-3" style="max-width: 200px;" src="/assets/img/logo.png" alt="">
-                  <div class="card-body">
-                    <h5 class="card-title" style="text-align: center;">ÁRBOL: 38943</h5>
-                    <p class="identificador">
-                        <span class="color-circle"  [ngClass]="lote.identificador"></span>
-                    </p>
-                  </div>
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Fecha de Creación: 31/08/2023</li>
-                    <li class="list-group-item">Cantidad Plagas Detectadas: 5</li>
-                    <li class="list-group-item">Cantidad Enfermedades Detectadas: 5</li>
-                    <li class="list-group-item">Latitud: 5.8551</li>
-                    <li class="list-group-item">Longitud: -9.15545</li>
-                    <li class="list-group-item">Fecha de Creación: 31/08/2023</li>
-                    <li class="list-group-item">Cantidad Plagas Detectadas: 5</li>
-                    <li class="list-group-item">Cantidad Enfermedades Detectadas: 5</li>
-                    <li class="list-group-item">Latitud: 5.8551</li>
-                    <li class="list-group-item">Longitud: -9.15545</li>
+                    <li class="list-group-item">Fecha de Creación: {{lote.FechaCreacion}}</li>
+                    <li class="list-group-item">Cantidad Plagas Detectadas: {{lote.CantidadPlagas}}</li>
+                    <li class="list-group-item">Cantidad Enfermedades Detectadas: {{lote.CantidadEnfermedades}}</li>
+                    <li class="list-group-item">Latitud: {{lote.latitud}}</li>
+                    <li class="list-group-item">Longitud: {{lote.longitud}}</li>
                   </ul>
                 </div>
               </div>

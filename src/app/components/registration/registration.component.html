@@ -14,7 +14,7 @@
     </div>
     
     <div class="recoverPass">
-        <form class="container">
+        <form id="formulario" class="container">
             <div class="encabezado-recoverPass">
                 <p for="" class="title">¡Bienvenido!</p>
                 <h1 for="" class="descripcion">Ingresa tus Datos para registrarte</h1>
@@ -24,30 +24,39 @@
                 <label for="email" style="color: rgb(0, 0, 0); margin-top: 10px;">
                     Ingrese sus Nombres
                 </label>
-                <input type="text" style="background-color: white; " class="form-control" id="nombres" required>
+                <input type="text" style="background-color: white; " class="form-control" id="nombres"  required #nombres>
+                <div class="error-message">
+                    Este campo es obligatorio
+                </div>
             </div>
             <div class="form-group">
                 <label for="email" style="color: rgb(0, 0, 0); margin-top: 10px;">
                     Ingrese sus Apellidos
                 </label>
-                <input type="text" style="background-color: white; " class="form-control" id="apellidos" required>
+                <input type="text" style="background-color: white; " class="form-control" id="apellidos" required #apellidos>
             </div>
             <div class="form-group">
                 <label for="email" style="color: rgb(0, 0, 0); margin-top: 10px;">
-                    Ingrese sus DPI
+                    Ingrese su DPI
                 </label>
-                <input type="text" style="background-color: white; " class="form-control" id="dpi" required>
-            </div>
+                <input type="text" style="background-color: white; " class="form-control" id="dpi" required #dpi pattern="^\d{4}-\d{5}-\d{4}$"></div>
+                
             <div class="form-group">
                 <label for="email" style="color: rgb(0, 0, 0); margin-top: 10px;">
                     Ingrese su Fecha de Nacimiento
                 </label>
-                <input type="date" style="background-color: white; " class="form-control" id="fecha_N" required>
+                <input type="date" style="background-color: white; " class="form-control" id="fecha_N" required #fechaNacimiento>
+            </div>
+            <div class="form-group">
+                <label for="email" style="color: rgb(0, 0, 0); margin-top: 10px;">
+                    Ingrese su Dirección
+                </label>
+                <input type="text" style="background-color: white; " class="form-control" id="fecha_N" required #direccion>
             </div>
             <div class="form-group">
                 <label for="sexo" style="color: rgb(0, 0, 0); margin-top: 10px;">Sexo</label>
                 <div class="select-with-arrow">
-                    <select class="form-control" id="sexo"required>
+                    <select class="form-control" id="sexo" [ngModelOptions]="{ standalone: true }" [(ngModel)]="valorSexo">
                         <option value="N">--Seleccione el Sexo--</option>
                         <option value="M">Masculino</option>
                         <option value="F">Femenino</option>
@@ -59,7 +68,7 @@
                 <label for="email" style="color: rgb(0, 0, 0); margin-top: 10px;">
                     Ingrese su Correo
                 </label>
-                <input type="email" style="background-color: white; " class="form-control" id="correo" #correo aria-describedby="emailHelp" placeholder="steven@gmail.com" required> 
+                <input type="email" style="background-color: white; " class="form-control" id="correo"  aria-describedby="emailHelp" placeholder="steven@gmail.com" required #correo> 
             </div>
             <div class="form-group">
                 <label for="password" style="color: rgb(0, 0, 0); margin-top: 10px;">
@@ -67,7 +76,7 @@
                     Ingrese su Contraseña
                 </label>
                 <div class="input-group">
-                    <input [type]="showPassword ? 'text' : 'password'" style="background-color: white; " class="form-control" id="contrasena1" #contrasena placeholder="********" required>
+                    <input [type]="showPassword ? 'text' : 'password'" style="background-color: white; " class="form-control" id="contrasena1" #contrasena placeholder="********" required #pass1>
                     <div class="input-group-append">
                         <span class="input-group-text toggle-password" (click)="togglePasswordVisibility()">
                             <i [class]="showPassword ? 'far fa-eye-slash' : 'far fa-eye'"></i>
@@ -81,7 +90,7 @@
                     Repita su Contraseña
                 </label>
                 <div class="input-group">
-                    <input [type]="showPassword2 ? 'text' : 'password'" style="background-color: white; " class="form-control" id="contrasena2" #contrasena placeholder="********" required>
+                    <input [type]="showPassword2 ? 'text' : 'password'" style="background-color: white; " class="form-control" id="contrasena2" #contrasena placeholder="********" required #pass2>
                     <div class="input-group-append">
                         <span class="input-group-text toggle-password" (click)="togglePasswordVisibility2()">
                             <i [class]="showPassword2 ? 'far fa-eye-slash' : 'far fa-eye'"></i>
@@ -93,27 +102,33 @@
                 <label for="email" style="color: rgb(0, 0, 0); margin-top: 10px;">
                     Ingrese su Número Telefónico
                 </label>
-                <input type="number" style="background-color: white; " class="form-control" id="numero_Cel" placeholder="78987755" required>
+                <input type="number" style="background-color: white; " class="form-control" id="numero_Cel" placeholder="78987755" required #numeroTel>
             </div>
+            
             <div class="form-group">
-                <label for="email" style="color: rgb(0, 0, 0); margin-top: 10px;">
-                    Ingrese el Nombre de Finca
-                </label>
-                <input type="text" style="background-color: white; " class="form-control" id="nameFinca" required>
-            </div>
+                <label for="sexo" style="color: rgb(0, 0, 0); margin-top: 10px;">Ingrese la Finca</label>
+                <div class="select-with-arrow">
+                  <select class="form-control" id="finca" [ngModelOptions]="{ standalone: true }" [(ngModel)]="valorFinca">
+                    <option value="0">--Seleccione la Finca--</option>
+                    <!-- Itera sobre las fincas y genera las opciones -->
+                    <option *ngFor="let finca of fincas" [value]="finca.Value">{{ finca.Label }}</option>
+                  </select>
+                  <i class="fas fa-chevron-down"></i>
+                </div>
+              </div>
             <div class="form-group">
                 <label for="sexo" style="color: rgb(0, 0, 0); margin-top: 10px;">Rol</label>
                 <div class="select-with-arrow">
-                    <select class="form-control" id="sexo" required>
-                        <option value="N">--Seleccione un Rol--</option>
-                        <option value="M">Administrador</option>
-                        <option value="F">Operador</option>
+                    <select class="form-control" id="rol" [ngModelOptions]="{ standalone: true }" [(ngModel)]="valorRol" required>
+                        <option value="0">--Seleccione un Rol--</option>
+                        <option value="1">Operador</option>
+                        <option value="2">Administrador</option>
                     </select>
                     <i class="fas fa-chevron-down"></i>
                 </div>
             </div>
             <div class="row">
-                <button style="background: green; font:oblique; color: white;  border-radius: 20px;" class="col btn-1 btn">Registrar</button>
+                <button (click)="crearRegistroUsuario(nombres.value,apellidos.value,fechaNacimiento.value,numeroTel.value,dpi.value,direccion.value,correo.value,pass1.value)" style="background: green; font:oblique; color: white;  border-radius: 20px;" class="col btn-1 btn" type="submit">Registrar</button>
             </div>
            <br>
         </form>

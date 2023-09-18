@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
-import { AuthUser } from 'src/app/shared/models/AuthUsuario';
+import { AuthUsuario } from 'src/app/shared/models/AuthUsuario';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { MainService } from 'src/app/shared/services/main.service';
 @Component({
@@ -13,9 +13,10 @@ export class LoginComponent {
   constructor(private router: Router,private authService:AuthService,private mainService:MainService) {}
 
   logIn(correo:string,contrasena:string){
-    let usuario:AuthUser={
+    let usuario:AuthUsuario={
       Correo:correo,
-      Pass:contrasena
+      Pass:contrasena,
+      Rol:0
     };
     console.log("datos envio:" +usuario.Correo +" "+usuario.Pass)
     if(usuario.Correo=='' && usuario.Pass=='')
