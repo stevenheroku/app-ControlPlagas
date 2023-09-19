@@ -39,7 +39,7 @@ export class ViewArbolComponent {
      this.LoteIdentificadorId= identificadorLote;
      console.log('IMPRIMIR_IDAEBOL_'+this.NumeroArbol)
     });
-    this.http.getArbolDetalle(1).subscribe(data => {
+    this.http.getArbolDetalle(this.NumeroArbol).subscribe(data => {
       if (data.state === 200) {
         const lote = data.data[0] as any;
         this.lotes = [lote]; // Asigna los datos a this.lotes

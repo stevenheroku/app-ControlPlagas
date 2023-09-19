@@ -306,11 +306,6 @@ label {
   align-items: center;
 }
 
-.arbol-imagen {
-  width: 30px; /* Ajusta el tamaño de la imagen */
-  height: 30px;
-  margin-right: 5px; /* Ajusta el margen entre la imagen y el número */
-}
 
 .numero-arbol {
   font-size: 16px; /* Ajusta el tamaño de la fuente */
@@ -338,10 +333,10 @@ label {
   justify-content: center;
   margin-right: 10px; 
   background-color: white; /* Fondo blanco */
-  border-radius: 50%; /* Forma circular */
+  border-radius: 25%; /* Forma circular */
   width: 70px; /* Ajustar el tamaño de la imagen */
   height: 70px;
-  margin-right: 5px; /* Espacio entre la imagen y el número */
+  margin-right: 10px; /* Espacio entre la imagen y el número */
 }
 
 .info {

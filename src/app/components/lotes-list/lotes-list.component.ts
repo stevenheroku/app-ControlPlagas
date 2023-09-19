@@ -31,7 +31,6 @@ export class LotesListComponent {
     this.http.getLotes2(Number(IdFinca)).subscribe(data => {
       if (data.state === 200) {
         const lote = data.data[0] as any;
-        console.log(this.http.getLotes())
         this.lotes = [lote]; // Asigna los datos a this.lotes
         // Asigna los mismos datos a filteredLotes
         console.log(this.lotes);

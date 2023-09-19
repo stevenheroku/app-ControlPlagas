@@ -1,7 +1,7 @@
 export class ArbolModel{
     constructor(
         public IdArbol: number,
-        public Empleado: string,
+        public Empleado: number,
         public IdentificadorArbol: number,
         public Longitud: string,
         public Latitud: string,

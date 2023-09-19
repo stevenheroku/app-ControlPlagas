@@ -3,7 +3,7 @@
 <nav class="navbar">
     <div class="container-fluid">
       <div class="back-link">
-        <a routerLink="/listArboles">
+        <a (click)="navigateListaArboles()">
           <i class="fas fa-arrow-left" style="color: rgb(255, 255, 255);"></i>
         </a>
       </div>
@@ -22,37 +22,43 @@
             <form class="container">
                 <div class="encabezado-login ">
                     
-                    <h1 class="descripcion">Crear Árbol</h1>
+                    <h1 class="descripcion">{{Opcion}}</h1>
                 </div>
+                <div class="form-group" style="display: none;">
+                  <label for="email" style="color: rgb(255, 255, 255); margin-top: 10px; font-weight: bold;" >
+                    ID Arbol
+                  </label>
+                  <input type="text" style="background-color: white; " class="form-control" id="namePropietario" value="{{ArbolId}}" #arbol readonly>
+              </div>
                 <div class="form-group">
                     <label for="email" style="color: rgb(255, 255, 255); margin-top: 10px; font-weight: bold;" >
-                      Nombre del Empleado
+                      Nombre del Empleado Creador
                     </label>
-                    <input type="text" style="background-color: white; " class="form-control" id="namePropietario" >
+                    <input type="text" style="background-color: white; " class="form-control" id="namePropietario" value="{{NombreEmpleado}}" readonly>
                 </div>
                 <div class="form-group">
                     <label for="hectareas" style="color: rgb(255, 255, 255); margin-top: 10px; font-weight: bold;">
-                        Ingrese el Nombre del Árbol
+                        Ingrese el Identificador del Árbol
                     </label>
-                    <input type="text" style="background-color: white; " class="form-control" id="hectareas" >
+                    <input type="text" style="background-color: white; " class="form-control" id="identifiador" value="{{IdentificadorArbol}}"#identificador >
                 </div>
                 <div class="form-group">
                     <label for="longitud" style="color: rgb(255, 255, 255); margin-top: 10px; font-weight: bold;">
                         Longitud
                     </label>
-                    <input type="number" step="0.01" style="background-color: white; " class="form-control" id="longitud" >
+                    <input type="number" step="0.01" style="background-color: white; " class="form-control" id="longitud" value="{{Longitud}}" #longitud>
                 </div>
                 <div class="form-group">
                     <label for="latitud" style="color: rgb(255, 255, 255); margin-top: 10px; font-weight: bold;">
                         Latitud
                     </label>
-                    <input type="number" step="0.01" style="background-color: white; " class="form-control" id="correo" >
+                    <input type="number" step="0.01" style="background-color: white; " class="form-control" id="latitud" value="{{Latitud}}"#latitud >
                 </div>
                 <div class="form-group">
                     <label for="imagen" style="color: rgb(255, 255, 255); margin-top: 10px; font-weight: bold;">
                       Subir Imagen del Árbol
                     </label>
-                    <input type="file" style="background-color: white;" class="form-control" id="imagen" (change)="onFileChange($event)">
+                    <input type="file" style="background-color: white;" class="form-control" id="imagen" (change)="onFileChange($event)" >
                   </div>
                   
                   <div id="imagenPanel" *ngIf="imagenSeleccionada" >
@@ -62,7 +68,7 @@
                     </div>
                   </div>
                 <div class="row">
-                    <button style="background: rgb(212, 0, 0); font:oblique; color: white;  border-radius: 20px;" class="col btn-1 btn">Registrar</button>
+                    <button (click)="crearEditarArbol(arbol.value,identificador.value,longitud.value,latitud.value)" style="background: rgb(212, 0, 0); font:oblique; color: white;  border-radius: 20px;" class="col btn-1 btn">Registrar</button>
                 </div>
     
             </form>

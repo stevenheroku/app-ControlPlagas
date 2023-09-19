@@ -4,12 +4,13 @@
   <div class="container-fluid">
 
     <div class="back-link">
-      <a routerLink="/listArboles">
+      <a (click)="navigateListaArboles()" routerLink="/listArboles">
         <i class="fas fa-arrow-left" style="color: rgb(255, 255, 255);"></i>
         <!-- Icono de flecha hacia atrás -->
       </a>
     </div>
-    <h1 class="mx-auto" style="font-size: 15px;">FINCA LA BENDICIÓN JUTIAPA</h1>
+    <h1 class="mx-auto" style="font-size: 15px;">{{NombreFinca}}</h1>
+    <h1 class="mx-auto" style="font-size: 15px;">{{IdentificadorLote}}</h1>
     <div class="logo-circle">
       <img src="/assets/img/logo.png" alt="logo" class="logo-img">
     </div>
@@ -21,9 +22,9 @@
       <h1 class="descripcion">CONTROL</h1>
       <div class="encabezado-login">
         <div class="arbol">
-          <img src="/assets/img/lote.png" alt="Árbol" class="arbol-imagen">
+          <img src="{{imagenSeleccionada}}"  class="arbol-imagen">
           <div class="data">
-            <span class="info" >Árbol: </span><span class="info" style="color: rgb(36, 144, 3);" >{{ numeroArbol }}</span>
+            <span class="info" >Árbol: </span><span class="info" style="color: rgb(36, 144, 3);" >{{ IdentificadorArbol }}</span>
           </div>
           
         </div>
@@ -32,11 +33,9 @@
       <div class="form-group">
         <label for="tipoEstacion">Tipo de Estación:</label>
         <div class="select-with-arrow">
-          <select id="tipoEstacion" name="tipoEstacion" class="form-control">
-            <option value="norte">Norte</option>
-            <option value="sur">Sur</option>
-            <option value="este">Este</option>
-            <option value="oeste">Oeste</option>
+          <select id="tipoEstacion" [ngModelOptions]="{ standalone: true }" [(ngModel)]="valorEstacion" name="tipoEstacion" class="form-control">
+            <option value="0">--Seleccione la Estación--</option>
+            <option *ngFor="let opcion of tipoEstaciones" [value]="opcion.Value">{{ opcion.Label }}</option>
           </select>
         </div>
       </div>
@@ -44,48 +43,51 @@
       <div class="form-group">
         <label for="tipoEnfermedadPlaga">Tipo de Control:</label>
         <div class="select-with-arrow">
-          <select id="tipoEnfermedadPlaga" class="form-control" name="tipoEnfermedadPlaga"
+          <select id="tipoEnfermedadPlaga" [ngModelOptions]="{ standalone: true }" [(ngModel)]="valorTipoControl"  (ngModelChange)="onTipoControlChange()" class="form-control"class="form-control" name="tipoEnfermedadPlaga"
             (change)="onTipoEnfermedadPlagaChange($event)">
             <option value="0">--Seleccione el tipo de Control--</option>
-            <option value="1">Enfermedad</option>
-            <option value="2">Plaga</option>
+            <option *ngFor="let opcion of tipoControl" [value]="opcion.Value">{{ opcion.Label }}</option>
           </select>
         </div>
       </div>
-
-      <div class="form-group">
-        <label for="tipoEstructuraDanada">Nombre de Enfermedad o Plaga:</label>
+      <div class="form-group" *ngIf="tipoEnfermedadPlaga === 2">
+        <label for="tipoEstructuraDanada">Nombre de Enfermedad:</label>
         <div class="select-with-arrow">
-          <select class="form-control" id="sexo">
-            <option value="" >--Seleccione una opción--</option>
-            <option *ngFor="let opcion of nombresEnfermedadesPlagas" [value]="opcion">{{ opcion }}</option>
+          <select class="form-control" id="enfermedad" [ngModelOptions]="{ standalone: true }" [(ngModel)]="valorEnfermedad">
+            <option value="0">--Seleccione la Enfermedad--</option>
+            <option *ngFor="let opcion of tipoControlEnfermedades" [value]="opcion.Value">{{ opcion.Label }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group" *ngIf="tipoEnfermedadPlaga === 1">
+        <label for="tipoEstructuraDanada">Nombre de Plaga:</label>
+        <div class="select-with-arrow">
+          <select class="form-control" id="plaga" [ngModelOptions]="{ standalone: true }" [(ngModel)]="valorPlaga">
+            <option value="0">--Seleccione la Plaga--</option>
+            <option *ngFor="let opcion of tipoControlPlagas" [value]="opcion.Value">{{ opcion.Label }}</option>
           </select>
         </div>
       </div>
 
       <div class="form-group">
         <label for="cantidadIndividuos">Cantidad de Individuos:</label>
-        <input type="number" id="cantidadIndividuos" name="cantidadIndividuos" class="form-control">
+        <input type="number" id="cantidadIndividuos" name="cantidadIndividuos" class="form-control" #cantidadIndividuos>
       </div>
-      <div id="tipoEstructuraContainer" *ngIf="tipoEnfermedadPlaga === 1">
+      <div id="tipoEstructuraContainer" *ngIf="tipoEnfermedadPlaga === 2">
         <div class="form-group">
           <div class="select-with-arrow" id="tipoEstructuraContainer">
             <label for="tipoEstructuraDanada">Tipo de Estructura Dañada:</label>
             <div class="select-with-arrow">
-              <select class="form-control" id="sexo">
-                <option value="flor">Flor</option>
-                <option value="hoja">Hoja</option>
-                <option value="rama">Rama</option>
-                <option value="tallo">Tallo</option>
-                <option value="fruto">Fruto</option>
-                <option value="raiz">Raíz</option>
+              <select class="form-control" id="estructura" [ngModelOptions]="{ standalone: true }" [(ngModel)]="valorEstructura">
+                <option value="0">--Seleccione una opción--</option>
+                <option *ngFor="let opcion of tipoEstructura" [value]="opcion.Value">{{ opcion.Label }}</option>
               </select>
             </div>
           </div>
         </div>
       </div>
       <div class="row">
-        <button style="background: rgb(212, 0, 0); font:oblique; color: white;  border-radius: 20px;"
+        <button (click)="buttonCrearControl(cantidadIndividuos.value)" style="background: rgb(212, 0, 0); font:oblique; color: white;  border-radius: 20px;"
           class="col btn-1 btn">Guardar</button>
       </div>
 

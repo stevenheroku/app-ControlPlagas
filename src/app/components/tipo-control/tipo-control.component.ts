@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./tipo-control.component.css']
 })
 export class TipoControlComponent {
+  router: any;
 
   tipoControl()
   {
@@ -15,7 +16,6 @@ export class TipoControlComponent {
       text: "Control de Plagas y Enfermedades!" ,
       icon: 'success',
       confirmButtonText: 'Aceptar'
-     }
-    )
+    })
   }
 }

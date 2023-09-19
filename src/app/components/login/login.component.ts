@@ -44,8 +44,11 @@ export class LoginComponent {
            icon: 'success',
            confirmButtonText: 'Aceptar'
           }
-         )
-         this.router.navigate(['logueado'])
+         ).then(() => {
+          // Navega a la misma vista para recargarla
+          this.router.navigate(['/logueado'])
+        });
+         
         }else{
           Swal.fire({
             title: 'Error!',

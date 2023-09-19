@@ -14,7 +14,7 @@ export class NewLoteComponent implements OnInit{
   IdEmpleado:number=0;
   IdFinca:number=0;
   IdLote:number=0;
-  ImagenArbol:string="";
+  ImagenLote:string="";
   constructor(private router: Router,private http: RestsService) { }
 
   ngOnInit(): void {
@@ -39,7 +39,7 @@ export class NewLoteComponent implements OnInit{
       HectareasLote:parseFloat(phectareas),
       Longitud:parseFloat(pLongitud),
       Latitud:parseFloat(pLatitud),
-      ImagenLote:this.ImagenArbol,
+      ImagenLote:this.ImagenLote,
       IdFinca:this.IdFinca
     }
     console.log("LOTE NUEVO:"+lotenew);
@@ -67,8 +67,8 @@ export class NewLoteComponent implements OnInit{
     if (file) {
       const reader = new FileReader();
       reader.onload = (e: any) => {
-        const ImagenArbolbase64 = e.target.result;
-        this.ImagenArbol = ImagenArbolbase64;
+        const ImagenLotebase64 = e.target.result;
+        this.ImagenLote = ImagenLotebase64;
        // console.log(this.ImagenArbol)
         this.imagenSeleccionada = e.target?.result || null; // Añadir un valor predeterminado
       };

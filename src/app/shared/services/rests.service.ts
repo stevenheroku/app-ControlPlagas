@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
-import { RespuestaArbol, RespuestaFinca, RespuestaLogin, RespuestaLote } from '../models/Respuestas';
+import { RespuestaArbol, RespuestaCatalogos, RespuestaFinca, RespuestaLogin, RespuestaLote, RespuestaTipoControl } from '../models/Respuestas';
 import { environment } from 'src/environments/enviroments.dev';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { LoteModel } from '../models/LoteModel';
+import { ArbolModel } from '../models/ArbolModel';
+import { TipoControlModel } from '../models/TipoControlModel';
 @Injectable({
   providedIn: 'root'
 })
@@ -28,11 +30,17 @@ getFinca(): Observable<RespuestaFinca> {
 //ARBOLES
 
 getArboles2(idLote: number): Observable<RespuestaArbol> {
-  return this.http.get<RespuestaArbol>(`${this.URL}arboles/arbol/${idLote}`);
+  return this.http.get<RespuestaArbol>(`${this.URL}arboles/arbolLote/${idLote}`);
 }
 
 getArbolDetalle(idArbol: number): Observable<RespuestaArbol> {
   return this.http.get<RespuestaArbol>(`${this.URL}arboles/arbolDetalle/${idArbol}`);
+}
+newArbol(objetoArbol: ArbolModel): Observable<RespuestaArbol> {
+  return this.http.post<RespuestaArbol>(`${this.URL}arboles/newArbol`,objetoArbol);
+}
+getArbol(idArbol: number): Observable<RespuestaArbol> {
+  return this.http.get<RespuestaArbol>(`${this.URL}arboles/arbol/${idArbol}`);
 }
 
 //USUARIOS
@@ -43,24 +51,32 @@ updatePassUsuario(objetoUsuario: any): Observable<RespuestaLogin> {
   return this.http.put<RespuestaLogin>(`${this.URL}login/userUpdatePass`,objetoUsuario);
 }
 
-//--FIN ARBOLES
-  getArboles() {
-    return [
-      { fotoArbol: '/assets/img/arboles.png', numeroArbol: 1 ,nombreEmpleado:"Jefferson Rueda",color:"amarillo"},
-      { fotoArbol: '/assets/img/arboles.png', numeroArbol: 2 ,nombreEmpleado:"Luis Gonzales",color:"verde"},
-      { fotoArbol: '/assets/img/arboles.png', numeroArbol: 3 ,nombreEmpleado:"Pedro Rosales",color:"verde"},
-      { fotoArbol: '/assets/img/arboles.png', numeroArbol: 4 ,nombreEmpleado:"Fernando Recinos",color:"rojo"},
-      { fotoArbol: '/assets/img/arboles.png', numeroArbol: 4 ,nombreEmpleado:"Luis Medina",color:"verde"},
-      { fotoArbol: '/assets/img/arboles.png', numeroArbol: 4 ,nombreEmpleado:"Jose Rueda",color:"rojo"}
-    ];
-  }
-  getLotes() {
-    return [
-      { ImagenLote: '/assets/img/lote.png', IdLote: 1 ,Empleado:"Jefferson Rueda"},
-      { ImagenLote: '/assets/img/lote.png', IdLote: 2 ,Empleado:"Jefferson Rueda"},
-      { ImagenLote: '/assets/img/lote.png', IdLote: 3 ,Empleado:"Jefferson Rueda"}
-      
-      // ...otros lotes
-    ];
-  }
+//PLAGAS Y ENFERMEDADES
+getPlagas(): Observable<RespuestaCatalogos> {
+  return this.http.get<RespuestaCatalogos>(`${this.URL}plagas/plaga`);
+}
+
+getEnfermedades(): Observable<RespuestaCatalogos> {
+  return this.http.get<RespuestaCatalogos>(`${this.URL}enfermedades/enfermedad`);
+}
+
+//ESTACIONES
+getEstaciones(): Observable<RespuestaCatalogos> {
+  return this.http.get<RespuestaCatalogos>(`${this.URL}estaciones/estacion`);
+}
+
+//TIPOCONTROL
+getTipoControl(): Observable<RespuestaCatalogos> {
+  return this.http.get<RespuestaCatalogos>(`${this.URL}tipocontroles/tipoControl`);
+}
+
+//TIPO DE ESTRCUTURA
+getTipoEstructura(): Observable<RespuestaCatalogos> {
+  return this.http.get<RespuestaCatalogos>(`${this.URL}estructuras/estructura`);
+}
+
+//CONTROL ARBOL
+newControl(objetoControl: TipoControlModel): Observable<RespuestaTipoControl> {
+  return this.http.post<RespuestaTipoControl>(`${this.URL}arboles/newArbolControl`,objetoControl);
+}
 }

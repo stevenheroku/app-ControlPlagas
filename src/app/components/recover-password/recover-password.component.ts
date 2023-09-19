@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { AuthUsuario } from 'src/app/shared/models/AuthUsuario';
 import { RestsService } from 'src/app/shared/services/rests.service';
 import Swal from 'sweetalert2';
-
+import { FormGroup,FormControl,FormArray,Validators } from '@angular/forms';
 @Component({
   selector: 'app-recover-password',
   templateUrl: './recover-password.component.html',
@@ -15,7 +15,7 @@ export class RecoverPasswordComponent {
   togglePasswordVisibility(): void {
     this.showPassword = !this.showPassword;
   }
-  constructor(private router: Router,private http: RestsService) { }
+  constructor(private router: Router,private http: RestsService,) { }
   recuperarPass(correo:string,pass:string)
   {
     let recuperarPassUser :AuthUsuario  ={
@@ -41,7 +41,11 @@ export class RecoverPasswordComponent {
           text: 'La contraseña se actualizó correctamente',
           icon:'success',
           confirmButtonText: 'Aceptar'
-        })
+        }).then(() => {
+          // Navega a la misma vista para recargarla
+          this.router.navigate(['/login']);
+        });
+
       }
       else if(result.state==404)
       {

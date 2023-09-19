@@ -16,6 +16,7 @@ import { FincaModel } from 'src/app/shared/models/FincaModel';
 
 
 export class RegistrationComponent {
+  
   showPassword: boolean = false;
   showPassword2: boolean = false;
   valorSexo: string = 'N'; // Variable para almacenar el valor seleccionado
@@ -83,9 +84,10 @@ export class RegistrationComponent {
             text: 'El Usuario fue registrado Correctamente',
             icon:'success',
             confirmButtonText: 'Aceptar'
-          })
-          this.router.navigate(['login']);
-
+          }).then(() => {
+            // Navega a la misma vista para recargarla
+            this.router.navigate(['/login']);
+          });
       }else{
         Swal.fire({
           title:'Registro Usuario',

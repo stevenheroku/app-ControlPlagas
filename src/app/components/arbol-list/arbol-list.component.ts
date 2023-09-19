@@ -18,6 +18,7 @@ export class ArbolListComponent {
   filteredLotes: any[] = [];
   isLoadingResults = true;
   LoteId:Number=0;
+  ArbolId:number=0;
   LoteIdentificadorId:Number=0;
   constructor(private router: Router, private http: RestsService,private route: ActivatedRoute) {}
 
@@ -33,7 +34,6 @@ export class ArbolListComponent {
     this.http.getArboles2(Number(this.LoteId)).subscribe(data => {
       if (data.state === 200) {
         const lote = data.data[0] as any;
-        console.log(this.http.getLotes())
         this.arboles = [lote]; // Asigna los datos a this.lotes
         // Asigna los mismos datos a filteredLotes
         console.log(this.arboles);
@@ -56,12 +56,22 @@ export class ArbolListComponent {
     // Aquí reemplaza 'nombre-de-la-vista' con el nombre de la ruta a la que deseas redirigir
     this.router.navigate([`listArboles/${this.LoteId}/${this.LoteIdentificadorId}`])
   }
-
+  viewNuevoArbol() {
+    // Aquí reemplaza 'nombre-de-la-vista' con el nombre de la ruta a la que deseas redirigir
+    this.router.navigate([`newArbol/${this.LoteId}/${this.LoteIdentificadorId}/${this.ArbolId}`])
+  }
+  viewEditarArbol(idArbol:number) {
+    // Aquí reemplaza 'nombre-de-la-vista' con el nombre de la ruta a la que deseas redirigir
+    this.router.navigate([`newArbol/${this.LoteId}/${this.LoteIdentificadorId}/${idArbol}`])
+  }
   viewStatusArbol(idArbol:number)
   {
     console.log("IDARBOL_:"+idArbol)
     this.router.navigate([`statusArbol/${this.LoteId}/${this.LoteIdentificadorId}/${idArbol}`])
 
   }
-  
+  viewControlArbol(idArbol:number)
+  {
+    this.router.navigate([`controlArbol/${this.LoteId}/${this.LoteIdentificadorId}/${idArbol}`])
+  }
 }

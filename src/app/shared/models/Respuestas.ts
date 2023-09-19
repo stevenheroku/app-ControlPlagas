@@ -1,3 +1,4 @@
+import { ArbolModel } from "./ArbolModel";
 import { LoteModel } from "./LoteModel";
 
 export class RespuestaLote{
@@ -12,7 +13,7 @@ export class RespuestaLote{
     
     constructor(
         public state:number,
-        public data:LoteModel[],
+        public data:ArbolModel[],
         public message:string,
       ) {}
   }
@@ -29,6 +30,25 @@ export class RespuestaLote{
     constructor(
         public state:number,
         public data:any,
+        public message:string,
+      ) {}
+  }
+
+
+  export class RespuestaCatalogos{
+    
+    constructor(
+        public state:number,
+        public data:any[],
+        public message:string,
+      ) {}
+  }
+
+  export class RespuestaTipoControl{
+    
+    constructor(
+        public state:number,
+        public data:any[],
         public message:string,
       ) {}
   }
