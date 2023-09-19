@@ -70,6 +70,12 @@ export class ArbolListComponent {
     this.router.navigate([`statusArbol/${this.LoteId}/${this.LoteIdentificadorId}/${idArbol}`])
 
   }
+  viewStatusMedicoArbol(idArbol:number)
+  {
+    console.log("IDARBOL_:"+idArbol)
+    this.router.navigate([`arbolQuimicos/${this.LoteId}/${this.LoteIdentificadorId}/${idArbol}`])
+
+  }
   viewControlArbol(idArbol:number)
   {
     this.router.navigate([`controlArbol/${this.LoteId}/${this.LoteIdentificadorId}/${idArbol}`])

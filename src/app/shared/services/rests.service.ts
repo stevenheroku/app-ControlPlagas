@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { RespuestaArbol, RespuestaCatalogos, RespuestaFinca, RespuestaLogin, RespuestaLote, RespuestaTipoControl } from '../models/Respuestas';
+import { RespuestaArbol, RespuestaArbolEnfermedad, RespuestaArbolPlaga, RespuestaCatalogos, RespuestaFinca, RespuestaLogin, RespuestaLote, RespuestaTipoControl } from '../models/Respuestas';
 import { environment } from 'src/environments/enviroments.dev';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -17,7 +17,10 @@ export class RestsService {
  
   //Lotes
   getLotes2(idFinca: number): Observable<RespuestaLote> {
-    return this.http.get<RespuestaLote>(`${this.URL}lotes/lote/${idFinca}`);
+    return this.http.get<RespuestaLote>(`${this.URL}lotes/lotefinca/${idFinca}`);
+  }
+  getLote(idLote: number): Observable<RespuestaLote> {
+    return this.http.get<RespuestaLote>(`${this.URL}lotes/lote/${idLote}`);
   }
   newLote(objetoLote: LoteModel): Observable<RespuestaLote> {
     return this.http.post<RespuestaLote>(`${this.URL}lotes/newLote`,objetoLote);
@@ -41,6 +44,13 @@ newArbol(objetoArbol: ArbolModel): Observable<RespuestaArbol> {
 }
 getArbol(idArbol: number): Observable<RespuestaArbol> {
   return this.http.get<RespuestaArbol>(`${this.URL}arboles/arbol/${idArbol}`);
+}
+getArbolPlagas(idArbol: number): Observable<RespuestaArbolPlaga> {
+  return this.http.get<RespuestaArbolPlaga>(`${this.URL}arboles/arbolPlagas/${idArbol}`);
+}
+
+getArbolEnfermedades(idArbol: number): Observable<RespuestaArbolEnfermedad> {
+  return this.http.get<RespuestaArbolEnfermedad>(`${this.URL}arboles/arbolEnfermedades/${idArbol}`);
 }
 
 //USUARIOS

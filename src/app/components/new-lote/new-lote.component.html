@@ -9,7 +9,7 @@
                 <!-- Icono de flecha hacia atrás -->
             </a>
         </div>
-        <h1 class="mx-auto" style="font-size: 15px;">FINCA LA BENDICIÓN JUTIAPA</h1>
+        <h1 class="mx-auto" style="font-size: 15px;">{{NombreFinca}}</h1>
         <div class="logo-circle">
             <img src="/assets/img/logo.png" alt="logo" class="logo-img">
         </div>
@@ -24,37 +24,37 @@
             <form class="container">
                 <div class="encabezado-login ">
                     
-                    <h1 class="descripcion">Crear Lote</h1>
+                    <h1 class="descripcion">{{Opcion}}</h1>
                 </div>
                 <div class="form-group">
                     <label for="email" style="color: rgb(255, 255, 255); margin-top: 10px; font-weight: bold;">
                       Identificador del Lote
                     </label>
-                    <input type="number" style="background-color: white; " class="form-control" id="identificadorAr" #identificadorAr>
+                    <input type="number" style="background-color: white; " class="form-control" id="identificadorAr" value="{{IdentificadorLote}}" #identificadorAr>
                 </div>
                 <div class="form-group">
                     <label for="hectareas" style="color: rgb(255, 255, 255); margin-top: 10px; font-weight: bold;">
                         Ingrese las hectáreas del lote
                     </label>
-                    <input type="number" style="background-color: white; " class="form-control" id="hectareas" #hectareas>
+                    <input type="number" style="background-color: white; " class="form-control" id="hectareas" value="{{Hectareas}}" #hectareas>
                 </div>
                 <div class="form-group">
                     <label for="hectareas" style="color: rgb(255, 255, 255); margin-top: 10px; font-weight: bold;">
                         Cantidad Árboles a Controlar
                     </label>
-                    <input type="number" style="background-color: white; " class="form-control" id="hectareas" #arbolesControl>
+                    <input type="number" style="background-color: white; " class="form-control" id="hectareas" value="{{ArbolesControl}}" #arbolesControl>
                 </div>
                 <div class="form-group">
                     <label for="longitud" style="color: rgb(255, 255, 255); margin-top: 10px; font-weight: bold;">
                         Longitud
                     </label>
-                    <input type="number" style="background-color: white; " class="form-control" id="longitud" #Longitud>
+                    <input type="number" style="background-color: white; " class="form-control" id="longitud" value="{{Long}}" #Longitud>
                 </div>
                 <div class="form-group">
                     <label for="email" style="color: rgb(255, 255, 255); margin-top: 10px; font-weight: bold;">
                         Latitud
                     </label>
-                    <input type="number" style="background-color: white; " class="form-control" id="latitud" #latitud>
+                    <input type="number" style="background-color: white; " class="form-control" id="latitud" value="{{Latitud}}" #latitud>
                 </div>
                 <div class="form-group">
                     <label for="imagen" style="color: rgb(255, 255, 255); margin-top: 10px; font-weight: bold;">

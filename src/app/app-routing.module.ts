@@ -18,6 +18,7 @@ import { ViewArbolComponent } from './components/view-arbol/view-arbol.component
 import { ArbolesSiguienteComponent } from './components/arboles-siguiente/arboles-siguiente.component'; 
 import { GraficoCanvasComponent } from './components/grafico-canvas/grafico-canvas.component';
 import { InventarioGeneralComponent } from './components/inventario-general/inventario-general.component';
+import { QuimicosRecomendadosComponent } from './components/quimicos-recomendados/quimicos-recomendados.component';
 const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'logueado',component:LogueadoComponent},
@@ -26,7 +27,7 @@ const routes: Routes = [
   {path:'tipoControl',component:TipoControlComponent},
   {path:'lotes',component:LotesViewComponent},
   {path:'lotesLista',component:LotesListComponent},
-  {path:'newLote',component:NewLoteComponent},
+  {path:'newLote/:idLote',component:NewLoteComponent},
   {path:'listArboles/:idLote/:identificador',component:ArbolListComponent},
   {path:'newArbol/:idLote/:identificador/:idArbol',component:NewArbolComponent},
   {path:'tipoEstaciones',component:TipoEstacionesArbolComponent},
@@ -37,6 +38,7 @@ const routes: Routes = [
   {path:'statusArbol/:idLote/:identificador/:idArbol',component:ViewArbolComponent},
   {path:'arbolesPag/:idLote/:identificador',component:ArbolesSiguienteComponent},
   {path:'graficas',component:GraficoCanvasComponent},
+  {path:'arbolQuimicos/:idLote/:identificador/:idArbol',component:QuimicosRecomendadosComponent},
 
   {path:'**',pathMatch:'full',redirectTo:'login'}
 ];

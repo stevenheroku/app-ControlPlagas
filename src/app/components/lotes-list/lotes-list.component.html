@@ -19,7 +19,7 @@
     <div class="container">
         <div class="row">
             <div class="col text-center">
-                <button class="button" routerLink="/newLote">
+                <button class="button" (click)="viewNuevoLote()">
                     <div class="icon-circle"><mat-icon style="color: green;" >add</mat-icon></div>
                     Agregar Lote
                   </button>
@@ -45,7 +45,7 @@
                     <p>Árboles en Control: {{ lote.ArbolesControl }}</p>
                     <p>Empleado: {{ lote.Empleado }}</p>
                    
-                    <button class="btn btn-primary" ><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-primary" (click)="viewEditLote(lote.IdLote)"><i class="fas fa-edit"></i></button>
                     <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
                     <button class="btn btn-success" (click)="filtrarArbolesPorLote(lote.IdLote,lote.IdIdentificadorLote)" ><i class="fas fa-tree"></i></button>
                 </div>

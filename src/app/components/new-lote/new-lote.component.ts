@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LoteModel } from 'src/app/shared/models/LoteModel';
 import { RestsService } from 'src/app/shared/services/rests.service';
 import Swal from 'sweetalert2';
@@ -13,18 +13,72 @@ export class NewLoteComponent implements OnInit{
   imagenSeleccionada: string | ArrayBuffer | null = null;
   IdEmpleado:number=0;
   IdFinca:number=0;
+  LoteId:number=0;
+  Opcion:string="Crear Lote"
+  Accion:string="El Lote fue registrado Correctamente";
   IdLote:number=0;
   ImagenLote:string="";
-  constructor(private router: Router,private http: RestsService) { }
+  LoteIdentificadorId:number=0;
+  IdentificadorLote:number=0;
+  NombreEmpleado:string="";
+  Latitud:number=0;
+  Long:number=0;
+  Imagenlote:string='';
+  Empleado:number=0;
+  FechaCreacion:string='';
+  Hectareas:number=0;
+ArbolesControl:number=0;
+NombreFinca:string="";
+
+  constructor(private router: Router,private http: RestsService,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     const empleadoID = localStorage.getItem('IdEmpleado'); // 
     const fincaId = localStorage.getItem('IdFinca'); // 
+    const fincaNombre = localStorage.getItem('Finca'); // 
+
     console.log("empleado:"+empleadoID)
     console.log("finca:"+fincaId)
-    if ((empleadoID!=null)&&(fincaId!=null)) {
+    if ((empleadoID!=null)&&(fincaId!=null)&&(fincaNombre!=null)) {
       this.IdEmpleado=parseInt(empleadoID);
       this.IdFinca=parseInt(fincaId);
+      this.NombreFinca=fincaNombre.replace(/"/g,'').toUpperCase();
+    }
+    this.route.params.subscribe(params => {
+      const idLote = params['idLote'];
+      const identificadorLote = params['identificador'];
+      const idArbol = params['idArbol'];
+      console.log("IDLOTE2_:"+idLote)
+      // Ahora puedes usar el valor de "idLote" en esta vista para filtrar los árboles
+     this.LoteId=idLote;
+    });
+    if(this.LoteId>0)
+    {
+      this.Opcion="Editar Lote"
+      this.http.getLote(this.LoteId).subscribe(result=>{
+        if(result.state==200){
+          console.log(result.data)
+          const lote = result.data[0] as any;
+          const resultado = lote[0]; // Accedemos al primer elemento del primer arreglo
+          console.log("LONG"+resultado.Longitud)
+            this.LoteId = resultado.IdLote;
+            this.imagenSeleccionada=resultado.IdEmpleado;
+            this.IdentificadorLote = resultado.IdIdentificadorLote;
+            this.FechaCreacion=resultado.FechaCreacion;
+            this.Hectareas=resultado.HectareasLote;
+            this.ArbolesControl=resultado.NumeroArboles;
+            this.Long=resultado.Longitud;
+            this.ImagenLote = resultado.ImagenLote;
+            this.Latitud=resultado.Latitud;
+            this.imagenSeleccionada=resultado.ImagenLote;
+            this.IdFinca=resultado.IdFinca;
+
+            this.Accion="El Lote Fue Actualizado Correctamente"
+            console.log("EDIT"+this.IdentificadorLote)
+        }else{
+         
+        }
+      })
     }
   }
 
@@ -32,7 +86,7 @@ export class NewLoteComponent implements OnInit{
   {
     let lotenew:LoteModel;
     lotenew={
-      IdLote:this.IdLote ,
+      IdLote:this.LoteId ,
       ArbolesControl:parseInt(pnumeroArboles),
       Empleado:this.IdEmpleado,
       Identificador:parseInt(pidentificador),
@@ -47,10 +101,13 @@ export class NewLoteComponent implements OnInit{
       if(result.state==200){
           Swal.fire({
             title:'Registro Lote',
-            text: 'El Lote fue registrado Correctamente',
+            text: this.Accion,
             icon:'success',
             confirmButtonText: 'Aceptar'
-          })
+          }).then(() => {
+            // Navega a la misma vista para recargarla
+            this.router.navigate([`lotesLista`])
+          });
       }else{
         Swal.fire({
           title:'Registro Lote',

@@ -15,6 +15,7 @@ export class LotesListComponent {
   searchTerm: string = '';
   filteredLotes: any[] = [];
   isLoadingResults = true;
+  LoteId:Number=0;
 
   //variables globales
   NombreFinca:string="";
@@ -55,6 +56,14 @@ export class LotesListComponent {
     this.router.navigate([`arbolesPag/${idLote}/${identificador}`])
 
   }
+  viewNuevoLote() {
+    // Aquí reemplaza 'nombre-de-la-vista' con el nombre de la ruta a la que deseas redirigir
+    this.router.navigate([`newLote/${this.LoteId}`])
+  }
 
+  viewEditLote(idLote:number) {
+    // Aquí reemplaza 'nombre-de-la-vista' con el nombre de la ruta a la que deseas redirigir
+    this.router.navigate([`newLote/${idLote}`])
+  }
 
 }

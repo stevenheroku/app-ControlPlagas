@@ -40,14 +40,13 @@
                 <div class="lote-card">
                     
                     <img [src]="lote.ImagenArbol" alt="Foto del Árbol" width="30px" height="30px6">
-                    <p>Número de Árbol: {{ lote.IdArbol }}</p>
                     <p>Número de Identi: {{ lote.IdentificadorArbol }}</p>
                     <p>Empleado Creador: {{ lote.Empleado }}</p>
                     
                     <button class="btn btn-primary" (click)="viewEditarArbol(lote.IdArbol)"><i class="fas fa-edit"></i></button>
                     <button class="btn btn-danger" ><i class="fas fa-trash-alt"></i></button>
                     <button class="btn btn-dark" (click)="viewStatusArbol(lote.IdArbol)" ><i class="fas fa-eye"></i></button>
-                    <button class="btn btn-warning" (click)="viewStatusArbol(lote.IdArbol)" ><i class="fas fa-file-medical"></i></button>
+                    <button class="btn btn-warning" (click)="viewStatusMedicoArbol(lote.IdArbol)" ><i class="fas fa-file-medical"></i></button>
                     <button class="btn btn-success" (click)="viewControlArbol(lote.IdArbol)" ><i class="fas fa-plus-circle"></i></button>
 
                 </div>
