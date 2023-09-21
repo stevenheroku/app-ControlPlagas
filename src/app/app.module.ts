@@ -34,6 +34,7 @@ import { ArbolesSiguienteComponent } from './components/arboles-siguiente/arbole
 import { InventarioGeneralComponent } from './components/inventario-general/inventario-general.component';
 import { GraficoCanvasComponent } from './components/grafico-canvas/grafico-canvas.component';
 import { QuimicosRecomendadosComponent } from './components/quimicos-recomendados/quimicos-recomendados.component';
+import { RevisionControlComponent } from './components/revision-control/revision-control.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { QuimicosRecomendadosComponent } from './components/quimicos-recomendado
     ArbolesSiguienteComponent,
     InventarioGeneralComponent,
     GraficoCanvasComponent,
-    QuimicosRecomendadosComponent
+    QuimicosRecomendadosComponent,
+    RevisionControlComponent,
   ],
   imports: [
     MatButtonModule,

@@ -10,6 +10,7 @@ declare let html2pdf: any;
 export class ReportControlComponent {
   searchTerm: string = '';
   filteredLotes: any[] = [];
+  NombreFinca:string='';
   constructor(private router: Router) {}
   lotes = [
     { id: 1, cantEnfemedades: 'Lote 1', cantPlagas: 'Finca A', identificador: "rojo" },
@@ -18,6 +19,10 @@ export class ReportControlComponent {
 
 
   ngOnInit() {
+    const fincaNombre = localStorage.getItem('Finca'); // 
+    if ((fincaNombre!=null)) {
+      this.NombreFinca=fincaNombre.replace(/"/g,'').toUpperCase();
+    }
     this.filteredLotes = this.lotes; // Inicializa los lotes filtrados al inicio
   }
 

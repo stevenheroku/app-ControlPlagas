@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ArbolEnfermedadModel } from 'src/app/shared/models/ArbolEnfermedadModel';
 import { ArbolPlagaModel } from 'src/app/shared/models/ArbolPlagaModel';
 import { RestsService } from 'src/app/shared/services/rests.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-quimicos-recomendados',
@@ -12,10 +13,12 @@ import { RestsService } from 'src/app/shared/services/rests.service';
 export class QuimicosRecomendadosComponent {
   LoteId:number=0;
   LoteIdentificadorId:number=0;
+  IdentificadorArbol:number=0;
   ArbolId:number=0;
   ArbolesPlaga:any[]=[];
   ArbolesEnfermedad:any[]=[];
   NombreFinca:string='';
+  FechaControl:string='';
   lotes = [
     { id: 1, nombre: 'Lote 1', finca: 'Finca A', area: 100 },
     { id: 2, nombre: 'Lote 2', finca: 'Finca B', area: 150 },
@@ -32,23 +35,38 @@ export class QuimicosRecomendadosComponent {
       const idLote = params['idLote'];
       const identificadorLote = params['identificador'];
       const idArbol = params['idArbol'];
+      const idArbolIdentificador = params['idArbolIdentificador'];
+      const fechaControl = params['fechaControl'];
+      this.FechaControl=fechaControl;
       this.ArbolId=idArbol;
       console.log("IDLOTE2_:"+idLote)
       // Ahora puedes usar el valor de "idLote" en esta vista para filtrar los árboles
      this.LoteId=idLote;
      this.LoteIdentificadorId= identificadorLote;
+     this.IdentificadorArbol=idArbolIdentificador;
     });
     this.getPlagasArbol();
     this.getEnfermedadesArbol();
+    if(this.ArbolesPlaga.length>0 )
+    {
+      Swal.fire({
+        title:'Plagas Y Enfermedades',
+        text: 'No Existen Plagas y Enfermedades Registadas',
+        icon:'success',
+        confirmButtonText: 'Aceptar'
+      })
+    }
   }
   navigateListaArboles() {
     // Aquí reemplaza 'nombre-de-la-vista' con el nombre de la ruta a la que deseas redirigir
-    this.router.navigate([`listArboles/${this.LoteId}/${this.LoteIdentificadorId}`])
+    //this.router.navigate([`listArboles/${this.LoteId}/${this.LoteIdentificadorId}`])
+    this.router.navigate([`revisionControl/${this.LoteId}/${this.LoteIdentificadorId}/${this.ArbolId}/${this.IdentificadorArbol}`])
+
   }
 
   getPlagasArbol()
   {
-    this.http.getArbolPlagas(this.ArbolId).subscribe(result=>{
+    this.http.getArbolPlagas(this.ArbolId,this.FechaControl).subscribe(result=>{
       if(result.state==200){
         const plagas = result.data[0] as any;
         const resultado = plagas;
@@ -62,7 +80,7 @@ export class QuimicosRecomendadosComponent {
 
   getEnfermedadesArbol()
   {
-    this.http.getArbolEnfermedades(this.ArbolId).subscribe(result=>{
+    this.http.getArbolEnfermedades(this.ArbolId,this.FechaControl).subscribe(result=>{
       if(result.state==200){
         const enfermedadesArbol = result.data[0] as any;
         const resultado = enfermedadesArbol;

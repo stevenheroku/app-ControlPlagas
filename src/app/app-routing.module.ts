@@ -19,6 +19,7 @@ import { ArbolesSiguienteComponent } from './components/arboles-siguiente/arbole
 import { GraficoCanvasComponent } from './components/grafico-canvas/grafico-canvas.component';
 import { InventarioGeneralComponent } from './components/inventario-general/inventario-general.component';
 import { QuimicosRecomendadosComponent } from './components/quimicos-recomendados/quimicos-recomendados.component';
+import { RevisionControlComponent } from './components/revision-control/revision-control.component';
 const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'logueado',component:LogueadoComponent},
@@ -38,7 +39,8 @@ const routes: Routes = [
   {path:'statusArbol/:idLote/:identificador/:idArbol',component:ViewArbolComponent},
   {path:'arbolesPag/:idLote/:identificador',component:ArbolesSiguienteComponent},
   {path:'graficas',component:GraficoCanvasComponent},
-  {path:'arbolQuimicos/:idLote/:identificador/:idArbol',component:QuimicosRecomendadosComponent},
+  {path:'arbolQuimicos/:idLote/:identificador/:idArbol/:idArbolIdentificador/:fechaControl',component:QuimicosRecomendadosComponent},
+  {path:'revisionControl/:idLote/:identificador/:idArbol/:idArbolIdentificador',component:RevisionControlComponent},
 
   {path:'**',pathMatch:'full',redirectTo:'login'}
 ];

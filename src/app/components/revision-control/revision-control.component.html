@@ -1,0 +1,53 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+<nav class="navbar">
+    <div class="container-fluid">
+      <div class="back-link">
+        <a (click)="navigateListaArboles()">
+          <i class="fas fa-arrow-left" style="color: rgb(255, 255, 255);"></i>
+        </a>
+      </div>
+      <h1 class="mx-auto" style="font-size: 15px;">ÁRBOL: {{IdentificadorArbol}}</h1>
+      <div class="logo-circle">
+        <img src="/assets/img/logo.png" alt="logo" class="logo-img">
+      </div>
+    </div>
+  </nav>
+  <div class="viewLote">
+    
+      <div style="text-align: center;">
+        <h1 class="descripcion" style="background-color: rgb(2, 121, 19); color: aliceblue; padding: 10px;">
+            Inventario Control - Árbol
+          </h1>
+        <img src="/assets/img/inventario.png" style="height: 80px; width: 80px; display: block; margin: 20px auto;">
+      </div>
+    <div class="container">
+          
+            <div class="row justify-content-center">
+                <div class="lote-card">
+                  <ng-container *ngFor="let fechaControl of InvetarioArbol">
+                    <button (click)="navegarAPlagas(fechaControl.Label)" class="btn btn-primary btn-block mb-3">
+                      Control día: {{ fechaControl.Label }}
+                    </button>
+                  </ng-container>
+                </div>
+            </div>
+    </div>
+    </div>
+
+  <!--<div class="container">
+    <div class="row justify-content-center">
+        <h1 class="descripcion">Inventario</h1>
+        <h1 class="descripcion1">Incremento Productividad</h1>
+      <div class="col-md-6">
+        <div class="lote-card">
+          <ng-container *ngFor="let fechaControl of listaFechasControles">
+            <button (click)="navegarAPlagas(fechaControl)" class="btn btn-danger btn-block mb-2">
+              Control día: {{ fechaControl }}
+            </button>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>-->
+  

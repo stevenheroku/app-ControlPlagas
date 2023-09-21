@@ -45,13 +45,18 @@ newArbol(objetoArbol: ArbolModel): Observable<RespuestaArbol> {
 getArbol(idArbol: number): Observable<RespuestaArbol> {
   return this.http.get<RespuestaArbol>(`${this.URL}arboles/arbol/${idArbol}`);
 }
-getArbolPlagas(idArbol: number): Observable<RespuestaArbolPlaga> {
-  return this.http.get<RespuestaArbolPlaga>(`${this.URL}arboles/arbolPlagas/${idArbol}`);
+getArbolPlagas(idArbol: number,fecha:string): Observable<RespuestaArbolPlaga> {
+  return this.http.get<RespuestaArbolPlaga>(`${this.URL}arboles/arbolPlagas/${idArbol}/${fecha}`);
 }
 
-getArbolEnfermedades(idArbol: number): Observable<RespuestaArbolEnfermedad> {
-  return this.http.get<RespuestaArbolEnfermedad>(`${this.URL}arboles/arbolEnfermedades/${idArbol}`);
+getArbolEnfermedades(idArbol: number,fecha:string): Observable<RespuestaArbolEnfermedad> {
+  return this.http.get<RespuestaArbolEnfermedad>(`${this.URL}arboles/arbolEnfermedades/${idArbol}/${fecha}`);
 }
+
+getArbolBitacoraControl(idArbol: number): Observable<RespuestaCatalogos> {
+  return this.http.get<RespuestaCatalogos>(`${this.URL}arboles/arbolControlBitacora/${idArbol}`);
+}
+
 
 //USUARIOS
 newUsuario(objetoUsuario: any): Observable<RespuestaLogin> {
@@ -80,7 +85,7 @@ getTipoControl(): Observable<RespuestaCatalogos> {
   return this.http.get<RespuestaCatalogos>(`${this.URL}tipocontroles/tipoControl`);
 }
 
-//TIPO DE ESTRCUTURA
+//TIPO DE ESTRUCTURA
 getTipoEstructura(): Observable<RespuestaCatalogos> {
   return this.http.get<RespuestaCatalogos>(`${this.URL}estructuras/estructura`);
 }
