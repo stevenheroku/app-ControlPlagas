@@ -14,26 +14,28 @@
           <!-- Icono de flecha hacia atrás -->
         </a>
       </div>
-      <h1 class="mx-auto" style="font-size: 15px;">FINCA LA BENDICIÓN</h1>
+      <h1 class="mx-auto" style="font-size: 15px;">{{NombreFinca}}</h1>
       <div class="logo-circle">
         <img src="/assets/img/logo.png" alt="logo" class="logo-img">
       </div>
     </div>
   </nav>
-<div class="report-container">
-    <h2>INVENTARIO GENERAL</h2>
-    <div class="report-content">
-        <p>Total de Lotes: {{ totalDiaIngresan }}</p>
-        <p>Total de Árboles en Control: {{ totalDiaAyer }}</p>
-        <p>Total de Arboles Infectados: {{ totalMes }}</p>
-        <p>Total de plagas encontradas: {{ totalPlagas }}</p>
-        <p>Total de enfermedades encontradas: {{ totalEnfermedades }}</p>
+  <div class="viewLote">
+    <div >
+        <h1  class="descripcion">LOTES POR FINCA</h1>
     </div>
-    <div class="chart-container">
-     
+    <div class="table-container">
+          <div style="width: 100%;height:100%;">
+            <canvas
+            baseChart
+            [legend]="true"
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions">
+            </canvas>
+          </div>
     </div>
-    <button (click)="generarPDF()" class="download-button">
-        <i class="fas fa-download"></i> Descargar PDF
-    </button>
+    
 </div>
+
 <app-footer></app-footer>

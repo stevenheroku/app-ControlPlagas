@@ -19,6 +19,9 @@ export class RestsService {
   getLotes2(idFinca: number): Observable<RespuestaLote> {
     return this.http.get<RespuestaLote>(`${this.URL}lotes/lotefinca/${idFinca}`);
   }
+  getLotesGrafica(idFinca: number): Observable<any> {
+    return this.http.get<any>(`${this.URL}lotes/lotefincaGrafica/${idFinca}`);
+  }
   getLote(idLote: number): Observable<RespuestaLote> {
     return this.http.get<RespuestaLote>(`${this.URL}lotes/lote/${idLote}`);
   }

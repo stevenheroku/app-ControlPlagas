@@ -35,6 +35,7 @@ import { InventarioGeneralComponent } from './components/inventario-general/inve
 import { GraficoCanvasComponent } from './components/grafico-canvas/grafico-canvas.component';
 import { QuimicosRecomendadosComponent } from './components/quimicos-recomendados/quimicos-recomendados.component';
 import { RevisionControlComponent } from './components/revision-control/revision-control.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { RevisionControlComponent } from './components/revision-control/revision
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    NgChartsModule,
     FormsModule, // Agrega FormsModule aquí,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
