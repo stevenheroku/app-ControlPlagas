@@ -44,7 +44,7 @@
                     <p>Empleado Creador: {{ lote.Empleado }}</p>
                     
                     <button class="btn btn-primary" (click)="viewEditarArbol(lote.IdArbol)"><i class="fas fa-edit"></i></button>
-                    <button class="btn btn-danger" ><i class="fas fa-trash-alt"></i></button>
+                    <button class="btn btn-danger" (click)="eliminarArbol(lote.IdArbol)"><i class="fas fa-trash-alt"></i></button>
                     <button class="btn btn-dark" (click)="viewStatusArbol(lote.IdArbol)" ><i class="fas fa-eye"></i></button>
                    <!-- <button class="btn btn-warning" (click)="viewStatusMedicoArbol(lote.IdArbol,lote.IdentificadorArbol)" ><i class="fas fa-file-medical"></i></button>-->
                     <button class="btn btn-warning" (click)="viewStatusMedicoArbol(lote.IdArbol,lote.IdentificadorArbol)" ><i class="fas fa-file-medical"></i></button>

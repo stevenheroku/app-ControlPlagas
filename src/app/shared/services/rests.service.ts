@@ -22,11 +22,18 @@ export class RestsService {
   getLotesGrafica(idFinca: number): Observable<any> {
     return this.http.get<any>(`${this.URL}lotes/lotefincaGrafica/${idFinca}`);
   }
+
+  getLotesReporte(idFinca: number): Observable<any> {
+    return this.http.get<any>(`${this.URL}lotes/lotefincaReporte/${idFinca}`);
+  }
   getLote(idLote: number): Observable<RespuestaLote> {
     return this.http.get<RespuestaLote>(`${this.URL}lotes/lote/${idLote}`);
   }
   newLote(objetoLote: LoteModel): Observable<RespuestaLote> {
     return this.http.post<RespuestaLote>(`${this.URL}lotes/newLote`,objetoLote);
+  }
+  deleteLote(empleado:number,idLote: number): Observable<RespuestaCatalogos> {
+    return this.http.delete<RespuestaCatalogos>(`${this.URL}lotes/deletelote/${empleado}/${idLote}`);
   }
 //FINCA
 getFinca(): Observable<RespuestaFinca> {
@@ -60,6 +67,9 @@ getArbolBitacoraControl(idArbol: number): Observable<RespuestaCatalogos> {
   return this.http.get<RespuestaCatalogos>(`${this.URL}arboles/arbolControlBitacora/${idArbol}`);
 }
 
+deleteArbol(empleado:number,idArbol: number): Observable<RespuestaCatalogos> {
+  return this.http.delete<RespuestaCatalogos>(`${this.URL}arboles/deleteArbol/${empleado}/${idArbol}`);
+}
 
 //USUARIOS
 newUsuario(objetoUsuario: any): Observable<RespuestaLogin> {

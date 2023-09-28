@@ -16,21 +16,36 @@
 </nav>
 <div class="viewLote">
         <div >
-            <h1  class="descripcion">ÁNALISIS DE CONTROL</h1>
         </div>
         <div class="table-container">
             <div class="container">
-                <div *ngFor="let lote of lotes" class="card mx-auto" >
-                  <img class="img-fluid mx-auto my-3" style="max-width: 100px; max-height: 100px;" src="/assets/img/controlAnalisis.png" alt="">
-
+                <div *ngFor="let reporte of DataReport" class="card mx-auto" >
+                  <div style="text-align: center;">
+                    <h1 style="background-color: rgb(190, 190, 190);" class="descripcion">Informe de Control</h1>
+                    <img src="/assets/img/controlBasico.png" style="height: 80px; width: 80px; display: block; margin: 20px auto;">
+                  </div>
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Lotes   Creados Hoy:2</li>
-                    <li class="list-group-item">Árboles Creados Hoy: 10</li>
-                    <li class="list-group-item">Lotes Creados Ayer: 5</li>
-                    <li class="list-group-item">Árboles Creados Ayer: 20</li>
-                    <li class="list-group-item">Cantidad Enfermedades Detectadas: 250</li>
-                    <li class="list-group-item">Cantidad Plagas Detectadas: 110</li>
-
+                    <li class="list-group-item textoI">
+                        <i class="fas fa-calendar-day"></i> Lotes Creados Hoy: {{reporte.LotesHoy}}
+                      </li>
+                      <li class="list-group-item textoI">
+                        <i class="fas fa-tree"></i> Árboles Creados Hoy: {{reporte.ArbolesHoy}}
+                      </li>
+                      <li class="list-group-item textoI">
+                        <i class="fas fa-calendar-alt"></i> Lotes Creados Ayer: {{reporte.LotesAyer}}
+                      </li>
+                      <li class="list-group-item textoI">
+                        <i class="fas fa-tree"></i> Árboles Creados Ayer: {{reporte.ArbolesAyer}}
+                      </li>
+                      <li class="list-group-item textoI">
+                        <i class="fas fa-disease"></i> Enfermedades Detectadas: {{reporte.CantidadEnfermedades}}
+                      </li>
+                      <li class="list-group-item textoI">
+                        <i class="fas fa-bug"></i> Plagas Detectadas: {{reporte.CantidadPlagas}}
+                      </li>
+                      <li class="list-group-item textoI">
+                        <i class="fas fa-calendar-minus"></i> Total de Lotes: {{reporte.LotesTotal}}
+                      </li>
                   </ul>
                 </div>
               </div>

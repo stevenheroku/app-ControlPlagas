@@ -247,3 +247,16 @@ margin-right: 8px;
 border-radius: 50%;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+  padding: 20px; /* Ajusta el relleno según sea necesario */
+  /* Agrega otros estilos al contenido según sea necesario */
+}

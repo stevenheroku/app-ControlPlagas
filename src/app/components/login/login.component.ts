@@ -19,47 +19,72 @@ export class LoginComponent {
       Rol:0
     };
     console.log("datos envio:" +usuario.Correo +" "+usuario.Pass)
-    if(usuario.Correo=='' && usuario.Pass=='')
+    if(usuario.Correo=='')
     {
       Swal.fire({
         title: 'Error!',
-        text: "Ingresar correo y contraseña" ,
+        text: "Ingrese su Correo" ,
         icon: 'error',
         confirmButtonText: 'Aceptar'
        }
       )
-    }else{
-      this.authService.singin(usuario).subscribe(res=>{
-        console.log(res)
-        if(res.state==200)
-        {
-        localStorage.setItem('IdEmpleado', JSON.stringify(res.data.Empleado));
-        localStorage.setItem('Finca', JSON.stringify(res.data.Finca));
-        localStorage.setItem('Rol', JSON.stringify(res.data.NombreRol));
-        localStorage.setItem('NameApellido', JSON.stringify(res.data.NombreApellido));
-        localStorage.setItem('IdFinca', JSON.stringify(res.data.IdFinca));
-          Swal.fire({
-           title: 'Bienvenido!',
-           text: res.data.Nombres ,
-           icon: 'success',
-           confirmButtonText: 'Aceptar'
+    }else  if(usuario.Pass=='')
+    {
+      Swal.fire({
+        title: 'Error!',
+        text: "Ingrese su Contraseña" ,
+        icon: 'error',
+        confirmButtonText: 'Aceptar'
+       }
+      )
+    }
+    else if(usuario.Correo!=='')
+    {
+      if(!usuario.Correo.includes("@") ||!usuario.Correo.includes(".com"))
+      {
+        Swal.fire({
+          title: 'Error!',
+          text: "Ingrese un correo Válido!" ,
+          icon: 'error',
+          confirmButtonText: 'Aceptar'
+         }
+        )
+      }
+      else{
+        this.authService.singin(usuario).subscribe(res=>{
+          console.log(res)
+          if(res.state==200)
+          {
+          localStorage.setItem('IdEmpleado', JSON.stringify(res.data.Empleado));
+          localStorage.setItem('Finca', JSON.stringify(res.data.Finca));
+          localStorage.setItem('Rol', JSON.stringify(res.data.NombreRol));
+          localStorage.setItem('NameApellido', JSON.stringify(res.data.NombreApellido));
+          localStorage.setItem('IdFinca', JSON.stringify(res.data.IdFinca));
+            Swal.fire({
+             title: 'Bienvenido!',
+             text: res.data.Nombres ,
+             icon: 'success',
+             confirmButtonText: 'Aceptar'
+            }
+           ).then(() => {
+            // Navega a la misma vista para recargarla
+            this.router.navigate(['/logueado'])
+          });
+          }else{
+            Swal.fire({
+              title: 'Error!',
+              text: res.data ,
+              icon: 'error',
+              confirmButtonText: 'Aceptar'
+             }
+            )
           }
-         ).then(() => {
-          // Navega a la misma vista para recargarla
-          this.router.navigate(['/logueado'])
-        });
          
-        }else{
-          Swal.fire({
-            title: 'Error!',
-            text: res.data ,
-            icon: 'error',
-            confirmButtonText: 'Aceptar'
-           }
-          )
-        }
-       
-     })
+       })
+      }
+    }
+    else{
+      
     }
     
   }

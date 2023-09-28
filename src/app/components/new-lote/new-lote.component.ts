@@ -19,20 +19,50 @@ export class NewLoteComponent implements OnInit{
   IdLote:number=0;
   ImagenLote:string="";
   LoteIdentificadorId:number=0;
-  IdentificadorLote:number=0;
+  IdentificadorLote:string='';
   NombreEmpleado:string="";
   Latitud:number=0;
   Long:number=0;
   Imagenlote:string='';
   Empleado:number=0;
   FechaCreacion:string='';
-  Hectareas:number=0;
-ArbolesControl:number=0;
+  Hectareas:string='';
+  ArbolesControl:string='';
 NombreFinca:string="";
 
-  constructor(private router: Router,private http: RestsService,private route: ActivatedRoute) { }
+  constructor(private router: Router,private http: RestsService,private route: ActivatedRoute) {  }
 
   ngOnInit(): void {
+    
+      // El navegador soporta geolocalización
+      if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            // Obtener ubicación exitosamente
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            this.Long=longitude;
+            this.Latitud=latitude;
+            console.log("Latitud:", latitude);
+            console.log("Longitud:", longitude);
+          },
+          (error) => {
+            if (error.code === error.PERMISSION_DENIED) {
+              // El usuario denegó el permiso de geolocalización
+              console.error("El usuario ha denegado el permiso de geolocalización.");
+              alert("Para usar esta función, necesitamos acceder a tu ubicación. Por favor, otorga permisos de ubicación en la configuración de tu navegador.");
+            } else {
+              // Otro error de geolocalización
+              console.error("Error al obtener la ubicación:", error.message);
+            }
+          }
+        );
+      } else {
+        // El navegador no soporta geolocalización
+        console.error("El navegador no soporta geolocalización");
+      }
+    
+    
     const empleadoID = localStorage.getItem('IdEmpleado'); // 
     const fincaId = localStorage.getItem('IdFinca'); // 
     const fincaNombre = localStorage.getItem('Finca'); // 
@@ -84,6 +114,17 @@ NombreFinca:string="";
 
   crearEditarLote(pidentificador:string,phectareas:string,pnumeroArboles:string,pLongitud:string,pLatitud:string)
   {
+    if (pidentificador=='' || pLongitud=='' || pLatitud=='' ||pnumeroArboles==''|| this.ImagenLote=='') {
+      // Mostrar una alerta indicando que los campos son obligatorios
+      console.log(pidentificador+pLongitud+pLatitud+pnumeroArboles+this.ImagenLote)
+      Swal.fire({
+        title: 'Campos Obligatorios',
+        text: 'Por favor, complete todos los campos',
+        icon: 'error',
+        confirmButtonText: 'Aceptar'
+      });
+      return; // Detener la ejecución de la función si faltan campos
+    }
     let lotenew:LoteModel;
     lotenew={
       IdLote:this.LoteId ,

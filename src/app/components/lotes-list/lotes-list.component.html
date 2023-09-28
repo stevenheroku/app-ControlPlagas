@@ -46,7 +46,7 @@
                     <p>Empleado: {{ lote.Empleado }}</p>
                    
                     <button class="btn btn-primary" (click)="viewEditLote(lote.IdLote)"><i class="fas fa-edit"></i></button>
-                    <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                    <button class="btn btn-danger" (click)="eliminarLote(lote.IdLote)"><i class="fas fa-trash-alt"></i></button>
                     <button class="btn btn-success" (click)="filtrarArbolesPorLote(lote.IdLote,lote.IdIdentificadorLote)" ><i class="fas fa-tree"></i></button>
                 </div>
             </div>

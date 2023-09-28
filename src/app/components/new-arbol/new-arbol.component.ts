@@ -17,7 +17,7 @@ export class NewArbolComponent {
   Accion:string="El Árbol fue registrado Correctamente";
   LoteId:number=0;
   LoteIdentificadorId:number=0;
-  IdentificadorArbol:number=0;
+  IdentificadorArbol:string='';
   NombreEmpleado:string="";
   ArbolId:number=0;
   Latitud:number=0;
@@ -25,6 +25,7 @@ export class NewArbolComponent {
   constructor(private router: Router,private http: RestsService,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+   this.inicializarUbicacion();
     const empleadoID = localStorage.getItem('IdEmpleado'); // 
     const fincaId = localStorage.getItem('IdFinca'); // 
     const nombreApellido = localStorage.getItem('NameApellido'); // 
@@ -68,6 +69,16 @@ export class NewArbolComponent {
   
   crearEditarArbol(pIdArbol:string,pidentificador:string,pLongitud:string,pLatitud:string)
   {
+    if (!pIdArbol || !pidentificador || !pLongitud || !pLatitud || !this.ImagenArbol) {
+      // Mostrar una alerta indicando que los campos son obligatorios
+      Swal.fire({
+        title: 'Campos Obligatorios',
+        text: 'Por favor, complete todos los campos',
+        icon: 'error',
+        confirmButtonText: 'Aceptar'
+      });
+      return; // Detener la ejecución de la función si faltan campos
+    }
     let Arbolnew:ArbolModel;
     Arbolnew={
          IdArbol: parseInt(pIdArbol),
@@ -79,9 +90,6 @@ export class NewArbolComponent {
          IdLote:this.LoteId
       
     }
-    console.log("ARBOL NUEVO:"+Arbolnew.Longitud);
-    console.log("ARBOL NUEVO:"+Arbolnew.Latitud);
-    console.log("ARBOL NUEVO:"+Arbolnew.IdArbol);
     this.http.newArbol(Arbolnew).subscribe(result=>{
       if(result.state==200){
           Swal.fire({
@@ -119,6 +127,37 @@ export class NewArbolComponent {
         this.imagenSeleccionada = e.target?.result || null; // Añadir un valor predeterminado
       };
       reader.readAsDataURL(file);
+    }
+  }
+
+  public inicializarUbicacion()
+  {
+     // El navegador soporta geolocalización
+     if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          // Obtener ubicación exitosamente
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+          this.Longitud=longitude;
+          this.Latitud=latitude;
+          console.log("Latitud:", latitude);
+          console.log("Longitud:", longitude);
+        },
+        (error) => {
+          if (error.code === error.PERMISSION_DENIED) {
+            // El usuario denegó el permiso de geolocalización
+            console.error("El usuario ha denegado el permiso de geolocalización.");
+            alert("Para usar esta función, necesitamos acceder a tu ubicación. Por favor, otorga permisos de ubicación en la configuración de tu navegador.");
+          } else {
+            // Otro error de geolocalización
+            console.error("Error al obtener la ubicación:", error.message);
+          }
+        }
+      );
+    } else {
+      // El navegador no soporta geolocalización
+      console.error("El navegador no soporta geolocalización");
     }
   }
 }

@@ -72,3 +72,12 @@ export class RespuestaLote{
         public message:string,
       ) {}
   }
+
+  export class RespuestaEliminarArbol{
+    
+    constructor(
+        public state:number,
+        public data:string,
+        public message:string,
+      ) {}
+  }

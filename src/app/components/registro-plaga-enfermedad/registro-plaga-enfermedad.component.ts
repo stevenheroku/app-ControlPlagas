@@ -36,7 +36,7 @@ export class RegistroPlagaEnfermedadComponent {
   valorTipoControl: string = '0';
   valorEstacion: string = '0';
   valorEstructura: string = '0';
-
+  CantIndividuos:number=0;
   //Label
   valorEstacionLabel: string = '';
 
@@ -59,7 +59,6 @@ export class RegistroPlagaEnfermedadComponent {
     });
     this.http.getArbol(this.NumeroArbol).subscribe(result=>{
       if(result.state==200){
-        console.log(result.data)
         const lote = result.data[0] as any;
         const resultado = lote[0];
         this.IdentificadorArbol = resultado.IdentificadorArbol;
@@ -125,6 +124,18 @@ export class RegistroPlagaEnfermedadComponent {
 
   crearControl(objeto:TipoControlModel,identificadorArbol:number,estacion:string)
   {
+    console.log("CREAR CONTROL")
+    console.log(objeto.CantidadIndividuos)
+    if (objeto.CantidadIndividuos<=0 || objeto.IdPlaga_Enfermedad<=0||objeto.TipoControl<=0||objeto.TipoEstacion<=0) {
+      // Mostrar una alerta indicando que los campos son obligatorios
+      Swal.fire({
+        title: 'Campos Obligatorios',
+        text: 'Por favor, complete todos los campos',
+        icon: 'error',
+        confirmButtonText: 'Aceptar'
+      });
+      return; // Detener la ejecución de la función si faltan campos
+    }
     const mensaje="Se Registro la Estación: "+estacion+" del Árbol: "+identificadorArbol;
     this.http.newControl(objeto).subscribe(result=>{
       if(result.state==200){
@@ -135,7 +146,9 @@ export class RegistroPlagaEnfermedadComponent {
           confirmButtonText: 'Aceptar'
         }).then(() => {
           // Navega a la misma vista para recargarla
-          this.router.navigate([`controlArbol/${this.LoteId}/${this.IdentificadorArbol}/${this.NumeroArbol}`])
+          //this.router.navigate([`controlArbol/${this.LoteId}/${this.IdentificadorArbol}/${this.NumeroArbol}`])
+          window.location.reload();
+
         });
       }else if(result.state==204){
         Swal.fire({

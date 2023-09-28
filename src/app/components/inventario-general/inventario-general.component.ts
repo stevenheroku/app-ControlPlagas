@@ -6,6 +6,7 @@ import {
   Input,
   Output,
   EventEmitter,
+  ChangeDetectorRef 
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { ChartOptions, ChartType } from 'chart.js';
@@ -25,7 +26,8 @@ export class InventarioGeneralComponent {
   constructor(
     private router: Router,
     private http: RestsService,
-    private mainService: MainService
+    private mainService: MainService,
+    private cdr: ChangeDetectorRef
   ) {}
   responseData: any[] = [];
   resultsLength = 0;
@@ -72,15 +74,26 @@ export class InventarioGeneralComponent {
       this.NombreFinca = fincaNombre.replace(/"/g, '').toUpperCase();
       this.FincaId = parseInt(IdFinca);
     }
-    if(this.bandera==0)
-    {
-      this.lotesGrafica();
-      this.bandera=1;
-    }
-    if(this.bandera==1)
-    {
-      this.grafica();
-    }
+    /*this.lotes = [
+      { IdIdentificadorLote: 1892, FechaCreacion: '2023-09-17', Arboles: 2 },
+      { IdIdentificadorLote: 2321, FechaCreacion: '2023-09-17', Arboles: 1 },
+      { IdIdentificadorLote: 8393, FechaCreacion: '2023-09-18', Arboles: 4 },
+      { IdIdentificadorLote: 4142, FechaCreacion: '2023-09-19', Arboles: 3 },
+      { IdIdentificadorLote: 4222, FechaCreacion: '2023-09-19', Arboles: 3 },
+      { IdIdentificadorLote: 4554, FechaCreacion: '2023-09-19', Arboles: 3 },
+    ];*/
+    
+    this.lotesGrafica4()
+    .then((lotes) => {
+      console.log("entro a grafica");
+      this.barChartData.reverse();
+      this.grafica(lotes);
+    })
+    .catch((error) => {
+      console.error('Error en lotesGrafica3', error);
+    });
+      this.lotesGrafica4();
+     
   }
   public  lotesGrafica() {
     this.http.getLotesGrafica(Number(this.FincaId)).subscribe((data) => {
@@ -91,29 +104,41 @@ export class InventarioGeneralComponent {
         // Asigna los mismos datos a filteredLotes
         console.log(this.lotes2);
         this.filteredLotes = lote;
-        this.lotes = [
-          { IdIdentificadorLote: 1892, FechaCreacion: '2023-09-17', Arboles: 2 },
-          { IdIdentificadorLote: 2321, FechaCreacion: '2023-09-17', Arboles: 1 },
-          { IdIdentificadorLote: 8393, FechaCreacion: '2023-09-18', Arboles: 4 },
-          { IdIdentificadorLote: 4142, FechaCreacion: '2023-09-19', Arboles: 3 },
-          { IdIdentificadorLote: 4222, FechaCreacion: '2023-09-19', Arboles: 3 },
-          { IdIdentificadorLote: 4554, FechaCreacion: '2023-09-19', Arboles: 3 },
-        ];
+        console.log(this.filteredLotes)
       } else {
         this.isLoadingResults = false;
       }
     });
-    
   }
-  public grafica() {
-    console.log('segundo');
-    // Crear un mapa para agrupar los lotes por fecha y lote
+
+  public lotesGrafica3() {
+    this.http.getLotesGrafica(Number(this.FincaId)).subscribe((data) => {
+      console.log('Primero');
+      if (data.state === 200) {
+        const lote = data.data[0] as any;
+        this.lotes2 = [lote]; // Asigna los datos a this.lotes
+        // Asigna los mismos datos a filteredLotes
+        console.log(this.lotes2);
+        this.filteredLotes = lote;
+        console.log(this.filteredLotes);
+        
+        // Realizar otras acciones aquí, después de obtener los datos
+        this.grafica(this.filteredLotes);
+        this.barChartData.reverse();
+      } else {
+        this.isLoadingResults = false;
+      }
+    });
+  }
+
+  public grafica(lotesParam: any[]) {
+    console.log('graficas');
     const lotesPorFecha = new Map<string, Map<string, number>>();
-    console.log('22' + this.lotes);
-    this.lotes.forEach((lote) => {
+    lotesParam.forEach((lote) => {
       const fecha = lote.FechaCreacion;
       const loteId = lote.IdIdentificadorLote.toString(); // Convertir a cadena
       const arboles = lote.Arboles;
+      console.log(fecha+loteId+arboles)
       if (!lotesPorFecha.has(fecha)) {
         lotesPorFecha.set(fecha, new Map<string, number>());
         this.barChartLabels.push(fecha); // Agregar la fecha al arreglo de etiquetas
@@ -127,8 +152,9 @@ export class InventarioGeneralComponent {
 
     // Crear arreglos para datos del gráfico
     const loteIds = Array.from(
-      new Set(this.lotes.map((lote) => lote.IdIdentificadorLote.toString()))
+      new Set(lotesParam.map((lote) => lote.IdIdentificadorLote.toString()))
     );
+    console.log("arreglo lotes")
     loteIds.forEach((loteId) => {
       const dataPorLote = this.barChartLabels.map((fecha) => {
         return lotesPorFecha.get(fecha)?.get(loteId) || 0;
@@ -138,6 +164,61 @@ export class InventarioGeneralComponent {
         label: `Lote ${loteId}`,
         backgroundColor: this.getRandomColor(),
       });
+    });
+  }
+
+  public async lotesGrafica2() {
+    return new Promise<any[]>((resolve, reject) => {
+      this.http.getLotesGrafica(Number(this.FincaId)).subscribe(
+        (data) => {
+          console.log('Primero');
+          if (data.state === 200) {
+            const lote = data.data[0] as any;
+            this.lotes2 = [lote]; // Asigna los datos a lotes
+            console.log(this.lotes2);
+            this.filteredLotes = lote;
+            
+            resolve(lote); // Resuelve la promesa con el arreglo de lotes
+            console.log(this.filteredLotes)
+            
+          } else {
+            this.isLoadingResults = false;
+            reject('Error en la solicitud HTTP');
+          }
+        },
+        (error) => {
+          console.error('Error en la solicitud HTTP', error);
+          reject('Error en la solicitud HTTP');
+        }
+      );
+    });
+  }
+
+  public lotesGrafica4(): Promise<any[]> {
+    return new Promise<any[]>((resolve, reject) => {
+      this.http.getLotesGrafica(Number(this.FincaId)).subscribe(
+        (data) => {
+          console.log('Primero');
+          if (data.state === 200) {
+            const lote = data.data[0] as any;
+            this.lotes2 = [lote]; // Asigna los datos a this.lotes
+            // Asigna los mismos datos a filteredLotes
+            console.log(this.lotes2);
+            this.filteredLotes = lote;
+            console.log(this.filteredLotes);
+  
+            // Realizar otras acciones aquí, después de obtener los datos
+            resolve(this.filteredLotes);
+          } else {
+            this.isLoadingResults = false;
+            reject('Error en la solicitud HTTP');
+          }
+        },
+        (error) => {
+          console.error('Error en la solicitud HTTP', error);
+          reject('Error en la solicitud HTTP');
+        }
+      );
     });
   }
   private getDataFromDatabase(): Observable<any> {
