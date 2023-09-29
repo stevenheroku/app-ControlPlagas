@@ -19,11 +19,12 @@
         </div>
         <div class="table-container">
             <div class="container">
-                <div *ngFor="let reporte of DataReport" class="card mx-auto" >
+                
                   <div style="text-align: center;">
                     <h1 style="background-color: rgb(190, 190, 190);" class="descripcion">Informe de Control</h1>
                     <img src="/assets/img/controlBasico.png" style="height: 80px; width: 80px; display: block; margin: 20px auto;">
                   </div>
+                  <div *ngFor="let reporte of DataReport" class="card mx-auto" >
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item textoI">
                         <i class="fas fa-calendar-day"></i> Lotes Creados Hoy: {{reporte.LotesHoy}}
@@ -51,4 +52,16 @@
               </div>
         </div>
 </div>
+
+<div [ngClass]="{'centered-container': isLoadingResults == false}">
+
+  <div *ngIf="isLoadingResults == false" class="text-center">
+    <!-- Spinner de carga -->
+    <div class="spinner-grow text-secondary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+    <div class="text-secondary" style="font-size: 10px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Espere por favor...</div>
+  </div>
+</div>
 <app-footer class="app-footer"></app-footer>
+

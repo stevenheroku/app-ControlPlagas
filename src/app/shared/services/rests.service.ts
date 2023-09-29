@@ -7,11 +7,13 @@ import { map } from 'rxjs/operators';
 import { LoteModel } from '../models/LoteModel';
 import { ArbolModel } from '../models/ArbolModel';
 import { TipoControlModel } from '../models/TipoControlModel';
+import { tap, catchError } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })
 export class RestsService {
-  URL = environment.apiUrl;
+  URL = environment.apiUrl+"/api/";
   constructor(private http:HttpClient) { }
 
  
@@ -37,7 +39,26 @@ export class RestsService {
   }
 //FINCA
 getFinca(): Observable<RespuestaFinca> {
+  console.log("entro a obtener fincas")
   return this.http.get<RespuestaFinca>(`${this.URL}fincas/finca`);
+}
+
+getFinca3(): Observable<RespuestaFinca> {
+  console.log("entro a obtener fincas")
+  return this.http.post<RespuestaFinca>(`fincas/finca`,null);
+}
+getFinca2(): Observable<RespuestaFinca> {
+  console.log("entro a obtener fincas");
+  return this.http.get<RespuestaFinca>(`${this.URL}fincas/finca`)
+    .pipe(
+      tap(data => {
+        console.log("Datos recibidos del API:", data);
+      }),
+      catchError(error => {
+        console.error("Error al obtener datos del API:", error);
+        throw error; // Propaga el error para manejarlo en el componente que llama a esta función
+      })
+    );
 }
 
 //ARBOLES

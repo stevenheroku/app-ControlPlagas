@@ -19,6 +19,7 @@ export class QuimicosRecomendadosComponent {
   ArbolesEnfermedad:any[]=[];
   NombreFinca:string='';
   FechaControl:string='';
+  isLoadingResults:boolean=false;
   lotes = [
     { id: 1, nombre: 'Lote 1', finca: 'Finca A', area: 100 },
     { id: 2, nombre: 'Lote 2', finca: 'Finca B', area: 150 },
@@ -71,9 +72,10 @@ export class QuimicosRecomendadosComponent {
         const plagas = result.data[0] as any;
         const resultado = plagas;
         this.ArbolesPlaga =resultado;
+        this.isLoadingResults=true;
         console.log(this.ArbolesPlaga)
       }else{
-       
+       this.isLoadingResults=true;
       }
     })
   }
@@ -84,9 +86,12 @@ export class QuimicosRecomendadosComponent {
       if(result.state==200){
         const enfermedadesArbol = result.data[0] as any;
         const resultado = enfermedadesArbol;
+        this.isLoadingResults=true;
+
         this.ArbolesEnfermedad = resultado;
       }else{
-       
+        this.isLoadingResults=true;
+
       }
     })
   }

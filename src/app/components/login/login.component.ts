@@ -40,7 +40,7 @@ export class LoginComponent {
     }
     else if(usuario.Correo!=='')
     {
-      if(!usuario.Correo.includes("@") ||!usuario.Correo.includes(".com"))
+      if(!usuario.Correo.includes("@"))
       {
         Swal.fire({
           title: 'Error!',

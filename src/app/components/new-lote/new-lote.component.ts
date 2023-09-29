@@ -35,7 +35,7 @@ NombreFinca:string="";
   ngOnInit(): void {
     
       // El navegador soporta geolocalización
-      if ("geolocation" in navigator) {
+      
         navigator.geolocation.getCurrentPosition(
           (position) => {
             // Obtener ubicación exitosamente
@@ -57,10 +57,7 @@ NombreFinca:string="";
             }
           }
         );
-      } else {
-        // El navegador no soporta geolocalización
-        console.error("El navegador no soporta geolocalización");
-      }
+      
     
     
     const empleadoID = localStorage.getItem('IdEmpleado'); // 

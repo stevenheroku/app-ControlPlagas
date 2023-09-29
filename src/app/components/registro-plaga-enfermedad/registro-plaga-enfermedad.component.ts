@@ -17,7 +17,7 @@ export class RegistroPlagaEnfermedadComponent {
   nombresEnfermedadesPlagas: string[] = [];
   nombresEstaciones: string[] = [];
   nombresTipoControl: string[] = [];
-
+  isLoadingResults:boolean=false;
   NumeroArbol:number=0;
   NombreFinca:string="";
   IdentificadorArbol:number=0;
@@ -63,8 +63,9 @@ export class RegistroPlagaEnfermedadComponent {
         const resultado = lote[0];
         this.IdentificadorArbol = resultado.IdentificadorArbol;
         this.imagenSeleccionada=resultado.ImagenArbol;
+        this.isLoadingResults=true;
       }else{
-       
+       this.isLoadingResults=true;
       }
     })
     this.getPlagas();

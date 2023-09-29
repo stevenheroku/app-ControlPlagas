@@ -15,7 +15,7 @@ export class LotesListComponent {
   resultsLength = 0;
   searchTerm: string = '';
   filteredLotes: any[] = [];
-  isLoadingResults = true;
+  isLoadingResults:boolean= false;
   LoteId:Number=0;
 
   //variables globales
@@ -37,13 +37,14 @@ export class LotesListComponent {
     this.http.getLotes2(Number(IdFinca)).subscribe(data => {
       if (data.state === 200) {
         const lote = data.data[0] as any;
-        this.lotes = [lote]; // Asigna los datos a this.lotes
-        // Asigna los mismos datos a filteredLotes
+        this.lotes = [lote];
+        this.filteredLotes = lote;
+        this.isLoadingResults = true;
         console.log(this.lotes);
-        this.filteredLotes=lote;
         console.log(this.filteredLotes);
       } else {
-        this.isLoadingResults = false;
+        // Si ocurre un error
+        this.isLoadingResults = true;
       }
     });
   }

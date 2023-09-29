@@ -17,7 +17,7 @@ export class ArbolListComponent {
   resultsLength = 0;
   searchTerm: string = '';
   filteredLotes: any[] = [];
-  isLoadingResults = true;
+  isLoadingResults = false;
   LoteId:Number=0;
   ArbolId:number=0;
   LoteIdentificadorId:Number=0;
@@ -40,11 +40,10 @@ export class ArbolListComponent {
         const lote = data.data[0] as any;
         this.arboles = [lote]; // Asigna los datos a this.lotes
         // Asigna los mismos datos a filteredLotes
-        console.log(this.arboles);
         this.filteredLotes=lote;
-        console.log(this.filteredLotes);
+        this.isLoadingResults=true;
       } else {
-        this.isLoadingResults = false;
+        this.isLoadingResults = true;
       }
     });
     this.filteredLotes = this.arboles; // Inicializa los lotes filtrados al inicio

@@ -60,3 +60,14 @@
         </div>
     </div>
 </div>
+
+<div [ngClass]="{'centered-container': isLoadingResults == false}">
+
+    <div *ngIf="isLoadingResults == false" class="text-center">
+      <!-- Spinner de carga -->
+      <div class="spinner-grow text-secondary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="text-secondary">Espere por favor...</div>
+    </div>
+  </div>

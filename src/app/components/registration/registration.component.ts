@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthUsuario } from 'src/app/shared/models/AuthUsuario';
 import { AuthEmpleado } from 'src/app/shared/models/AuthEmpleado';
@@ -15,7 +15,7 @@ import { FincaModel } from 'src/app/shared/models/FincaModel';
 })
 
 
-export class RegistrationComponent {
+export class RegistrationComponent implements OnInit {
   
   showPassword: boolean = false;
   showPassword2: boolean = false;
@@ -24,6 +24,7 @@ export class RegistrationComponent {
   valorFinca: string = '0'; // Variable para almacenar el valor seleccionado
   fincas: FincaModel[] = []; // Variable para almacenar las fincas
   dpi: string = ''; // Variable para almacenar el valor del DPI
+  fincas2: any[] = [];
 
   constructor(private router: Router,private http: RestsService) { }
   ngOnInit(): void {
@@ -35,6 +36,7 @@ export class RegistrationComponent {
         this.fincas = finca; // Asigna los datos a this.lotes
         // Asigna los mismos datos a filteredLotes
     });
+    
   }
 
   crearRegistroUsuario(pNombres:string,pApellidos:string,pFechaN:string,pNumero:string,

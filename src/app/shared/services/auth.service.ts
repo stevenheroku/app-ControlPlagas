@@ -10,7 +10,7 @@ import { AuthUsuario } from '../models/AuthUsuario';
   providedIn: 'root'
 })
 export class AuthService {
-  URL = environment.apiUrl;
+  URL = environment.apiUrl+"/api/"
   constructor(private http:HttpClient) { }
 
   singin(user:AuthUsuario){

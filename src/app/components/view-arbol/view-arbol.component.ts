@@ -14,6 +14,7 @@ export class ViewArbolComponent {
   LoteIdentificadorId:number=0;
   NumeroArbol:number=0;
   NombreFinca:string="";
+  isLoadingResults:boolean=false;
   constructor(private router: Router,private http: RestsService,private route: ActivatedRoute) {}
   lotes = [
     { id: 1, cantEnfemedades: 'Lote 1', cantPlagas: 'Finca A', identificador: "rojo" },
@@ -45,10 +46,12 @@ export class ViewArbolComponent {
         this.lotes = [lote]; // Asigna los datos a this.lotes
         // Asigna los mismos datos a filteredLotes
         console.log(this.lotes);
+        this.isLoadingResults=true;
         this.filteredArbol=lote;
         console.log(this.filteredArbol);
       } else {
-        
+        this.isLoadingResults=true;
+
       }
     });
     

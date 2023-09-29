@@ -345,3 +345,29 @@ h1 {
 .color-circle.rojo {
     background-color: red;
 }
+
+.disabled-view {
+    pointer-events: none;
+    opacity: 0.8;
+    /* Opcional: agrega un fondo gris para deshabilitar la vista */
+    background-color: rgba(249, 245, 245, 0.5);
+    /* Opcional: agrega una posición fija para cubrir toda la pantalla */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .centered-container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    height: 100vh; /* Establece la altura al 100% del viewport */
+    position: fixed; /* Asegura que el spinner cubra toda la pantalla */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(211, 211, 211, 0.5); /* Fondo semitransparente */
+  }

@@ -14,7 +14,7 @@ export class ReportControlComponent {
   filteredLotes: any[] = [];
   NombreFinca: string = '';
   FincaId: number = 0;
-  isLoadingResults = true;
+  isLoadingResults = false;
   DataReport:any[]=[];
 
   constructor(
@@ -42,9 +42,9 @@ export class ReportControlComponent {
         const lote = data.data[0] as any;
         // Asigna los mismos datos a filteredLotes
         this.DataReport = lote;
-        console.log(this.DataReport)
+        this.isLoadingResults=true;
       } else {
-        this.isLoadingResults = false;
+        this.isLoadingResults = true;
       }
     });
   }
