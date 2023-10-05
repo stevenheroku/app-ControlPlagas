@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // Asegúrate
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import {HttpClientModule} from '@angular/common/http'
+import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 
 //graficas
 
@@ -73,6 +74,7 @@ import { NgChartsModule } from 'ng2-charts';
     HttpClientModule,
     AppRoutingModule,
     NgChartsModule,
+    CanvasJSAngularChartsModule,
     FormsModule, // Agrega FormsModule aquí,
     ReactiveFormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {

@@ -15,6 +15,11 @@
   </nav>
 
   <div class="viewLote">
+    <div style="display: grid; place-items: center; ">
+      <button  (click)="generarPDF()"style="background: rgb(212, 0, 0); font-style:normal; color: white; border-radius: 20px;"
+              class="col btn-1 btn">Descargar PDF</button>
+    </div>
+    <div #pdfContent>
     <h1  style="background-color: rgb(87, 182, 20); color: aliceblue; padding: 10px;"class="descripcion">Plagas y Enfermedades</h1>
 
     <form class="container">
@@ -74,6 +79,7 @@
             </table>
         </div>
     </form>
+  </div>
 </div>
 
 

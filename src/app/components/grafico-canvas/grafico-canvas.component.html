@@ -1,9 +1,6 @@
-<div style="width: 70%;height:60%;">
-    <canvas
-    baseChart
-    [legend]="true"
-    [datasets]="chartData"
-    [labels]="chartLabels"
-    [options]="chartOptions">
-    </canvas>
-  </div>
+<h1>HOLA</h1>
+<script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+<div>
+  <canvasjs-chart [options]="chartOptions"></canvasjs-chart>
+</div>
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
