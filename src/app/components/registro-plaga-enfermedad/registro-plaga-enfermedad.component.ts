@@ -76,7 +76,7 @@ export class RegistroPlagaEnfermedadComponent {
     
   }
 
-  buttonCrearControl(cantidad:string)
+  buttonCrearControl()
   {
     const opcionEstacion = this.tipoEstaciones.find(opcion => opcion.Value === parseInt(this.valorEstacion));
     const opcionTipoControl = this.tipoControl.find(opcion => opcion.Value === parseInt(this.valorTipoControl));
@@ -93,7 +93,7 @@ export class RegistroPlagaEnfermedadComponent {
       this.valorPlagaEnfermedad = this.valorEnfermedad;
     }
     let model : TipoControlModel={
-      CantidadIndividuos:parseInt(cantidad),
+      CantidadIndividuos:this.CantIndividuos,
       TipoEstacion:parseInt(this.valorEstacion),
       TipoControl:parseInt(this.valorTipoControl),
       IdArbol:this.NumeroArbol,
@@ -127,15 +127,27 @@ export class RegistroPlagaEnfermedadComponent {
   {
     console.log("CREAR CONTROL")
     console.log(objeto.CantidadIndividuos)
-    if (objeto.CantidadIndividuos<=0 || objeto.IdPlaga_Enfermedad<=0||objeto.TipoControl<=0||objeto.TipoEstacion<=0) {
+    if (objeto.CantidadIndividuos<=0||objeto.IdPlaga_Enfermedad<=0||objeto.TipoControl<=0||objeto.TipoEstacion<=0) {
       // Mostrar una alerta indicando que los campos son obligatorios
-      Swal.fire({
-        title: 'Campos Obligatorios',
-        text: 'Por favor, complete todos los campos',
-        icon: 'error',
-        confirmButtonText: 'Aceptar'
-      });
-      return; // Detener la ejecución de la función si faltan campos
+      if(objeto.CantidadIndividuos<=0 )
+      {
+        Swal.fire({
+          title: 'Cantidad de Individuos',
+          text: 'Si desea ingresar un control, la cantidad de individuos debe ser mayor a 0!',
+          icon: 'error',
+          confirmButtonText: 'Aceptar'
+        });
+        return; 
+      }else{
+        Swal.fire({
+          title: 'Campos Obligatorios',
+          text: 'Por favor, complete todos los campos',
+          icon: 'error',
+          confirmButtonText: 'Aceptar'
+        });
+        return; 
+      }
+      // Detener la ejecución de la función si faltan campos
     }
     const mensaje="Se Registro la Estación: "+estacion+" del Árbol: "+identificadorArbol;
     this.http.newControl(objeto).subscribe(result=>{
@@ -148,7 +160,15 @@ export class RegistroPlagaEnfermedadComponent {
         }).then(() => {
           // Navega a la misma vista para recargarla
           //this.router.navigate([`controlArbol/${this.LoteId}/${this.IdentificadorArbol}/${this.NumeroArbol}`])
-          window.location.reload();
+          //window.location.reload();
+          this.valorPlagaEnfermedad='0';
+          this.valorEnfermedad = '0';
+          this.valorPlaga = '0';
+          this.valorTipoControl = '0';
+          this.valorEstacion = '0';
+          this.valorEstructura = '0';
+          this.CantIndividuos=0;
+          this.tipoEnfermedadPlaga = 0; // Cambiar el tipo a número
 
         });
       }else if(result.state==204){

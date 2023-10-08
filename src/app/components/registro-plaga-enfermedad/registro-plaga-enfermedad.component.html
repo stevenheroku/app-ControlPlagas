@@ -21,18 +21,20 @@
       <h1 class="descripcion">CONTROL</h1>
       <div class="encabezado-login">
         <div class="arbol">
-          <img src="{{imagenSeleccionada}}"  class="arbol-imagen">
+          <img src="{{imagenSeleccionada}}" class="arbol-imagen">
           <div class="data">
-            <span class="info" >Árbol: </span><span class="info" style="color: rgb(36, 144, 3);" >{{ IdentificadorArbol }}</span>
+            <span class="info">Árbol: </span><span class="info" style="color: rgb(36, 144, 3);">{{ IdentificadorArbol
+              }}</span>
           </div>
-          
+
         </div>
       </div>
-      
+
       <div class="form-group">
         <label for="tipoEstacion">Tipo de Estación:</label>
         <div class="select-with-arrow">
-          <select id="tipoEstacion" [ngModelOptions]="{ standalone: true }" [(ngModel)]="valorEstacion" name="tipoEstacion" class="form-control">
+          <select id="tipoEstacion" [ngModelOptions]="{ standalone: true }" [(ngModel)]="valorEstacion"
+            name="tipoEstacion" class="form-control">
             <option value="0">--Seleccione la Estación--</option>
             <option *ngFor="let opcion of tipoEstaciones" [value]="opcion.Value">{{ opcion.Label }}</option>
           </select>
@@ -42,7 +44,8 @@
       <div class="form-group">
         <label for="tipoEnfermedadPlaga">Tipo de Control:</label>
         <div class="select-with-arrow">
-          <select id="tipoEnfermedadPlaga" [ngModelOptions]="{ standalone: true }" [(ngModel)]="valorTipoControl"  (ngModelChange)="onTipoControlChange()" class="form-control"class="form-control" name="tipoEnfermedadPlaga"
+          <select id="tipoEnfermedadPlaga" [ngModelOptions]="{ standalone: true }" [(ngModel)]="valorTipoControl"
+            (ngModelChange)="onTipoControlChange()" class="form-control" class="form-control" name="tipoEnfermedadPlaga"
             (change)="onTipoEnfermedadPlagaChange($event)">
             <option value="0">--Seleccione el tipo de Control--</option>
             <option *ngFor="let opcion of tipoControl" [value]="opcion.Value">{{ opcion.Label }}</option>
@@ -52,7 +55,8 @@
       <div class="form-group" *ngIf="tipoEnfermedadPlaga === 2">
         <label for="tipoEstructuraDanada">Nombre de Enfermedad:</label>
         <div class="select-with-arrow">
-          <select class="form-control" id="enfermedad" [ngModelOptions]="{ standalone: true }" [(ngModel)]="valorEnfermedad">
+          <select class="form-control" id="enfermedad" [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="valorEnfermedad">
             <option value="0">--Seleccione la Enfermedad--</option>
             <option *ngFor="let opcion of tipoControlEnfermedades" [value]="opcion.Value">{{ opcion.Label }}</option>
           </select>
@@ -70,14 +74,16 @@
 
       <div class="form-group">
         <label for="cantidadIndividuos">Cantidad de Individuos:</label>
-        <input type="number" id="cantidadIndividuos" name="cantidadIndividuos" class="form-control" #cantidadIndividuos value="{{CantIndividuos}}">
+        <input type="number" id="cantidadIndividuos" name="cantidadIndividuos" class="form-control" [(ngModel)]="CantIndividuos">
       </div>
+
       <div id="tipoEstructuraContainer" *ngIf="tipoEnfermedadPlaga === 2">
         <div class="form-group">
           <div class="select-with-arrow" id="tipoEstructuraContainer">
             <label for="tipoEstructuraDanada">Tipo de Estructura Dañada:</label>
             <div class="select-with-arrow">
-              <select class="form-control" id="estructura" [ngModelOptions]="{ standalone: true }" [(ngModel)]="valorEstructura">
+              <select class="form-control" id="estructura" [ngModelOptions]="{ standalone: true }"
+                [(ngModel)]="valorEstructura">
                 <option value="0">--Seleccione una opción--</option>
                 <option *ngFor="let opcion of tipoEstructura" [value]="opcion.Value">{{ opcion.Label }}</option>
               </select>
@@ -86,7 +92,8 @@
         </div>
       </div>
       <div class="row">
-        <button (click)="buttonCrearControl(cantidadIndividuos.value)" style="background: rgb(212, 0, 0); font:oblique; color: white;  border-radius: 20px;"
+        <button (click)="buttonCrearControl()"
+          style="background: rgb(212, 0, 0); font:oblique; color: white;  border-radius: 20px;"
           class="col btn-1 btn">Guardar</button>
       </div>
 
@@ -98,9 +105,8 @@
 
   <div *ngIf="isLoadingResults == false" class="text-center">
     <!-- Spinner de carga -->
-    <div class="spinner-grow text-secondary" role="status">
+    <div class="spinner-border text-secondary" role="status">
       <span class="sr-only">Loading...</span>
     </div>
-    <div class="text-secondary" style="font-size: 10px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Espere por favor...</div>
   </div>
 </div>

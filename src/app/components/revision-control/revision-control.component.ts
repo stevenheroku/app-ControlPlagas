@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RestsService } from 'src/app/shared/services/rests.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-revision-control',
@@ -50,7 +51,13 @@ export class RevisionControlComponent {
         this.InvetarioArbol =resultado;
         console.log(this.InvetarioArbol)
       }else{
-       
+        Swal.fire({
+          title: 'Inventario de Control!',
+          text: "No tiene ningún control realizado para este Árbol!" ,
+          icon: 'success',
+          confirmButtonText: 'Aceptar'
+         }
+        )
       }
     })
   }

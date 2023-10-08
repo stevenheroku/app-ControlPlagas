@@ -17,6 +17,7 @@ export class ArbolListComponent {
   resultsLength = 0;
   searchTerm: string = '';
   filteredLotes: any[] = [];
+  originalLotes:any[]=[]
   isLoadingResults = false;
   LoteId:Number=0;
   ArbolId:number=0;
@@ -35,24 +36,44 @@ export class ArbolListComponent {
      this.LoteIdentificadorId= identificadorLote;
      this.EmpleadoId=idEpl;
     });
-    this.http.getArboles2(Number(this.LoteId)).subscribe(data => {
+    this.ArbolerVer(this.LoteId);
+  // Inicializa los lotes filtrados al inicio
+  }
+  ArbolerVer(idLote:Number)
+  {
+    this.http.getArboles2(Number(idLote)).subscribe(data => {
       if (data.state === 200) {
-        const lote = data.data[0] as any;
-        this.arboles = [lote]; // Asigna los datos a this.lotes
+        const arboles = data.data[0] as any;
+        this.arboles = [arboles]; // Asigna los datos a this.lotes
+        this.originalLotes = arboles;
         // Asigna los mismos datos a filteredLotes
-        this.filteredLotes=lote;
+        this.filteredLotes=arboles;
         this.isLoadingResults=true;
       } else {
         this.isLoadingResults = true;
       }
     });
-    this.filteredLotes = this.arboles; // Inicializa los lotes filtrados al inicio
   }
 
-  searchLotes() {
-    this.filteredLotes = this.arboles.filter(
-      (arboles) => arboles.IdArbol.toString().includes(this.searchTerm)
-    );
+  searchArboles() {
+    const searchTermLower = this.searchTerm.trim().toLowerCase();
+  
+    if (searchTermLower === '') {
+      // Si el campo de búsqueda está vacío, muestra todos los elementos nuevamente
+      this.filteredLotes=this.originalLotes;
+    } else {
+      // Realiza la búsqueda filtrada
+      this.filteredLotes = this.originalLotes.filter((lote) => {
+        // Verifica si lote está definido antes de acceder a sus propiedades
+        if (lote) {
+          return (
+            (lote.IdIdentificadorLote && lote.IdIdentificadorLote.toString().includes(searchTermLower)) ||
+            (lote.Empleado && lote.Empleado.toLowerCase().includes(searchTermLower))
+          );
+        }
+        return false; // Si lote es undefined, no lo incluye en los resultados
+      });
+    }
   }
   eliminarArbol(ArbolId: number) {
     Swal.fire({

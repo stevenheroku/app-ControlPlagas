@@ -24,7 +24,7 @@ export class QuimicosRecomendadosComponent {
   NombreFinca:string='';
   FechaControl:string='';
   isLoadingResults:boolean=false;
-
+  isCreatingPDF:boolean=false;
   constructor(private router: Router,private http: RestsService,private route: ActivatedRoute) {     this.pdfContent = undefined;
   }
   ngOnInit(): void {
@@ -96,27 +96,37 @@ export class QuimicosRecomendadosComponent {
     })
   }
   generarPDF() {
-    
+    this.isCreatingPDF = true; 
+
     if (this.pdfContent) {
       const content = this.pdfContent.nativeElement;
       // Realiza las operaciones con "content" aquí
-       // Captura la vista en un lienzo usando html2canvas
-    html2canvas(content).then(canvas => {
-      // Convierte el lienzo a una imagen base64
-      const imgData = canvas.toDataURL('image/png');
-
-      // Crea un nuevo objeto jsPDF
-      const pdf = new jsPDF();
-
-      // Establece el tamaño del PDF (puedes ajustarlo según tus necesidades)
-      pdf.addImage(imgData, 'PNG', 0, 0, 210, 297);
-      console.log("guardar")
-      // Descarga el PDF con un nombre de archivo
-      pdf.save('mi_vista.pdf');
-    });
+      // Captura la vista en un lienzo usando html2canvas
+      html2canvas(content).then(canvas => {
+        // Obtén las dimensiones de la imagen capturada
+        const imgWidth = canvas.width;
+        const imgHeight = canvas.height;
+        // Crea un nuevo objeto jsPDF con las dimensiones de la imagen
+        const pdf = new jsPDF({
+          orientation: 'portrait', // Puedes cambiar a 'landscape' si es necesario
+          unit: 'mm',
+          format: [imgWidth, imgHeight] // Establece el tamaño del PDF según las dimensiones de la imagen
+        });
+  
+        // Convierte el lienzo a una imagen base64
+        const imgData = canvas.toDataURL('image/png');
+  
+        // Agrega la imagen al PDF
+        pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+  
+        // Descarga el PDF con un nombre de archivo
+        pdf.save('Reporte_Arbol:'+`${this.IdentificadorArbol}`+'_ControlDia:'+`${this.FechaControl}.pdf`);
+        
+        this.isCreatingPDF = false; // Ocultar spinner de carga
+      });
     } else {
       console.error('El elemento pdfContent no está definido.');
+      this.isLoadingResults = true; // Ocultar spinner de carga en caso de error
     }
-   
   }
 }

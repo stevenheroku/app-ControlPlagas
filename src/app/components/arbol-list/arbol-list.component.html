@@ -26,7 +26,7 @@
         </div>
         <div class="col text-center">
             <div class="input-group stylish-input-group">
-              <input [(ngModel)]="searchTerm" (ngModelChange)="searchLotes()" class="form-control" placeholder="Buscar Árbol">
+              <input [(ngModel)]="searchTerm" (ngModelChange)="searchArboles()" class="form-control" placeholder="Buscar Árbol">
               <span class="input-group-addon">
                 <button type="submit">
                   <i class="fas fa-search"></i>
@@ -65,9 +65,8 @@
 
     <div *ngIf="isLoadingResults == false" class="text-center">
       <!-- Spinner de carga -->
-      <div class="spinner-grow text-secondary" role="status">
+      <div class="spinner-border text-secondary" role="status">
         <span class="sr-only">Loading...</span>
       </div>
-      <div class="text-secondary">Espere por favor...</div>
     </div>
   </div>

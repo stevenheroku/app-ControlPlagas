@@ -22,6 +22,8 @@ export class NewArbolComponent {
   ArbolId:number=0;
   Latitud:number=0;
   Longitud:number=0;
+  NombreFinca:string="";
+
   constructor(private router: Router,private http: RestsService,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -29,10 +31,13 @@ export class NewArbolComponent {
     const empleadoID = localStorage.getItem('IdEmpleado'); // 
     const fincaId = localStorage.getItem('IdFinca'); // 
     const nombreApellido = localStorage.getItem('NameApellido'); // 
+    const fincaNombre = localStorage.getItem('Finca'); // 
 
-    if ((empleadoID!=null)&&(nombreApellido!=null)) {
+    if ((empleadoID!=null)&&(nombreApellido!=null)&&(fincaNombre!=null)) {
       this.EmpleadoId=parseInt(empleadoID);
       this.NombreEmpleado=nombreApellido.replace(/"/g,'');
+      this.NombreFinca=fincaNombre.replace(/"/g,'').toUpperCase();
+
     }
     this.route.params.subscribe(params => {
       const idLote = params['idLote'];

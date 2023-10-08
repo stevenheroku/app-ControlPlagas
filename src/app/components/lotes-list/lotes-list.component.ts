@@ -15,9 +15,10 @@ export class LotesListComponent {
   resultsLength = 0;
   searchTerm: string = '';
   filteredLotes: any[] = [];
+  originalLotes:any[]=[]
   isLoadingResults:boolean= false;
   LoteId:Number=0;
-
+  NumeroFinca:Number=0;
   //variables globales
   NombreFinca:string="";
   EmpleadoId:number=0;
@@ -28,16 +29,36 @@ export class LotesListComponent {
     const fincaNombre = localStorage.getItem('Finca'); //
     const idEpl = localStorage.getItem('IdEmpleado'); //
 
-    if(fincaNombre!=null&&(idEpl!=null))
+    if(fincaNombre!=null&&(idEpl!=null)&&(IdFinca!=null))
     {
       this.NombreFinca=fincaNombre.replace(/"/g,'');
       this.NombreFinca = this.NombreFinca.toUpperCase();
       this.EmpleadoId=parseInt(idEpl);
+      this.NumeroFinca = parseInt(IdFinca);
     } 
-    this.http.getLotes2(Number(IdFinca)).subscribe(data => {
+    /*this.http.getLotes2(Number(IdFinca)).subscribe(data => {
       if (data.state === 200) {
         const lote = data.data[0] as any;
         this.lotes = [lote];
+        this.originalLotes = [lote];
+        this.filteredLotes = lote;
+        this.isLoadingResults = true;
+        console.log(this.lotes);
+        console.log(this.filteredLotes);
+      } else {
+        // Si ocurre un error
+        this.isLoadingResults = true;
+      }
+    });*/
+    this.lotesVer(this.NumeroFinca);
+  }
+  lotesVer(finca:Number)
+  {
+    this.http.getLotes2(Number(finca)).subscribe(data => {
+      if (data.state === 200) {
+        const lote = data.data[0] as any;
+        this.lotes = [lote];
+        this.originalLotes = lote;
         this.filteredLotes = lote;
         this.isLoadingResults = true;
         console.log(this.lotes);
@@ -48,11 +69,26 @@ export class LotesListComponent {
       }
     });
   }
+  
   searchLotes() {
-    this.filteredLotes = this.lotes.filter(
-      (lote) => lote.Identificador.toString().includes(this.searchTerm)
-      );
-      this.filteredLotes = this.lotes;
+    const searchTermLower = this.searchTerm.trim().toLowerCase();
+  
+    if (searchTermLower === '') {
+      // Si el campo de búsqueda está vacío, muestra todos los elementos nuevamente
+      this.filteredLotes=this.originalLotes;
+    } else {
+      // Realiza la búsqueda filtrada
+      this.filteredLotes = this.originalLotes.filter((lote) => {
+        // Verifica si lote está definido antes de acceder a sus propiedades
+        if (lote) {
+          return (
+            (lote.IdIdentificadorLote && lote.IdIdentificadorLote.toString().includes(searchTermLower)) ||
+            (lote.Empleado && lote.Empleado.toLowerCase().includes(searchTermLower))
+          );
+        }
+        return false; // Si lote es undefined, no lo incluye en los resultados
+      });
+    }
   }
 
   filtrarArbolesPorLote(idLote: number,identificador:number) {
@@ -73,7 +109,7 @@ export class LotesListComponent {
   }
   eliminarLote(loteId: number) {
     Swal.fire({
-      title: '¿Estás seguro?',
+      title: '¿Estás seguro que desea eliminar el Lote?',
       text: '¿Desea Eliminarlo?',
       icon: 'warning',
       showCancelButton: true,

@@ -1,83 +1,96 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 <nav class="navbar">
-    <div class="container-fluid">
-      <div class="back-link">
-        <a (click)="navigateListaArboles()">
-          <i class="fas fa-arrow-left" style="color: rgb(255, 255, 255);"></i>
-        </a>
-      </div>
-      <h1 class="mx-auto" style="font-size: 15px;">ÁRBOL: {{IdentificadorArbol}}</h1>
-      <div class="logo-circle">
-        <img src="/assets/img/logo.png" alt="logo" class="logo-img">
+  <div class="container-fluid">
+    <div class="back-link">
+      <a (click)="navigateListaArboles()">
+        <i class="fas fa-arrow-left" style="color: rgb(255, 255, 255);"></i>
+      </a>
+    </div>
+    <h1 class="mx-auto" style="font-size: 15px;">ÁRBOL: {{IdentificadorArbol}}</h1>
+    <div class="logo-circle">
+      <img src="/assets/img/logo.png" alt="logo" class="logo-img">
+    </div>
+  </div>
+</nav>
+
+<div class="viewLote">
+  <div style="display: grid; place-items: center; ">
+    <button (click)="generarPDF()"
+        style="background: rgb(212, 0, 0); font-style: normal; color: white; border-radius: 20px; margin: 10px;"
+        class="col btn-1 btn">
+    <i class="fas fa-download"></i> Descargar PDF
+</button>
+  </div>
+  <div #pdfContent>
+    <h1 style="background-color: rgb(87, 182, 20); color: aliceblue; padding: 10px;" class="descripcion">Plagas y Enfermedades</h1>
+
+    
+    <div class="card mx-auto" style="width: 80%; margin-top: 20px;">
+      <div style="padding: 20px;">
+        <ul class="list-group list-group-flush">
+          <li style="background-color: rgb(11, 67, 102); color: white; font-size: 15px; border-radius: 10px; font: bold; margin-bottom: 10px;" class="list-group-item"><span style="font-weight: bold;">ÁRBOL: {{IdentificadorArbol}}</span></li>
+          <li style="background-color: rgb(11, 67, 102); color: white; font-size: 15px; border-radius: 10px; font: bold; margin-bottom: 10px;" class="list-group-item"><span style="font-weight: bold;">CONTROL DÍA: {{FechaControl}}</span></li>
+        </ul>
       </div>
     </div>
-  </nav>
-
-  <div class="viewLote">
-    <div style="display: grid; place-items: center; ">
-      <button  (click)="generarPDF()"style="background: rgb(212, 0, 0); font-style:normal; color: white; border-radius: 20px;"
-              class="col btn-1 btn">Descargar PDF</button>
-    </div>
-    <div #pdfContent>
-    <h1  style="background-color: rgb(87, 182, 20); color: aliceblue; padding: 10px;"class="descripcion">Plagas y Enfermedades</h1>
-
     <form class="container">
-        <div style="text-align: center;">
-            <h1 style="background-color: rgb(190, 190, 190);" class="descripcion">Plagas</h1>
-            <img src="/assets/img/iconoPlagas.png" style="height: 80px; width: 80px; display: block; margin: 20px auto;">
-          </div>
-          
-        <div class="table-container"style="padding: 20px; overflow-y: auto; max-height: 300px;"> 
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Estación</th>
-                        <th>Plaga</th>
-                        <th>Cant. I</th>
-                        <th>Quimico R.</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let arbolPlaga of ArbolesPlaga">
-                        <td>{{ arbolPlaga.Estacion }}</td>
-                        <td>{{ arbolPlaga.Plaga }}</td>
-                        <td>{{ arbolPlaga.CantidadIndividuos }}</td>
-                        <td>{{ arbolPlaga.Quimico }}</td>
-                      </tr>
-                </tbody>
-            </table>
-        </div>
+      <div style="text-align: center;">
+        <h1 style="background-color: rgb(190, 190, 190);" class="descripcion">Plagas</h1>
+        <img src="/assets/img/iconoPlagas.png" style="height: 80px; width: 80px; display: block; margin: 20px auto;">
+      </div>
+
+      <div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Estación</th>
+              <th>Plaga</th>
+              <th>Cant. I</th>
+              <th>Quimico R.</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let arbolPlaga of ArbolesPlaga">
+              <td>{{ arbolPlaga.Estacion }}</td>
+              <td>{{ arbolPlaga.Plaga }}</td>
+              <td>{{ arbolPlaga.CantidadIndividuos }}</td>
+              <td>{{ arbolPlaga.Quimico }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </form>
 
     <form class="container">
-        <div >
-            <h1  style="background-color: rgb(190, 190, 190);"class="descripcion">Enfermedades</h1>
-            <img src="/assets/img/iconoEnfermedad.png"  style="height: 80px; width: 80px; display: block; margin: 20px auto;">
+      <div>
+        <h1 style="background-color: rgb(190, 190, 190);" class="descripcion">Enfermedades</h1>
+        <img src="/assets/img/iconoEnfermedad.png"
+          style="height: 80px; width: 80px; display: block; margin: 20px auto;">
 
-        </div>
-        <div class="table-container"style="padding: 20px; overflow-y: auto; max-height: 300px;"> 
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Estación</th>
-                        <th>Enfermedad</th>
-                        <th>Cant. I</th>
-                        <th>Estructura D.</th>
-                        <th>Quimico R.</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let arbolEnfermedad of ArbolesEnfermedad">
-                        <td>{{ arbolEnfermedad.Estacion }}</td>
-                        <td>{{ arbolEnfermedad.Enfermedad }}</td>
-                        <td>{{ arbolEnfermedad.CantidadIndividuos }}</td>
-                        <td>{{ arbolEnfermedad.Estructura }}</td>
-                        <td>{{ arbolEnfermedad.Quimico }}</td>
-                      </tr>
-                </tbody>
-            </table>
-        </div>
+      </div>
+      <div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Estación</th>
+              <th>Enfermedad</th>
+              <th>Cant. I</th>
+              <th>Estructura D.</th>
+              <th>Quimico R.</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let arbolEnfermedad of ArbolesEnfermedad">
+              <td>{{ arbolEnfermedad.Estacion }}</td>
+              <td>{{ arbolEnfermedad.Enfermedad }}</td>
+              <td>{{ arbolEnfermedad.CantidadIndividuos }}</td>
+              <td>{{ arbolEnfermedad.Estructura }}</td>
+              <td>{{ arbolEnfermedad.Quimico }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </form>
   </div>
 </div>
@@ -85,11 +98,20 @@
 
 <div [ngClass]="{'centered-container': isLoadingResults == false}">
 
-    <div *ngIf="isLoadingResults == false" class="text-center">
-      <!-- Spinner de carga -->
-      <div class="spinner-grow text-secondary" role="status">
-        <span class="sr-only">Loading...</span>
-      </div>
-      <div class="text-secondary" style="font-size: 10px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Espere por favor...</div>
+  <div *ngIf="isLoadingResults == false" class="text-center">
+    <!-- Spinner de carga -->
+    <div class="spinner-border text-secondary" role="status">
+      <span class="sr-only">Loading...</span>
     </div>
   </div>
+</div>
+<div [ngClass]="{'centered-container': isCreatingPDF == true}">
+
+  <div *ngIf="isCreatingPDF" class="text-center">
+    <!-- Spinner de carga -->
+    <div class="spinner-border text-secondary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+    <div class="text-secondary" style=" color: black; font-size: 20px; font-family:Arial;">Espere por Favor, Generando PDF...</div>
+  </div>
+</div>

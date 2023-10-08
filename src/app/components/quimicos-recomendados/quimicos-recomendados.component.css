@@ -20,10 +20,10 @@ h1 {
 
   
 
-.container {
+/*.container {
     width: 80%;
     height: auto;
-}
+}*/
 .viewLote {
     position: absolute;
     width: 100%;
@@ -86,12 +86,7 @@ h1 {
   padding-right: 10%; 
 }
 
-.table-container {
-    max-height: 400px; 
-    max-width: 100%;
-    margin-top: 30px;
-    padding-top: 20px; /* Ajusta el valor según la cantidad de espacio que deseas */
-}
+
 
 .app-footer {
     flex-shrink: 0;

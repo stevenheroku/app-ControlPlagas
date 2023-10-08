@@ -87,35 +87,56 @@ export class InventarioGeneralComponent {
         console.log(this.filteredLotes);
         
         // Llamar a la función grafica para configurar y renderizar el gráfico
-        this.updateChartTitle(this.filteredLotes);
+        this.updateChartTitle(this.filteredLotes,data.state);
         
       } else {
         this.isLoadingResults = false;
+        this.updateChartTitle(this.filteredLotes,data.state);
       }
     });
   }
 
-  updateChartTitle(dataLotes: any[]) {
-    console.log("entro funcion")
-    this.chartOptions = {
-      title: {
-        text: "Árboles por Lote",
-      },
-      data: [{
-        type: "pie",
-        startAngle: 25,
-        toolTipContent: "<b>Lote->{label}</b>: {y} Árboles",
-        showInLegend: "true",
-        legendText: "{label2}",
-        indexLabelFontSize: 16,
-        indexLabel: "{label} - {y} Árboles",
-        dataPoints: dataLotes.map((item: { Label: any; Arboles: any; Label2: any; }) => ({
-          label: item.Label2,
-          y: item.Arboles,
-          label2: item.Label
-        }))
-      }]               
-    };
+  updateChartTitle(dataLotes: any[],state:number) {
+    console.log("entro funcion");
+    if (state === 404) {
+      // Si no hay datos disponibles, mostrar un segmento con valor cero
+      this.chartOptions = {
+        title: {
+          text: "Árboles por Lote",
+        },
+        data: [{
+          type: "pie",
+          startAngle: 25,
+          toolTipContent: "<b>Lote->{label}</b>: {y} Árboles",
+          showInLegend: "true",
+          legendText: "{label2}",
+          indexLabelFontSize: 16,
+          indexLabel: "Lote: {label}",
+          dataPoints: [{ label: "Sin Datos", y: 0, label2: "Sin Datos" ,color:"grey"}] // Valor predeterminado de cero
+        }]
+      };
+    } else {
+      // Si hay datos disponibles, generar la gráfica con los datos reales
+      this.chartOptions = {
+        title: {
+          text: "Árboles por Lote",
+        },
+        data: [{
+          type: "pie",
+          startAngle: 25,
+          toolTipContent: "<b>Lote->{label}</b>: {y} Árboles",
+          showInLegend: "true",
+          legendText: "{label2}",
+          indexLabelFontSize: 16,
+          indexLabel: "Lote: {label}",
+          dataPoints: dataLotes.map((item: { Label: any; Arboles: any; Label2: any; }) => ({
+            label: item.Label2,
+            y: item.Arboles,
+            label2: item.Label
+          }))
+        }]               
+      };
+    }
   }
   private getDataFromDatabase(): Observable<any> {
     return this.http.getLotesGrafica(Number(this.FincaId));
