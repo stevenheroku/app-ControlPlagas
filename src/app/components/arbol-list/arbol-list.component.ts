@@ -63,12 +63,12 @@ export class ArbolListComponent {
       this.filteredLotes=this.originalLotes;
     } else {
       // Realiza la búsqueda filtrada
-      this.filteredLotes = this.originalLotes.filter((lote) => {
+      this.filteredLotes = this.originalLotes.filter((arboles) => {
         // Verifica si lote está definido antes de acceder a sus propiedades
-        if (lote) {
+        if (arboles) {
           return (
-            (lote.IdIdentificadorLote && lote.IdIdentificadorLote.toString().includes(searchTermLower)) ||
-            (lote.Empleado && lote.Empleado.toLowerCase().includes(searchTermLower))
+            (arboles.IdentificadorArbol && arboles.IdentificadorArbol.toString().includes(searchTermLower)) ||
+            (arboles.Empleado && arboles.Empleado.toLowerCase().includes(searchTermLower))
           );
         }
         return false; // Si lote es undefined, no lo incluye en los resultados
