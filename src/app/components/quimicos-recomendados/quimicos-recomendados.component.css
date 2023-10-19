@@ -285,3 +285,12 @@ h1 {
   bottom: 0;
   background-color: rgba(211, 211, 211, 0.5); /* Fondo semitransparente */
 }
+.fixed-menu {
+  position: fixed;
+  top: 0;
+  background-color: #fff; /* Color de fondo de tu menú */
+  color: #000; /* Color del texto */
+  width: 100%; /* Ancho del menú */
+  z-index: 1000; /* Valor alto para asegurarse de que esté en la parte superior */
+  /* Otros estilos personalizados según tus necesidades */
+}

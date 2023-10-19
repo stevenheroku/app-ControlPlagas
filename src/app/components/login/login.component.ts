@@ -4,13 +4,15 @@ import { Router } from '@angular/router';
 import { AuthUsuario } from 'src/app/shared/models/AuthUsuario';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { MainService } from 'src/app/shared/services/main.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  constructor(private router: Router,private authService:AuthService,private mainService:MainService) {}
+  private usuarioJWT:any
+  constructor(private router: Router,private authService:AuthService,private mainService:MainService,private jwt:JwtHelperService,) {}
 
   logIn(correo:string,contrasena:string){
     let usuario:AuthUsuario={
@@ -55,14 +57,37 @@ export class LoginComponent {
           console.log(res)
           if(res.state==200)
           {
-          localStorage.setItem('IdEmpleado', JSON.stringify(res.data.Empleado));
-          localStorage.setItem('Finca', JSON.stringify(res.data.Finca));
-          localStorage.setItem('Rol', JSON.stringify(res.data.NombreRol));
-          localStorage.setItem('NameApellido', JSON.stringify(res.data.NombreApellido));
-          localStorage.setItem('IdFinca', JSON.stringify(res.data.IdFinca));
+            const datos = {
+              token: res.data,
+              responseLogin: res,
+              usuarioJWT: this.jwt.decodeToken(res.data),
+              IdEmpleado: this.jwt.decodeToken(res.data).Empleado,
+              Finca: this.jwt.decodeToken(res.data).Finca,
+              Rol: this.jwt.decodeToken(res.data).NombreRol,
+              NameApellido: this.jwt.decodeToken(res.data).NombreApellido,
+              IdFinca: this.jwt.decodeToken(res.data).IdFinca,
+            };
+            this.guardarDatosSesion(datos);
+            const datosSesion = localStorage.getItem('datosSesion');
+            if(datosSesion!==null)
+            {
+              const datos2 = JSON.parse(datosSesion);
+              const NameApellido = datos2.datos.NameApellido;
+            }
+            
+
+          localStorage.setItem('token',res.data)
+          localStorage.setItem('responseLogin',JSON.stringify(res))
+          this.usuarioJWT = this.jwt.decodeToken(res.data);
+          
+          localStorage.setItem('IdEmpleado', JSON.stringify(this.jwt.decodeToken(res.data).Empleado));
+          localStorage.setItem('Finca', JSON.stringify(this.jwt.decodeToken(res.data).Finca));
+          localStorage.setItem('Rol', JSON.stringify(this.jwt.decodeToken(res.data).NombreRol));
+          localStorage.setItem('NameApellido', JSON.stringify(this.jwt.decodeToken(res.data).NombreApellido));
+          localStorage.setItem('IdFinca', JSON.stringify(this.jwt.decodeToken(res.data).IdFinca));
             Swal.fire({
              title: 'Bienvenido!',
-             text: res.data.Nombres ,
+             text: this.jwt.decodeToken(res.data).NombreApellido,
              icon: 'success',
              confirmButtonText: 'Aceptar'
             }
@@ -90,5 +115,13 @@ export class LoginComponent {
   }
   routerRegistro() {
     this.router.navigate(['registro']);
+  }
+  guardarDatosSesion(datos: any) {
+    const tiempoExpiracion = new Date().getTime() + 1800000; // 30 minutos de tiempo de expiración
+    const datosSesion = {
+      datos,
+      tiempoExpiracion,
+    };
+    localStorage.setItem('datosSesion', JSON.stringify(datosSesion));
   }
 }

@@ -20,27 +20,28 @@ import { GraficoCanvasComponent } from './components/grafico-canvas/grafico-canv
 import { InventarioGeneralComponent } from './components/inventario-general/inventario-general.component';
 import { QuimicosRecomendadosComponent } from './components/quimicos-recomendados/quimicos-recomendados.component';
 import { RevisionControlComponent } from './components/revision-control/revision-control.component';
+import { MainGuard } from './guards/main.guard';
 const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'logueado',component:LogueadoComponent},
   {path:'recuperarPassword',component:RecoverPasswordComponent},
   {path:'registration',component:RegistrationComponent},
-  {path:'tipoControl',component:TipoControlComponent},
-  {path:'lotes',component:LotesViewComponent},
-  {path:'lotesLista',component:LotesListComponent},
-  {path:'newLote/:idLote',component:NewLoteComponent},
-  {path:'listArboles/:idLote/:identificador',component:ArbolListComponent},
-  {path:'newArbol/:idLote/:identificador/:idArbol',component:NewArbolComponent},
-  {path:'tipoEstaciones',component:TipoEstacionesArbolComponent},
-  {path:'controlArbol/:idLote/:identificador/:idArbol',component:RegistroPlagaEnfermedadComponent},
-  {path:'rolesEpl',component:RolesComponent},
-  {path:'reporteControl',component:ReportControlComponent},
-  {path:'finca',component:InventarioGeneralComponent},
-  {path:'statusArbol/:idLote/:identificador/:idArbol',component:ViewArbolComponent},
-  {path:'arbolesPag/:idLote/:identificador',component:ArbolesSiguienteComponent},
-  {path:'graficas',component:GraficoCanvasComponent},
-  {path:'arbolQuimicos/:idLote/:identificador/:idArbol/:idArbolIdentificador/:fechaControl',component:QuimicosRecomendadosComponent},
-  {path:'revisionControl/:idLote/:identificador/:idArbol/:idArbolIdentificador',component:RevisionControlComponent},
+  {path:'tipoControl',component:TipoControlComponent,canActivate:[MainGuard]},
+  {path:'lotes',component:LotesViewComponent,canActivate:[MainGuard]},
+  {path:'lotesLista',component:LotesListComponent,canActivate:[MainGuard]},
+  {path:'newLote/:idLote',component:NewLoteComponent,canActivate:[MainGuard]},
+  {path:'listArboles/:idLote/:identificador',component:ArbolListComponent,canActivate:[MainGuard]},
+  {path:'newArbol/:idLote/:identificador/:idArbol',component:NewArbolComponent,canActivate:[MainGuard]},
+  {path:'tipoEstaciones',component:TipoEstacionesArbolComponent,canActivate:[MainGuard]},
+  {path:'controlArbol/:idLote/:identificador/:idArbol',component:RegistroPlagaEnfermedadComponent,canActivate:[MainGuard]},
+  {path:'rolesEpl',component:RolesComponent,canActivate:[MainGuard]},
+  {path:'reporteControl',component:ReportControlComponent,canActivate:[MainGuard]},
+  {path:'finca',component:InventarioGeneralComponent,canActivate:[MainGuard]},
+  {path:'statusArbol/:idLote/:identificador/:idArbol',component:ViewArbolComponent,canActivate:[MainGuard]},
+  {path:'arbolesPag/:idLote/:identificador',component:ArbolesSiguienteComponent,canActivate:[MainGuard]},
+  {path:'graficas',component:GraficoCanvasComponent,canActivate:[MainGuard]},
+  {path:'arbolQuimicos/:idLote/:identificador/:idArbol/:idArbolIdentificador/:fechaControl',component:QuimicosRecomendadosComponent,canActivate:[MainGuard]},
+  {path:'revisionControl/:idLote/:identificador/:idArbol/:idArbolIdentificador',component:RevisionControlComponent,canActivate:[MainGuard]},
 
   {path:'**',pathMatch:'full',redirectTo:'login'}
 ];

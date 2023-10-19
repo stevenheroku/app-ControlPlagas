@@ -135,34 +135,22 @@ export class NewArbolComponent {
     }
   }
 
-  public inicializarUbicacion()
-  {
-     // El navegador soporta geolocalización
-     if ("geolocation" in navigator) {
+  public inicializarUbicacion() {
+    if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          // Obtener ubicación exitosamente
-          const latitude = position.coords.latitude;
-          const longitude = position.coords.longitude;
-          this.Longitud=longitude;
-          this.Latitud=latitude;
-          console.log("Latitud:", latitude);
-          console.log("Longitud:", longitude);
+          this.Latitud = position.coords.latitude;
+          this.Longitud = position.coords.longitude;
         },
         (error) => {
-          if (error.code === error.PERMISSION_DENIED) {
-            // El usuario denegó el permiso de geolocalización
-            console.error("El usuario ha denegado el permiso de geolocalización.");
-            alert("Para usar esta función, necesitamos acceder a tu ubicación. Por favor, otorga permisos de ubicación en la configuración de tu navegador.");
-          } else {
-            // Otro error de geolocalización
-            console.error("Error al obtener la ubicación:", error.message);
-          }
+          console.error("Error al obtener la ubicación:", error.message);
         }
       );
     } else {
-      // El navegador no soporta geolocalización
-      console.error("El navegador no soporta geolocalización");
+      console.error("El navegador no soporta geolocalización.");
     }
   }
+  
+
+ 
 }

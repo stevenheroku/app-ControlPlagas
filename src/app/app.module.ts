@@ -37,6 +37,9 @@ import { GraficoCanvasComponent } from './components/grafico-canvas/grafico-canv
 import { QuimicosRecomendadosComponent } from './components/quimicos-recomendados/quimicos-recomendados.component';
 import { RevisionControlComponent } from './components/revision-control/revision-control.component';
 import { NgChartsModule } from 'ng2-charts';
+import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
+import { DialogImgComponent } from './components/dialog-img/dialog-img.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -66,6 +69,7 @@ import { NgChartsModule } from 'ng2-charts';
     GraficoCanvasComponent,
     QuimicosRecomendadosComponent,
     RevisionControlComponent,
+    DialogImgComponent
   ],
   imports: [
     MatButtonModule,
@@ -77,6 +81,7 @@ import { NgChartsModule } from 'ng2-charts';
     CanvasJSAngularChartsModule,
     FormsModule, // Agrega FormsModule aquí,
     ReactiveFormsModule,
+    MatDialogModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable
@@ -84,7 +89,10 @@ import { NgChartsModule } from 'ng2-charts';
       registrationStrategy: 'registerWhenStable:30000'
     })
   ],
-  providers: [],
+  providers: [
+    {provide: JWT_OPTIONS,useValue:JWT_OPTIONS},
+    JwtHelperService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

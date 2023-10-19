@@ -78,7 +78,7 @@ export class InventarioGeneralComponent {
      
   }
   public lotesGrafica3() {
-    this.http.getLotesGrafica(Number(1)).subscribe((data) => {
+    this.http.getLotesGrafica(Number(this.FincaId)).subscribe((data) => {
       console.log(data.state);
       if (data.state === 200) {
         const lote = data.data[0] as any;

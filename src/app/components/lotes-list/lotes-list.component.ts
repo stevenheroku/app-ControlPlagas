@@ -107,7 +107,7 @@ export class LotesListComponent {
     // Aquí reemplaza 'nombre-de-la-vista' con el nombre de la ruta a la que deseas redirigir
     this.router.navigate([`newLote/${idLote}`])
   }
-  eliminarLote(loteId: number) {
+  eliminarLote2(loteId: number) {
     Swal.fire({
       title: '¿Estás seguro que desea eliminar el Lote?',
       text: '¿Desea Eliminarlo?',
@@ -143,4 +143,51 @@ export class LotesListComponent {
       }
     });
   }
+
+  eliminarLote(loteId: number) {
+    Swal.fire({
+      title: '¿Estás seguro que desea eliminar el Lote?',
+      text: '¿Desea Eliminarlo?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Aceptar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // El usuario confirmó la eliminación, entonces procede con la eliminación
+        this.http.deleteLote(this.EmpleadoId, loteId).subscribe(data => {
+          if (data.state === 200) {
+            Swal.fire({
+              title: 'Lote Eliminado',
+              text: 'El lote se ha eliminado correctamente',
+              icon: 'success',
+              confirmButtonText: 'Aceptar'
+            }).then(() => {
+              // Navega a la misma vista para recargarla
+              this.eliminarLoteDeDatos(loteId);
+            });
+            // En lugar de recargar la página, elimina el lote de tus datos en el cliente
+            // Esto asegurará que la vista se actualice automáticamente
+            
+          } else {
+            Swal.fire({
+              title: 'Error',
+              text: 'Error al eliminar el lote',
+              icon: 'error',
+              confirmButtonText: 'Aceptar'
+            });
+          }
+        });
+      }
+    });
+  }
+
+  eliminarLoteDeDatos(loteId: number) {
+    // Filtra los lotes para eliminar el que coincide con loteId
+    this.filteredLotes = this.filteredLotes.filter(lote => lote.IdLote !== loteId);
+    console.log("eliminados")
+  }
+  
 }
