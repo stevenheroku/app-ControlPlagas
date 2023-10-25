@@ -40,7 +40,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   crearRegistroUsuario(pNombres:string,pApellidos:string,pFechaN:string,pNumero:string,
-                     pDpi:string,pDireccion:string,pCorreo:string,pPass:string)
+                     pDpi:string,pDireccion:string,pCorreo:string,pPass:string,pPass2:string)
   {
     let usuarioNew: any = {
       AuthEmpleado: {
@@ -62,7 +62,23 @@ export class RegistrationComponent implements OnInit {
     
     console.log("Registro Usuario:"+pNombres+pApellidos+pFechaN+pNumero+pDpi+pDireccion+pCorreo+pPass);
     console.log(usuarioNew.AuthEmpleado)
-    if(pDpi.length>13){
+    if(pNombres==''|| pApellidos==''||pFechaN==''||pNumero==''||pDpi==''||pDireccion==''||pCorreo==''||pPass==''||pPass2=='')
+    {
+      Swal.fire({
+        title:'Registro Usuario',
+        text: 'Debe llenar todos los campos!',
+        icon:'error',
+        confirmButtonText: 'Aceptar'
+      })
+    }else if(pPass2 !=pPass)
+    {
+      Swal.fire({
+        title:'Registro Usuario',
+        text: 'Las contraseñas no coinciden!',
+        icon:'error',
+        confirmButtonText: 'Aceptar'
+      })
+    }else if(pDpi.length>13){
       Swal.fire({
         title:'Registro Usuario',
         text: 'El dpi es incorrecto',

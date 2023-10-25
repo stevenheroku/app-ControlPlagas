@@ -132,7 +132,7 @@ export class InventarioGeneralComponent {
           dataPoints: dataLotes.map((item: { Label: any; Arboles: any; Label2: any; }) => ({
             label: item.Label2,
             y: item.Arboles,
-            label2: item.Label
+            label2: item.Label2
           }))
         }]               
       };
